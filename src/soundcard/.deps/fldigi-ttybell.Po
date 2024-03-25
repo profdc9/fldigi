@@ -1,0 +1,3 @@
+soundcard/fldigi-ttybell.o: soundcard/ttybell.cxx \
+ /usr/include/stdc-predef.h
+/usr/include/stdc-predef.h:

@@ -1,0 +1,4704 @@
+2024-01-16  dave-w1hkj  <w1hkj@bellsouth.net>
+
+	ed10b8e74: Version 4.2.04
+	17f9744fa: PO files
+	07c178911: xmlrpc remote log
+	19e981128: font browser
+
+2024-01-02  Steve Magnuson  <steve.magnuson@gmail.com>
+
+	e0f72304d: gpio ptt
+
+2023-12-07  dave-w1hkj  <w1hkj@bellsouth.net>
+
+	c6e45f66c: MACRO tags
+	2d3c70fcb: RsID Rx button color
+
+2023-11-30  Michael Black  <mdblack98@yahoo.com>
+
+	f12f79775: hamlib 4.6 bug fix
+	4a97c1016: FMT zombie
+
+2023-11-25  dave-w1hkj  <w1hkj@bellsouth.net>
+
+	36cb5d050: Squelch Macro tags
+	90b760997: CLRLOG LOG LNW
+	fdb9fc882: JTSDK build
+	80882af13: Log fields
+	cb8df6e04: MS <EXEC>
+	2e5db4f16: metar report
+	562b17144: FSQ sounding CR/LF
+	49b38e31d: Version 4.2.03
+	9d84eb51c: Version 4.2.02
+	a724d290c: fsq coding error
+	4bc7b368e: Version 4.2.01
+	009a5b8ba: fsq sounder
+
+2023-10-27  Sven Schnelle  <svens@stackframe.org>
+
+	f1b3fe273: FSK port
+
+2023-10-24  Florian Wolters (DF2ET)  <df2et@df2et.de>
+
+	7a75d2c7b: Cloud log update
+
+2023-10-23  dave-w1hkj  <w1hkj@bellsouth.net>
+
+	c52ef6d0e: frequencies2 list
+	a3eb92f8f: gnuc warnings
+	4a430a4f3: flrig auto shutdown
+	8ee7b6ae5: button_colors
+	922d524f8: Light Buttons
+	34d6315a2: OFDM_2000 OFDM_2000F
+
+2023-09-17  kk5vd  <kk5vd@yahoo.com>
+
+	7739534f9: New XMLRPC Command
+
+2023-09-16  dave-w1hkj  <w1hkj@bellsouth.net>
+
+	0166737b0: Serial i/o
+	38e690ffa: Icons
+	b1d9024bb: Version 4.2.00
+	19da01e37: THOR docs
+	b99950428: TTY ptt dtr/rts
+	7ff2dc5f0: THOR56
+	e29144a35: THOR 32/44
+	e4a4df0ba: Waterfall cursor
+	5d4a6fa80: Revert "FSQ s/n"
+	b6d34d0f6: Version 4.1.27
+	24e8c0559: Macro <PAUSE>
+
+2023-06-28  Rik van Riel  <riel@surriel.com>
+
+	4ef76f9f4: navtex
+
+2023-06-15  dave-w1hkj  <w1hkj@bellsouth.net>
+
+	ec94e923a: TEN_TEN contest field
+	c928e86ad: Pause/Break
+	a29d78a42: FSQ s/n
+	e75f7293c: IFKP s/n evaluator
+	68b280058: EQSL submission
+	027a2ce09: wfonly fix
+	b80d3bec1: callook.info
+	89231cbe2: Miscellaneous gcc cleanup
+
+2023-05-17  w1hkj  <w1hkj@bellsouth.net>
+
+	bf68501c7: fltk.4.fix
+
+2023-05-05  dave-w1hkj  <w1hkj@bellsouth.net>
+
+	1787a8a29: named avatar image file
+	c0f7d2ccd: Set contest start nbr XMLRPC
+	fcc16248d: Version 4.1.26
+	6365bb193: Audio Monitor Segmentation Fault
+	3c32f3fb4: musl file conflict
+
+2023-03-10  Florian Wolters  <github@florian-wolters.de>
+
+	ca70585bc: Add documentation for Cloudlog part
+	3f24f9b4d: Add button for testing the API key
+
+2023-03-07  Florian Wolters DF2ET  <df2et@df2et.de>
+
+	28fdd8cd7: cloud logging
+
+2023-03-06  dave-w1hkj  <w1hkj@bellsouth.net>
+
+	c1a62ea4d: window icon tranparency
+	67f6a7814: fonts
+	dc15c0be0: FC LEAVE
+	e680c4361: Version 4.1.25
+	ee6a614ad: Fix Windows seg fault
+	9e15ddd3e: Version 4.1.24/4.3.9
+	cf7a3b7e4: CTY.dat
+	b1277e41c: cwio speed
+
+2023-01-29  Black Michael  <mdblack98@yahoo.com>
+
+	b4e892322: FreqControl / fltk-1.4
+
+2023-01-29  Dave Tillman  <blennie96@verizon.net>
+
+	d5dfca492: N3FJP Control Interface Fix
+	7ffca81f1: Resolve Compiler Warnings
+
+2023-01-29  dave-w1hkj  <w1hkj@bellsouth.net>
+
+	cc5d612d6: CW quote character
+	67e8b3376: FC update
+	758053b12: UI Freq Control / N3FJP Interface
+	2bec5f7db: PO files update
+
+2023-01-17  Harry G McGavran Jr  <w5pny@w5pny.com>
+
+	cff342e9a: Window Icon Transparency
+
+2023-01-16  dave-w1hkj  <w1hkj@bellsouth.net>
+
+	4c07ac309: Autotools/gettext update
+	19378f133: Fix MinGW warnings
+
+2023-01-11  Matt Melling  <mattmelling@fastmail.com>
+
+	e412699f9: Raster widget width
+
+2023-01-10  Dave Tillman  <blennie96@verizon.net>
+
+	cc25b03f3: N3FJP Control Interface
+
+2023-01-08  dave-w1hkj  <w1hkj@bellsouth.net>
+
+	9235b96a1: vumeter
+	d1048fc68: FSQ QTC/QTH buttons
+	9fefd778f: monitor audio
+	63718ac8a: DTR/RTS CW signaling
+	4ac6d7c0b: <LDT> macro tag
+	5d026359e: HTML5 escape sequence
+	25752e0ce: Mode State
+	5c8b53e9d: rtty squelch
+	192a36393: Audio Filter
+	821c5c102: Macro Editor modal state
+	43bba9dd0: K4 qrq CW
+	ed11b0ce5: Sans Portaudio
+
+2022-11-29  Dave Tillman  <blennie96@verizon.net>
+
+	14626de67: Resolve Compiler Warnings
+	813344e9f: UI Freq Control / N3FJP Interface
+	0a11155cc: UI - Frequency Control refinements
+	123a7e360: User Interface - Combobox fixes
+	33e9da4a5: Fixed County combo box crash to desktop
+	1018ba12c: Fixed 30 meter CW shortcut in frequencies2.txt
+	6bcbce8d8: Fixed grid locator spec in pskreporter query
+	b59616267: Activity Query Fix
+
+2022-06-23  dave-w1hkj  <w1hkj@bellsouth.net>
+
+	61b97f413: Version 4.1.23
+	ce88da596: Deprecated code
+	5dd676f6b: Correct errors caused by commit 9c035e809b
+	4213bfaec: xmlrpc notch
+	bd2b4e0e1: audio alerts / monitor
+	e6da5c5ef: cw browser
+	c9a74fb13: nanoIO ptt
+	bf321f312: Signal browser
+	cea496b7a: cw via flrig
+	2e4a8517d: scripts
+	65a6da643: FSK via flrig / nanoIO
+	20a799a5a: INSTALL update
+	ee14f55cf: Version 4.1.22
+	a6415f6cb: Save/Restore AFC by mode
+	cc66d4bc7: Revert "APPLE PortAudio"
+	5196f8a20: Version 4.1.21
+	cc666964c: APPLE PortAudio
+	17c3cb1f3: Lion compilation
+	4f5fa6c71: IPC log report
+	55f971801: xmlrpc methods
+	929908c8b: CW h/w weight
+
+2022-03-01  Greg Troxel  <gdt@lexort.com>
+
+	ee24e4ddf: build m4 script
+
+2022-02-26  dave-w1hkj  <w1hkj@bellsouth.net>
+
+	609da6a24: trx fft
+	bb7fb9b31: dxcluster
+	08f627ab5: flrig poll
+	9fc6aab80: log macro
+	3b41124d3: flarq using fix
+	7a8690834: WinKeyer
+	ea5b9c1c1: RsID EOT
+	f9f49d160: using namespace std
+	7653576ad: CW/FSK
+	080f6d306: psk reporter
+	6fd1c4179: Documentation
+	ae5aea7aa: FFT Monitor update
+	dbe3622cc: CW multi-channel
+	daac9d2be: FSK keying
+	9ed9d3461: fmt debug file
+	c061a5783: PO translator recognition
+	2c65740a9: IFKP Avatar
+	16425a772: xmlrpc QSY
+	6649972a6: Mode Parameters
+	f3042689d: Documentation update
+	edb907267: MAPIT macro
+	799d376af: Polish translation update
+	7c38b8a35: KNWD cat keying
+	49e404d93: synop event reporting
+	44553d121: MacOS Lion seg fault
+	feddecc77: Version 4.1.20
+	fe8262fca: Cosmetic changes
+	0fdaa3870: xmlrpc id
+	8caa7f8e0: Gleam scheme
+
+2021-07-24  Rik van Riel  <riel@surriel.com>
+
+	0ecef62bf: Navtex modem
+
+2021-07-22  dave-w1hkj  <w1hkj@bellsouth.net>
+
+	f6e2ee4ff: cw tracking
+	984ab440b: Smeter Pwr_meter
+	5b038873c: My Callsign
+	e1cda4024: Contest fields
+	5c09ac9b8: gpio ptt
+	c38d1c153: Version 4.1.19
+	ecc64ee20: C-Media PTT support
+	8cdda8274: LNW macro tag
+	439cc2c9c: Notes
+	d396d4970: lower case tx
+
+2021-05-01  John Phelps  <kl4yfd@gmail.com>
+
+	59d790c76: Vestigial AFC fixes  * Fix OFDM and 8PSK AFC jumping randomly to noise-signals
+
+2021-04-26  Richard Shaw  <hobbes1069@gmail.com>
+
+	f250faf63: Win Install Directory
+
+2021-04-16  dave-w1hkj  <w1hkj@bellsouth.net>
+
+	ea4702e33: Add OFDM modes for NBEMS  * OFDM-500F for HF SSB    - survives HF NVIS/long path    - 4-carriers of 62.5-baud 4PSK = 250 bps    - 1/2 rate K=15 FEC with 4sec interleaver  * OFDM-750F for HF SSB    - survives HF NVIS/long path    - 3-carriers of 125-baud 8PSK = 562 bps    - 1/2 rate K=13 FEC with 3.2sec interleaver  * OFDM-2000F for HF-SSB/FM    - 8 carriers of 125-baud 8PSK = 2000bps    - 2/3 rate K=13 FEC with 3.2sec interleaver  * OFDM-2000 for HF-SSB/FM    - 4 carriers of 250-baud 8PSK = 3000bps    - NO FEC, meant for line-of-sight  * OFDM-3500 for FM 9600-port    - 7 carriers of 250-baud 8PSK = 5250bps    - NO FEC, meant for line-of-sight    - Requires Signalink made-after 2018 connected to the 9600-jack  * OFDM-2000F CPU-load fix    - FEC of previous mode too heavy for some CPUs      . Reduced to: K=11 FEC with 1600msec interleaver      . Other mode parameters unchanged  * Added Vestigial-carrier based AFC to OFDM modes    - Increases robustness and tolerance to drift   * OFDM 2000F hold    - commented out OFDM 2000 and 2000F modes for bugfixes    - OFDM 500F, 750F, and 3500 are complete
+	51af69688: Qso Party Cabrillo
+	9c035e809: cwid
+
+2021-04-11  John Phelps  <kl4yfd@gmail.com>
+
+	74d1cd8f1: Doxygen srcdoc fix  * MBEDTLS breaks the cppcheck tool, bypass checking for now
+
+2021-04-08  dave-w1hkj  <w1hkj@bellsouth.net>
+
+	cf83705e0: Dxcluster freq
+	35667cdf7: Documentation update
+	c13011c61: Carat r/R
+	9b4e00b18: flrig cwio
+	8cb7d97db: WIN Build Errors
+	efbef1ede: Compiler warnings
+	8effebbf1: Set/Get Notch
+	5d6b5e9b9: PSK-modes fix false triggers of DCD-OFF  * Certian character combinations were triggering DCD-OFF  * DCD-OFF code now searches over 6-bit window  * Prevents rare data-loss bug mid-transmission
+	b49bf27c9: mxe scripts
+	dfecfc6bc: FMT mod
+	01bcb4d1c: Tx Monitor Level
+	a0567d3dd: fh baud
+	5d6a04157: dxcluster
+
+2021-03-02  David Freese  <w1hkj@bellsouth.net>
+
+	aaddc690f: fmt
+	1313193ee: CW punctuation
+	e1dad479b: Win32 Serial Port
+	39b16627d: wf
+	44f415ef1: WF-only mode menu
+	e23e21d68: WX
+	6f4223492: Canada
+	187bd17bc: PulseAudio Server String
+	cd999dad8: macOS arm64 builds
+	6b9427333: Waterfall buttons
+	ebdc885e5: Audio Codec
+	c8a3df2ca: Version 4.1.18
+	41e8fe6cf: Debug text
+	21c65b649: WF fft controls
+	fa1821f8f: flarq build
+	8d4ae60e0: Exit processing
+	321e00098: Scheduled Macro
+	8c4658648: xmlrpc
+	1aaf5eff6: flarq debug
+	fdf43940e: Doc update
+	c38e4f374: Version 4.1.17
+	953b84e52: CW keying
+	ef2a9db96: N3FJP support
+	37d3598b3: Rx Monitor
+	039dff7e2: Contestia / Olivia
+
+2020-11-16  Haris SV1GRB  <sv1grb@gmail.com>
+
+	83358bf65: Greek translation
+
+2020-11-13  David Freese  <w1hkj@bellsouth.net>
+
+	77ba6c369: Version 4.1.16
+	1fee05952: Cty.dat
+
+2020-11-13  Haris Andrianos  <sv1grb@gmail.com>
+
+	fe08f4a30: Greek translation
+
+2020-11-13  David Freese  <w1hkj@bellsouth.net>
+
+	ab267f3a1: Globals
+	8abff85e7: fmt fixes
+	2d8ec5eef: fonts
+	ca234a1d4: view_cw
+	942838ddb: Canadian Provinces
+	54e316710: FreeBSD/nullptr
+	2d9245c0f: Navtex
+	a8ea4ce88: benchmark
+
+2020-10-24  John Phelps  <kl4yfd@gmail.com>
+
+	744f0f692: Phase and FEC quality display  * Add phase-accuracy display for PSK modes (non-PSK31)  * Added better FEC confidence code to THOR
+	87931775a: Add new platform optimizations
+	9bcfdb212: Updated Doxygen Sourcecode Docs  * Now renders to SVG for graphics (doxygen 1.18)  * Fixed scripts for Cppcheck 1.9 changes  * Added auto-installer for packages on Debian-like systems  * Improved main page: index.html
+
+2020-10-19  David Freese  <w1hkj@bellsouth.net>
+
+	824582cd3: PSK Reporter query
+	48c3a7df7: Logbook compile warning
+	c51bf0d31: Version 4.1.15
+	fb6be0c2d: Doxygen cleanup
+
+2020-10-16  Richard Shaw  <hobbes1069@gmail.com>
+
+	e76e55705: NULL / nullptr
+	4c7fcee25: c++17 fixes
+	396712d92: FSQ
+	136b67198: trx_mode
+	5e882d6c9: rigCAT
+	08630d6cc: MinGW
+	b4de51995: Fix warning about boundary issue.
+
+2020-10-16  David Freese  <w1hkj@bellsouth.net>
+
+	554e21b36: VUmeter
+	d670ccce4: documentation update
+	ab69c22f4: <@LOCK macro
+	c30b39305: Sound Card Record
+	8ef2bd201: fmt csv
+	bc14a38b2: W1AW-macros
+	98de9a656: xmlrpc memory leak
+	67dd7b42f: County Lists
+	685e4384c: fmt modem
+	2a1cef26f: xmlrpc rig timeout
+	75754d4fd: doc update
+	f1600c636: fmt-docs
+	06c2cebae: kml
+	b4575f656: DXCC lookup
+	df9a5978b: status locale
+	a8d02cda7: Level indicator
+	8915b0450: FeldHell
+	209741778: hamlib NET
+	cd7ec00ac: NanoIO
+
+2020-08-27  Andreas Scholz  <entwickelheini@users.sourceforge.net>
+
+	48cd15424: ADIF Conformity
+
+2020-08-24  David Freese  <w1hkj@bellsouth.net>
+
+	f0230a8b2: feld-hell font
+	e5b67ec7d: wf
+	2e90a584b: exit cleanup
+
+2020-07-28  Kosta Arvanitis  <karvanitis@hotmail.com>
+
+	4887da833: XmlRpc Exit
+	cba23e535: Macros
+
+2020-07-25  Rik van Riel  <riel@surriel.com>
+
+	f8a29a146: Navtex
+
+2020-07-20  David Freese  <w1hkj@bellsouth.net>
+
+	3c9d07f00: debug source
+	42557ed7a: cluster dupcheck
+	f38ba12b9: Version 4.1.14
+	018618b6c: fonts
+	35a0af45b: Navtex
+	a626371f2: Navigator
+	c37af9c93: hamlib
+	606684fdf: Build scripts
+	2adcc0184: localtime_r
+	2b5f464f1: Freq Analysis
+	0e1aa47fc: Field Day Logger
+	a984f7ad9: flarq update
+	85c25e27f: Sound Record
+	f952c0808: Freq Control
+
+2020-06-17  Richard Shaw  <hobbes1069@gmail.com>
+
+	c5ffb269c: MinGW64
+
+2020-06-12  David Freese  <w1hkj@bellsouth.net>
+
+	d9f379f4e: FSK HELL
+	b3f5f6b16: Cabrillo logs
+	ed7c443ec: sound.cxx warning
+	84f1f3679: SNDFILE
+	05000ef4b: Store/Recall
+	b70cc0b68: wefax
+	5a06abd08: Rx Monitor
+	2f17a64b4: Version 4.1.13
+	a09931a2e: doxygen
+	1caa2a467: wefax
+	c5060a315: cw prosign
+	5116d99bd: fedora 64 build
+	785e295ad: Debug Sources
+	2f4bad6e9: Analysis mode
+	a4845d914: README update
+	2e3d22390: Code cleanup
+	4bdb42cc8: fsq sounder
+	30af9e2d8: rx_extract
+	62cf2acff: Default event log level
+	4461003a0: Version 4.1.12
+	60fb347ef: TX auto RST-sent
+	21c86db27: CW/DTR/RTS
+	24c10fd93: wwv
+	a6dc3db26: File/Audio
+	ddeb2db19: Win10 Socket debug
+	375b4252c: trx testing
+	db57f4b4a: AFTER macro
+	ddfb5e61a: CWID button
+	7e970e8a7: Version 4.1.11
+	d11526ad6: cwio_morse
+	0b98acd88: Version 4.1.10
+	21bcf4e5f: MacOS
+	980c4fc7a: AWOL CW id button
+	da43e24cd: Macros
+	81261626a: RigCat config
+	1cc5d884c: CW 5 wpm
+	797f24382: audio alert
+
+2020-02-28  John Gibbons  <jcg66@case.edu>
+
+	e9a2ef2dd: analysis mode
+
+2020-02-28  David Freese  <w1hkj@bellsouth.net>
+
+	ece3e2486: flrig auto off
+	8cc4f134c: maclogger
+	43382303a: mkappbundle
+	db0427121: nanoIO
+	93b75e79d: start/stop transitions
+	f4dd622c5: CW DTR-RTS
+	f77503a87: Olivia 2 tones
+	f3ed9232e: Xmlrpc Xcvr
+	524e5f2b3: mp3
+	f754c087a: contestia cr
+	b9e0a9a7b: serial port
+	055d75602: Check Version
+	1a63b099d: Version 4.1.09
+	fcc49c526: Alert/Rx-monitor playback
+	74aab8a70: Dialog closure
+	88059a1d8: PO updates
+	eb96656be: config-dialog-mod
+	e7a384268: cw mods
+	b4224b822: MilliSleep
+	8c9b3ddbc: New Install
+	7c1d1bb25: Audio alerts disable
+	7afdab54b: Winkeyer
+	11f0c05cc: lotw mangled report files
+	f45e88de2: Analysis mode
+	96ea26f03: ARRL CW bulletins
+
+2019-11-26  Harry McGavran Jr  <w5pny@w5pny.com>
+
+	fb6bcd0d2: hamcall
+
+2019-11-23  David Freese  <w1hkj@bellsouth.net>
+
+	bf22efe03: RSID code assignments
+	5cdbb98ae: tree metaphor
+	38e58fd7c: OS X Bus 10 error
+	e0e70142b: Log ADIF export
+	7c48281e9: xmlrpc_rig
+	09ba2e6bf: Rx monitor
+	594ac028e: Display Logbook Datum
+	644296e5e: RTTY bell
+	93f9896e4: Combo Box behavior
+	c07d43517: cw prosigns
+	18b3260ae: MinGW mods
+	c05c8bbd5: CW International Chars
+	29d97e9c4: macros
+	70743d9c1: mp3
+	e282c9952: Xmt Audio file
+	9c07eb9e5: Alerts
+	de7b8c6ae: Data file update
+	42591fbc6: Wefax autosave
+	be3ac55aa: flrig freq/mode
+	2541779d9: Fltk 1.4.x
+	8dbac5ff2: Update check
+	618c6d2d2: WEFAX AFC
+	4d211e0c1: Version 4.1.08
+	0bf19e02e: Greek translation files
+	c5eb44d5b: Logbook
+	93f3320d7: xmlrpc <vector>
+	357df508e: Documentation
+	ddbaec17f: Raster init values
+	aaa08576a: Image transmit docs
+
+2019-08-08  Diane Bruce  <db@db.net>
+
+	55e96d18c: BSD soundcard
+
+2019-08-07  David Freese  <w1hkj@bellsouth.net>
+
+	7a55d6ddb: RsID squelch open time
+	fe19ac89f: N3FJP ACL
+	cf19801ac: Version 4.1.07
+	49a54ceba: FL_LOCK
+	a1a46b2c2: wf mods
+	20e427a98: Version 4.1.06
+	d2ff6783c: Documentation update
+	e7a984ae3: nanoIO
+	2e98f532e: FD server disconnect
+	f37b133c5: Calendar
+	1d3a06f83: Warnings etal
+	26a02ddeb: Version 4.1.05
+	a593ddbb8: LoTW fllog
+	1a42952e4: Modem macro
+	5a36610d1: Close Logbook
+	33177695b: eQSL
+	e5a9d81f3: Version 4.1.04
+
+2019-06-07  Davide Gerhard IV3CVE  <w1hkj@bellsouth.net>
+
+	e5b05e2a4: MacOS high-DPI
+	e25078f24: timeops
+
+2019-06-07  David Freese  <w1hkj@bellsouth.net>
+
+	2c03575b4: log server
+	d681ab54b: xmlrpc <vector>
+	99a4aa776: LoTW delivery
+	762fd869b: Apple kill button
+	83d115356: main dialog title
+	296295fe1: Warnings
+	5080d85e3: Contestia/Olivia
+	ea39851b6: Log reports
+	f7c376723: Documentation update
+	8d25f53d9: 7qp multi
+	867ded47b: n3fjp
+	ebab17a2b: wfonly controls
+	ef2d55e22: Read log debugging
+	2928a9b97: New Modem Macro
+	90b021222: DE QSO Party
+	843033b4b: Version 4.1.03
+	a6923d198: wf updates
+	377a7fa74: WinKeyer emulators
+	53a06da1e: New install macros
+	9a0124d6c: MACRO <MODEM:
+	807401e7c: OS X build
+	d3ea0ff0b: Version 4.1.02
+	917470551: notifier dialog
+	f5e73c96e: Xmlrpc Rig control
+	0b89ee15b: wfall only tests
+	c2dd5f802: waterfall process
+	2dcd58697: Language update
+	07f3b66c9: Documentation update
+	6fa7cb870: N3FJP ACL
+	791f08431: CQzone
+	467087551: trx_xmit_wfall_draw
+	933f6b8af: Log rotation
+	5c6d04eb7: Secure METAR
+	6b86a02b6: lgbook File:
+	2ca145a32: qrz malloc
+	15939397b: Rx Panel clicking
+	ef4ecf313: myCall
+	5224d09ce: QTE-QRB
+	7944d44a5: Olivia modes
+	6dfac3994: logbook-backups
+	43a4c749a: ARQ server
+	aeb0ff452: fllog eQSL/LoTW
+	d756b0664: XmlRpc Log Dup Check
+	db20208cc: flrig ptt
+	b01c3b640: DxCluster/N3FJP i/o
+	22735f4d2: eQSL / LoTW submission
+	a0bd33b22: mbedtls CFLAGS
+	590181b50: lookup call
+	c29f732f7: MODE export
+	582f98ba1: flarq socket
+	ef6456f79: eQSL export
+	7f6cd47db: Version check
+	f15f71c05: tod clock start
+	14c092dcc: ARQ socket i/o
+	4886d584d: analysis mode
+	04a2ef991: Version 4.1.01
+	1d4798c83: CW h/w ptt
+	ca3e77710: nanoIO
+	a943ae324: NAVTEX abort
+	ce586b89e: dup-check
+	57cc6eaf2: ADIF submode
+	96e1f0517: WF only bug fix
+	06c56b3ee: LotW
+	c5af7e000: Pedantic warnings
+	892336b78: SD counties
+	044dd29fa: QRZ.com
+	aeed471d8: SV1GRB test report
+	713bd52cc: Version 4.1.0
+	39a76e8b2: po update
+	79c67d37c: WWV doc
+	04e53b59a: Winkeyer FSK
+	b8ca88ef0: Contests
+	b197c75a7: arq-override
+	8572f3531: flmsg-dir
+	02c66eb48: contest-docs
+	9d85169aa: fldigi_def.xml
+	20e2c0218: socket_mods
+	e1c2d8052: Fltk 1.4 mod
+	5ffd6f5eb: wefax
+	fb1fd67c8: nanoIO
+	7d604b806: CW SOM table
+	4eec8f23b: flrig: macro
+	99b0a01a3: Audio adjust docs
+	84018bb84: Version check
+	146bd7e2f: feldhell
+	6b5c93a2f: C-11 fixes
+	ccbd52f40: nano FSK
+	ed6a7db5b: Mint-19/Mate
+	e9c0f2dcc: Signal Browser documentation
+	fbb0654fb: flrig seg fault
+	93de8bde3: Version 4.0.18
+	2fef9cbc1: CPS testing
+	aa757af72: ipv6 addressing
+	c62662cc9: MT63 centering
+	9460c00b7: fsq mods
+	5a7377f14: IFKP/THOR greyscale image
+	51e2829d2: Hamlib bug fix
+	58c6362aa: Tooltip
+	47d2c6c02: nanoIO
+	a25360319: THROB adif
+	f46cb9bbe: RigCAT dialog
+	7ebf1ccea: Version 4.0.17
+	a2b917250: flarq idtimer
+	d58b0b795: Greek language update
+	4c3ca8fe2: tmpfile
+	87cb7e142: xmlrpc cat string
+	4f72635aa: Modem start frequency
+	dc68d0235: Serial port discovery
+	55aa627f9: Log entries
+	2fea35453: flarq appdir
+	c480982b9: rx/tx
+	56553faa3: RTTY Quick pick
+	79aa5d6a1: quick pick rtty baud
+	d1f91ea05: Documentation Update
+	e4a5cec2e: CW/FSK I/O on start
+	a9df13f69: WinKey PTT
+	6de7360ce: Navigator
+	fa8e53e7e: nanoIO
+	202ad1245: Default Lighted Button
+	dfd1b0b34: ST/PR macro tags
+	490f68399: K2/K3/KX3 data modes
+	c39a88b20: Logbook read
+	6cb1e5a45: 8pskF
+	89ff7c8a2: fsq/ifkp audit logs
+	cd7e5029e: RTTY browser decode
+	bc5d04f1f: Version 4.0.16
+	c73419e36: wo seg fault
+	3cec9157a: 8psk lockup problem
+	45a899148: Miscellaneous menu
+	8ff1cd688: pskrep autostart
+	4a78b536e: OS X build script
+	487db9534: Grid Square Contest
+	8c36d5ff4: Logbook Export
+
+2018-01-28  Haris Andrianos  <sv1grb@gmail.com>
+
+	6c19a624d: Greek translation update
+
+2018-01-24  David Freese  <w1hkj@bellsouth.net>
+
+	dc384c6ad: Alert timeouts
+	af0412731: video
+	ce1e82f00: Version 4.0.15
+	e87f41ad0: ARQ server
+	5ab691499: Signal gain
+	b4adfd223: Version 4.0.14
+	f799522a1: linux shutdown
+	29593c8e5: remote logbook
+	4e87d16ac: ARQ exit seg fault
+
+2018-01-09  Stelian Pop  <stelian@popies.net>
+
+	e09d16704: WEFAX auto center behavior
+	be342208d: WEFAX phasing change button
+	2dee90e84: RTTY configure initializers
+
+2018-01-07  David Freese  <w1hkj@bellsouth.net>
+
+	a5e88afcd: File aging
+	f02815925: OS X shutdown
+	38b294a1d: PSK IMD
+	a7d67d8fe: Spectrum Display
+	daa6d4317: Warnings in sound.cxx
+	eb0caa457: OS X app paradigm
+	985e5ebe7: Version 4.0.13
+	4c5c168b8: Language Translation
+	13ef81d49: cw t/r - doc update
+	c4099e156: Spectrum Analyzer
+	2e7f681a6: TS990 tune feedback
+	43cc1b227: OS X CW
+	8d156c6e9: FSQ/IFKP clear tx panel
+	f62c96a5e: deadman
+	80f52a80b: Image transmit
+	fb4797bab: flrig race
+	1b0127654: CW Sweepstakes
+	5ef93f45b: CW no tx char
+	a044193e3: timeops
+	b2283c081: Version 4.0.12
+	abb522dbf: Farnsworth timing
+	408a01b3f: PSK sinc filter
+	8cfc154e0: ACL interface
+	792b15267: Text capture
+	dd2c8ef8f: OSX start process
+	0e85851e5: Version 4.0.11
+	3302f0d4a: Text Capture
+	35387dbb2: FreeBSD mod
+	6e94d54d0: Documentation update
+	e4abdbf29: PSK filter
+	cd36a4681: Audio Stream
+	5a9322f22: printf cleanup
+	e8651ed3d: CW Multichannel
+	89b520723: QSY multi
+	18a635ffa: Version 4.0.10
+	949ed873f: WX HamQth bug fix
+	0142116ad: win7 mingw build fixes
+	6ed0b70bb: wefax ui mods
+	c1c7ebfb8: wefax_map
+	170769139: auto start
+	1cd5f716b: Version 4.0.9
+	26a1f8cd1: doc update
+	cc95f0a16: clock_gettime
+	5d4008a20: spectrum display
+	6021e181e: Test Signal Dialog
+	ccd3a2e60: dxcluster fonts
+	08aa8f7af: smod
+	6c05fe969: Spot buffer
+	deb439283: Winkeyer clones
+	ee3d420da: PSK s/n imd
+
+2017-07-25  Matt Roberts  <matt@kk5jy.net>
+
+	ba2305c26: RX Text capture
+
+2017-07-23  David Freese  <w1hkj@bellsouth.net>
+
+	322958194: PSK viewer
+	60012f682: Version 4.0.8
+	38b65ea66: Executable pathname
+	2a3c38bbc: rigCAT metering
+	37d78b1ff: OS X autostart
+	0006904c8: RigCAT i/o
+	c0bf2f242: Doxygen build
+	6e4f04cd6: Analysis modem
+	c438ba69d: XMLRPC rx stream
+
+2017-07-13  Matt Roberts KK5YJ  <matt@kk5jy.net>
+
+	4a6e7ce15: RX text paste
+
+2017-07-12  David Freese  <iam_w1hkj@w1hkj.com>
+
+	ef36e76bf: FSQ triggers
+	851745139: FSQ image
+	3f183a276: Version 4.0.7
+	2f7b7b90e: SCU-17 ptt
+	9fc06d6fd: bindUDP
+	351feb4dd: Version 4.0.6
+	094ac3c2f: Documentation
+	171574967: flmsg alert
+	b3dd76d13: Time Macros
+	a3f27d283: Require PortAudio
+	be07d7e09: Version 4.0.5
+	254e71788: Documentation update
+	6164c26b7: TELNET timeout
+	8922c5d35: FD macros
+	b0928a083: N3FJP PTT
+	dcca1204b: Rx/Tx open/close
+	a49cf1872: xmlrpc configuration
+	36a7fcedd: FSQ macros
+	6aaec3400: Consistency check fail
+	7bcd89cbc: Audio Alerts
+	5f65d2e49: Restore defaults
+	a9346cd6d: cw variable squelch
+	8460fba4b: INSTALL/README/NEWS
+	c2c9f38de: CW Extended char set
+	ad8e33ead: County field
+	64b397faf: autostart on os x
+	43b37fe71: Rx Context Menu
+	3aea3cae6: Port Audio on Linux
+	f994b6a42: NEWS update
+	04199fa9e: Version 4.0.4
+	e71dcfbfc: LOG area controls
+	1da156254: CALL field size
+	dc9532c7f: CW QSY
+	8fab96305: Sound Card Output
+	240f52a5a: cw scanner
+	d40548a77: Version 4.0.3
+	2be82c9df: CW code update
+	a311139bc: OS X Wizard
+	7e552c49f: CW wait
+	ef1ab0eb8: Version 4.0.2
+
+2017-04-14  keith bellairs  <keith@bellairs.org>
+
+	7432793ee: Lotw Match
+
+2017-04-13  David Freese  <iam_w1hkj@w1hkj.com>
+
+	ed5850e99: flrigi bw synch
+	972397247: Clang 8.1.0
+	97024a9f9: Sound card
+	15491930f: Revert "wefax"
+	c85b75ebc: IFKP image processing
+	ef3974350: Macro Save
+	4396c43e8: CW end-of-transmit
+	2f1d7094b: Font Initialization
+	a1d4122a4: OS X socket connect
+	835d82364: Winkeyer exit process
+	476ff68ee: Version 4.0.1
+	f40e79d7c: Socket connect
+	370c7bfd4: Version 4.0.0
+	7efc9b2ec: OS X 10.12 build
+	ffd6f0985: STATION_CALLSIGN
+	f0f376375: Free BSD mods
+	b1636058e: Logbook mods
+	167f0641f: ru-po-update
+	535481286: Default Tx Audio
+	fac5963f8: remove sprintf
+	a9db86638: Documentation update
+	b52258175: n3fjp logger search
+	c565b0355: fopen -> fl_fopen
+	abd9554c6: 48 bar macro
+	5f5776c69: CW decoder
+	9c0f90671: DX cluster
+	016799a7d: Logbook support
+	b4e227ba3: WinKeyer
+	1fe26c146: fsq ifkp s/n computation
+	d576fd804: fltk version update
+	2a1a8c356: Macro Date Time Formats
+
+2017-02-24  Keith Bellairs  <keith@bellairs.org>
+
+	627eb31f8: lotw addition
+
+2017-02-23  David Freese  <iam_w1hkj@w1hkj.com>
+
+	050711035: THOR/IFKP Image transfers
+
+2017-02-23  Giuseppe Ciaccio  <giuseppe.ciaccio@unige.it>
+
+	95b51b6e3: OSS bug fix
+
+2017-02-21  David Freese  <iam_w1hkj@w1hkj.com>
+
+	f462dd755: ifkp s/n update
+	376f7f5a1: PSKMAIL PTT fault protection
+	bcec5aa70: Logbook File Handling
+	cbdea293a: n3fjp contest update
+	fccb4ebd2: fsq s/n update
+	1786a5eb2: README update
+	67bc122e7: Russian UTF-8 translation
+	9decf048b: Tooltips
+
+2017-01-30  Jae Stutzman  <k5jae@stutzman.net>
+
+	fef4e9352: Hamlib/RigCAT/XMLRPC Interface
+
+2017-01-29  David Freese  <iam_w1hkj@w1hkj.com>
+
+	42a7deac1: Version 3.23.21
+	880720b80: Documentation
+	228950fa7: Logbook update
+	35d74af79: kml auto_ptr deprecated
+	2042371cc: build flags
+	a3bc5e3ee: PSKMAIL beacon faults
+	5b970ccc1: N3FJP record rejections
+	c8444b7b7: Version 3.23.20
+	5c456322e: N3FJP Winter FD
+	3119c9297: FELD raster display
+	ca8daf3ce: ARQ PTT
+
+2016-12-25  John Phelps  <kl4yfd@gmail.com>
+
+	de339d750: NEW micro modes
+
+2016-12-24  David Freese  <iam_w1hkj@w1hkj.com>
+
+	1a8f98265: Socket connect
+	6219ac94f: pskreporter query
+	2eb94beb7: Version 3.23.19
+	0b3ad4a03: DX cluster improvements
+	e06d6f2ed: Text highlight
+	5dae2123c: N3FJP generic contest
+	51384c74e: Version 3.23.18
+	782204c03: DXcluster sort
+	73c2d1ea7: LoTW
+	dc9c1071a: Socket Connect State
+	328c2833e: Version 3.23.17
+	e0eaaefaa: dxcluster update
+	a81372aab: GPIO update
+	99b0d1bcf: LoTW documentation
+	214a7828c: Time Of Day Clock
+	839eb0fc2: FSQ Heard parser
+	3d1e29170: Version 3.23.16
+	df67d85f9: N3FJP rounding
+	dd5dc22f6: GPIO PTT
+	03b95b5e5: lotw/eqsl interface
+	360209bed: Resident help
+	4e905b663: ARQ Client vector
+	66a62fc1a: Rx Extract
+	0284f3049: Version 3.23.15
+	436c6f8ce: Translation file
+	153ae9a55: N3FJP command sequencing
+	300624a89: BARTG vice BART
+	0ac4bb39c: speed test
+	047626711: XP fault on failure
+	c4266493c: Default Logbook widget sizing
+	e58b039be: Mono / Stereo wav file
+	7cacca673: ARQ thread
+
+2016-10-05  w1hkj  <w1hkj@bellsouth.net>
+
+	2937696ad: N3FJP logged frequency
+
+2016-10-04  David Freese  <iam_w1hkj@w1hkj.com>
+
+	bdb408d77: update check
+	005f10af5: DX cluster
+	72d0f38e2: CQWW zone/state
+	914b60c77: Contest fields
+	79fa4c8d7: OSX Clang build
+	9db7e7b62: flrig default
+	ee5fab61b: Version 3.23.14
+	9e6e34a90: Documentation update
+	6c5ad4b4d: PSK IMD Emulator
+	e6980a645: Wave file
+	ff2265b24: trx inhibit
+	0fc2f5e10: Log Reports
+	01bd3674a: N3FJP application interface
+	ccbd5e884: Field Day
+	4fc8b1260: UTF8 file access
+	c6e1f297d: logbook merge
+	570d3bf17: Initialize Macros
+	d9d12f4a4: NOAA wx access
+	0552fc622: Revert "logbook read"
+	d74f88fb5: Version 3.23.13
+	f4988a290: flmsg auto start
+	efc46400c: Documentation Update
+
+2016-08-06  Robert Stiles  <kk5vd@yahoo.com>
+
+	0f237ba0c: KPSQL PSM
+
+2016-08-06  David Freese  <iam_w1hkj@w1hkj.com>
+
+	e6b174346: m4 updates
+	352006569: xmlrpc mod
+	fafaa7c6b: Main User Interface
+	360d6a202: fl_digi.cxx whitespace
+	bdb3afbd4: xmlrpc tx queue
+	33be65ff0: QRUNNER BUG FIX
+	f02228e91: logbook read
+	1f6d966c6: flrig xmlrpc client
+	4ddae1fb5: Title bar
+	9777cfaf9: Macro tag PUSH/POP
+	73ea18b98: G4 build warnings
+	e8e3b899d: winsock2 error flag
+	8f8d6beff: xmlrpc error warnings
+	302fca55b: Port Audio Index
+	988ee57c2: Squeeze Play
+	a9d3ec145: Documentation
+	8fa2f9208: FSQ allcall relay
+
+2016-07-04  Kamal Mostafa  <kamal@whence.com>
+
+	055a180e4: FTextTX: fix menu_cb default case behavior
+	93ca23774: status: fix override_data_io_enabled behavior
+	10eaf9df4: logbook: do not write empty string to ADIF
+	560941522: wefax
+	d43951eb3: fix warnings: misleading-indentation (no functional changes)
+	1ecf952a8: fix warning: unused variable 'call_file'
+	9e9139e97: fix warning: C11 requires spaces around string macro
+	0531e5cee: fix warning: format '%d' vs size_t
+	1e888d113: XmlRpc tm_mday fix
+
+2016-06-22  David Freese  <iam_w1hkj@w1hkj.com>
+
+	e88d6159c: Version 3.23.12
+	fa831b22d: xmlrpc add_tx
+	177a8f1f1: mfsk xmt filter
+	2b5755689: FSQ msg append
+	de187d904: FSQ IFKP heard lists
+	76cf0e6ca: waterfall group
+	5f762f058: thor image
+	8cd6f830a: RxID button
+	d13f4e192: Version 3.23.11
+	198f6452c: RxID color changes
+	b65722700: flmsg-arq autostart
+	c6ac0f156: Resize bug
+	3c7392ec8: Hell Raster Display
+	4841f1098: Exit processing
+
+2016-05-29  Roman Bagiñski  <sp4jeu@gmail.com>
+
+	274d50087: Polish translation update
+
+2016-05-28  David Freese  <iam_w1hkj@w1hkj.com>
+
+	9c959afcd: xmlrpc add tx text
+	01245fe7b: Native Select Save-As dialogs
+
+2016-05-26  Robert Stiles  <kk5vd@yahoo.com>
+
+	520928643: FLDIGI User Manual Update
+	4b2005e7f: KISS IO Bug fixes/Additions and C++11 Test
+
+2016-05-23  David Freese  <iam_w1hkj@w1hkj.com>
+
+	52505ee64: Version 3.23.10
+	e14bbb60a: logger
+	19e7bad77: Restore focus
+	0a99bef13: RsID button
+	aa6592c59: flmsg interface
+	5b367fb63: 4bars
+	b4b8df4ac: ASCII ctl chars
+	759e6cfb0: Suppress dockable macros
+	065ead7de: Packet Prep
+
+2016-04-13  Edouard Lafargue W6ELA  <edouard@lafargue.name>
+
+	505c8b384: Portaudio Mono
+
+2016-04-13  David Freese  <iam_w1hkj@w1hkj.com>
+
+	68d9b3228: FSQ message files
+
+2016-04-12  Robert Stiles  <kk5vd@yahoo.com>
+
+	4ab48d41e: KISS, 8PSK, FLARQ icon Modifications
+
+2016-04-12  David Freese  <iam_w1hkj@w1hkj.com>
+
+	76ab77cd0: FLARQ
+	9c04f0787: focus behavior
+	2a3f4d4a1: PTT delays
+	8446e6e1c: Version 3.23.09
+	fc97b4af8: FSQ variable Rx
+	58b394025: Export ADIF_NAME
+	91ddd6c99: WF only
+	92c3c3681: DnD Image
+	0ebcc2a98: Frequencies2 use string
+	20ac527b9: Documentation
+	8eb05e63d: View noise
+	7cd0d8d52: About
+	9ed6cc333: NAVTEX update
+
+2016-03-07  Kamal Mostafa  <kamal@whence.com>
+
+	6da8d51d6: Sanitize tile_x, tile_y startup values
+
+2016-03-05  David Freese  <iam_w1hkj@w1hkj.com>
+
+	b1d12b844: RxID enhancement
+	f7662dfa8: TX timer
+	4e055b4da: rigcat mod
+	4c9f1404c: PSK IMD
+	4fec33397: Version 3.23.08
+
+2016-02-21  Rik van Riel  <riel@surriel.com>
+
+	f80745e5f: NAVTEX update
+
+2016-02-16  David Freese  <iam_w1hkj@w1hkj.com>
+
+	5b2edad9f: Save Logbook
+	1c8e0e95c: Analysis mode
+	0f650e9cc: flrig PTT
+	106e3e2a6: flrig waiting
+	71fa2248c: COM port close
+	dd1165a36: fsq repeat last
+	fb0fd4ce4: Mac Logger
+
+2016-02-04  Jonathan Wakely  <redi@users.sf.net>
+
+	813b58ad0: GCC 6 build
+
+2016-02-01  David Freese  <iam_w1hkj@w1hkj.com>
+
+	d8089777f: CALL capture
+	bea9cfe23: Scope View
+	8bcc9e84b: RigCAT modifications
+	ae9e1a2b4: Version 3.23.07
+	10266d2ec: Exit delays
+	e821e49c5: Contest fields
+	ebc00ed17: OS-X start_process
+	f5e3186dd: LOG RECORD exports
+	c0281eea3: HAMLIB CW RTTY
+	ddb084c59: PSKR metric
+	68c5a6a08: PSKR/8
+	397f57066: Audio adjust
+	42809036b: WEB query
+	8af53b665: Mode Set
+	e756d9355: Tab key docs
+	2fb5648f2: hamlib PTT_ON_DATA
+	22514a577: Macro Tool Bar
+	94f83626f: XmlRpc client update
+	265238703: Log Notes
+	e9e8b3650: Misc Updates
+	78baf6cde: Set Frequency
+	14a2618bf: Rx SaveAs
+	16ede0800: flrig xmlrpc
+	c986a766b: Version 3.23.06
+	3f577d977: WO woes
+	482d0606c: Smeter PWRmeter
+	e08e40375: ARQ shutdown
+
+2015-11-20  John Phelps  <kl4yfd@gmail.com>
+
+	0b5b329d9: Developer Doxygen and BerliOS clean  - Cleaned and Fixed developer Doxygen files  - Added GitStats to the Dev Doxygen info    -- run ./scripts/doxygen/gen_doxygen_docs.sh
+
+2015-11-20  David Freese  <iam_w1hkj@w1hkj.com>
+
+	b19fff8d6: Documentation
+	55e0d31b8: Compiler warnings
+	c0a7cff11: Version 3.23.05
+	c86ec8033: dock macros
+	9b210f742: kml disable
+	2e2c9e90f: ADIF record repairs
+	93342e4dd: gpio ptt
+	d6a34a40f: NAVTEX/SYNOP/KML
+
+2015-10-19  John Phelps  <kl4yfd@gmail.com>
+
+	51535ff23: Add 8PSK 125FL 250FL
+
+2015-10-15  David Freese  <iam_w1hkj@w1hkj.com>
+
+	082564eec: Version 3.23.04
+	251635627: CW filter
+	7f23f3f54: Update Check
+	4862141aa: fsq abort
+	3bed0e3f2: log merge
+	4025e3c28: Version 3.23.03
+	551d10556: thor-image
+	c3b610bb5: FSQ trigger bug
+	593686ca1: Version 3.23.02
+	04247643e: fsq cqcqcq
+	198c5a01b: fsq sounder/heard-aging
+	dbb169be5: FSQ directive
+	d47b1e355: rigcat delayed startup
+	e6ebe7085: OS-X serial
+
+2015-09-23  Kamal Mostafa  <kamal@whence.com>
+
+	f75b92a76: asciidoc timezone
+
+2015-09-22  David Freese  <iam_w1hkj@w1hkj.com>
+
+	d5574e28d: Version 3.23.01
+	8ad0a8b3f: WX configure
+	0caa5ea1e: PA debug
+	838e11237: WFALL-ONLY
+	f472a1764: Logbook read
+	7cb4c6665: ifkp avatar depth
+	ea189427d: IFKP image slant
+	9632b3ae1: Version 3.23.00
+	f78aa389a: Clear Tx Panel
+	cbff7c3f1: Olivia/Contestia start stop tones
+	37175e2ca: macro bug
+	3d6e0b916: FSQ updates
+	ed3b09d2b: ifkp modem
+	c82de8e39: MXE update
+	7b42e019e: Macros
+	0606d1a34: Doxygen help
+	d4b6308ab: QSO rec
+	2df24b8f6: MS Read logbook
+	30ad2a95c: WEFAX hang on INFO
+	670479756: Nu opBW combos
+	db696170c: LSB modes
+	1c40e335b: Version 3.22.13
+	7bdf051c3: FSQ bug fix
+	93196764e: XMLRPC commands
+	b657b61a2: Version 3.22.12
+	1579ef60c: FSQ heard parser
+	f61f7d7cc: fsq modem
+	dfb931831: FreqControl focus
+	e477621cf: trx exit
+	475fd193d: Version 3.22.11
+	7d881bf76: flrig xmlrpc update
+
+2015-06-07  Kamal Mostafa  <kamal@whence.com>
+
+	40a6dcbaa: BUILD_{DATE,USER,HOST}
+
+2015-06-01  David Freese  <iam_w1hkj@w1hkj.com>
+
+	46c138353: Version 3.22.10
+	dfc430ff3: FTextView styles bug
+	e4125f24f: Version 3.22.09
+
+2015-05-28  Kamal Mostafa  <kamal@whence.com>
+
+	dac5bf4dd: Fl_Text_Display
+
+2015-04-28  David Freese  <iam_w1hkj@w1hkj.com>
+
+	c34a613d7: Cabrillo/Export dialogs
+	8b9343684: Version 3.22.08
+	2bda963bb: Analysis
+	967e7c553: rx/tx queues
+	b5aa6a3e0: flxmlrpc
+
+2015-04-16  Dave Freese  <w1hkj@bellsouth.net>
+
+	28839d70a: call focus
+
+2015-04-14  David Freese  <iam_w1hkj@w1hkj.com>
+
+	a4d4faabd: 599 update
+	41beca007: US units
+	91ab73f91: olivia cxx
+	a45006dad: fldigi-shell
+	ee1966873: Write log
+	8d4f0efaa: Config dialog
+	379ce46ff: Version 3.22.07
+	b78b683e5: Macro edit
+	06515a896: Multi-psk
+	ae560e7b3: Vista SignaLink driver
+	c79bfd73c: Image update
+	3c264e286: Command line
+	68f88eed6: SSB default signal
+	5ca7182bb: Digiscope resize
+	b522d833c: FSF address
+	c5411dd42: Version 3.22.06
+
+2015-03-21  Robert Stiles  <kk5vd@yahoo.com>
+
+	fe27da926: UTF-8 Rx display
+
+2015-03-21  David Freese  <iam_w1hkj@w1hkj.com>
+
+	15ca51252: 8psk modes
+	e48c2fe5d: Macro Editor Fonts
+	2424904ee: R-L channel input
+	e5148c0be: QSY documentation
+	f2198122e: Sound File Generate
+	35ef2ed3f: devices_text mutex
+
+2015-02-18  Robert Stiles  <kk5vd@yahoo.com>
+
+	aedc628d9: Bug fixes/Comments
+	cbc9975bd: Check IO and delay prior to autoexec prgs
+	003707f81: Rename local variables
+
+2015-02-17  David Freese  <iam_w1hkj@w1hkj.com>
+
+	edee64aa4: pa names
+	4ba7b78b7: Main dialog resize
+	279115cf2: Rig Viewer Frame
+	3eb8e41d8: Code merge/PortAudio Script return error
+	b15f5d98b: Update translation files
+	31e231bee: Exit trx loop
+
+2015-02-08  Robert Stiles  <kk5vd@yahoo.com>
+
+	1155d8d0c: Documentation Update
+	814bed31f: Configure Script Engine
+
+2015-02-08  David Freese  <iam_w1hkj@w1hkj.com>
+
+	ad52857f2: Macros
+	fffc57c18: French po
+	375e98f65: CW QSK Tune
+	3ebf3dbb4: flrig xml client
+	423ac70ad: TimeOn button
+	3041a20c4: QSY clickable
+	142362fc0: Version 3.22.05
+	2c9b493ce: TX Lock
+	7c9582228: video ID
+	b93ea4ebc: fftfilt
+	ed4f49d70: Port audio index
+	645e7f9d4: CW output level
+	7cc119ddc: Documentation
+	93d2da8ae: MFSK squelch
+	9c8d5153d: Rx display
+	b1ac562a5: Log fields
+	d67d1ab13: Native file chooser
+	6d11c02a8: ADIF temp log
+	322d224ac: Version 3.22.04
+	2c3b965ef: xmlrpc
+	fd5f7e748: Version 3.22.03
+	d47ef8ab7: Berlios
+	b986d9d55: CW configuration
+	3ff230128: DTMF
+	0a8f4a3b7: FFT filter
+	3c7b69ef8: CW xmt filter
+
+2014-12-17  Robert Stiles  <kk5vd@yahoo.com>
+
+	5dc3851b3: ARQ/KISS IO state conflict (part 2) 	* Ensure all state flags reflect selected mode. 	* Toggle IO mode in software.
+
+2014-12-17  David Freese  <iam_w1hkj@w1hkj.com>
+
+	fa582c966: Window title
+	103c03915: Xmt Audio Stream
+	6947d3348: RX Text
+	0612ec9e5: OpenBSD
+	d344fac9d: LOGGER EXPORT
+	d5e257d37: Documentation
+	b767b4856: LOG lookup
+	1359a591f: Lion/Yosemite madness
+	e77aafe44: MT63 Olivia Peak signal
+	3a00dfcd7: HTML strings
+	311925bab: rtty xmt shape
+	4298f2d02: es nl pl files
+	54917d2f9: WIN32 error reports
+
+2014-11-15  Robert Stiles  <kk5vd@yahoo.com>
+
+	c3e87f0da: KPQSL / SQL state conflict
+	a488e72a9: Documentation Update
+
+2014-11-11  David Freese  <iam_w1hkj@w1hkj.com>
+
+	7d6fa521b: Version 3.22.02
+	18c20d785: Freq Control
+	36ba34162: CW
+	68ba89b93: PO files
+	3060d42e1: fltk-1.3.3 compatibility
+	068f0302d: RTTY
+	75c2f795e: nu rigctl area
+	2e2ce974b: channel width
+	1fb74a1da: cty.dat confusion
+	ac1befb8d: KISS log overflow
+	8c49c64e3: New install crash
+	4371ed350: EmComm 8PSK modes
+	bf41f9091: MT63 doc
+	55ff39095: viewers
+	91674b8ad: psk pskr squelch
+	3dfbfbadf: Listbox initializers
+
+2014-10-29  Arvo Järve  <arvo@softshark.ee>
+
+	411878336: Info Macro Tags
+
+2014-10-27  David Freese  <iam_w1hkj@w1hkj.com>
+
+	9293e556f: Analysis update
+	90dd8f110: v21 v22 synch
+	10cc3c572: Modem tests
+	da27f0b93: Button colors
+	b16672fc3: Modes Menu
+	cba4a0162: Delayed Bandwidth
+	29af73c7c: embedded browser
+	cd0671b72: Version 3.22.01
+	263257a6a: RX single click
+	9bbef877c: Macro Buttons
+	b123fc102: Thumb drive
+	01bc010f8: Power Squelch
+	e7de40b25: Documentation update
+	287e692f7: TxID control via xmlrpc
+	880df3d57: Analysis modem
+
+2014-10-17  John Phelps  <kl4yfd@gmail.com>
+
+	91bda2bf9: Gray-mapped 8PSK and soft-decision  - Upgraded 8psk to Gray mapped constellation  - Implemented Soft-Decision decoder based on Gray constellation  - Even when the received phase is distorted by +- 1 phase-position:     - One of the bits is still known with 100% certianty.     - Only up to 1 bit can be in error.  - Increased gain for noisy/weak/HF channels
+
+2014-10-16  Robert Stiles  <kk5vd@yahoo.com>
+
+	60c78c0d7: XMLRPC Character measurement issues with 8PSK modems
+
+2014-10-16  David Freese  <w1hkj@w1hkj.com>
+
+	50402241c: View/Hide Smeter
+	d10320995: CW matched filter
+	ea853a87c: flarq update
+	e7d9cc472: 8PSK/16PSK modes
+	6fcf11ddd: KISS interface
+	26892a2af: Version 3.22.00
+	a798037fc: Remove Mixer controls
+	f3f8c9a63: FTextDisplay
+	674da9c6f: Freq Control
+	bfb001b86: Touch Screen UI
+	d7bb247ce: UI macrobars
+	cad1c86f3: VSP boolean
+
+2014-10-06  Robert Stiles  <kk5vd@yahoo.com>
+
+	c4bfed962: Tabulated Widgets Font/Font Size Changes
+	80dc81bca: Documentation
+
+2014-10-06  David Freese  <w1hkj@w1hkj.com>
+
+	1dd39cc77: PACKAGE_PROJ
+	98cd7afea: Win32 warnings
+	93b76d4bc: UI tweaks
+	ec3177b8a: Hide Packet Modem
+	9f2b358b6: Record loader
+	bbce20ed3: Delta macro
+	38d9bab0f: MEMMAP
+	3ef04331b: WF drop rate
+	7448535a3: RsID time out
+	03ef90360: Wizard crash fix
+
+2014-10-06  Stelios Bounanos  <vcs@enotty.net>
+
+	d7fe2970f: Fix log format string warnings
+	382452a53: Build system fixes
+
+2014-10-06  David Freese  <w1hkj@w1hkj.com>
+
+	4ad79672c: Default font
+	632eb8af3: Power meter
+	1bf6f495d: Smeter
+	73cdc07fb: regex.c fix
+	eb3eb2509: fft-scan
+	5176ffb87: home directory
+	830a1cb7e: Analysis modem
+	38d158951: TRX limit check
+	a0f43c981: Win32 Socket::close
+	cf16c3ac5: SITORB tx issue
+	e06577725: Version 3.22.0CO
+
+2014-08-29  Robert Stiles  <kk5vd@yahoo.com>
+
+	67a744b21: Doxygen Inclusion
+
+2014-08-29  David Freese  <w1hkj@w1hkj.com>
+
+	82aeba5cb: ARQ stx handshake
+	4503c990b: Virtual ports
+	d40998f1c: New User Exit Behavior
+	7d683d39d: hash-fix
+	a94a13b8a: RnA Analysis
+	a1c3f7a93: Phase accumulator
+	947ebc9ff: Base Directories
+	913bb5256: WF Height/Speed
+	f272e8311: RX Only
+	515b54f34: RTTY mem leak
+	65af71677: Olivia/Contestia custom
+	4cc2ee5fb: ARQ abort
+	a64d62303: RTTY Custom Shift
+	1ae51434a: Spotter seg fault
+	129afe6cc: TX monitor
+	13e1cd566: Audio selectors for PORTAUDIO
+	9e555aa18: M4 tr1 detect
+	bb91c8a2e: ttyACMxx identification
+	5ee22c866: Olivia critical section
+	50045163a: MT63 critical section
+	0a79e207e: Logbook fields
+	f294b580c: Hamlib selector
+	0fd3cc445: Combobox Add to List
+	2efdf5c79: RTTY macro
+	0421813b7: clang compatibility
+	ea5bcb9d8: FreeBSD nitems
+	da7a43a53: Cabrillo time off
+	df3c010aa: Change Fl_ListBox
+	eaafc9173: Restore Fl_Choice
+	9a7dfe5bb: Olivia select fix
+	4bbf42787: fluid update
+	04808d20f: ComboBox
+	c056cc883: RigCAT initialize
+	37bd0d28b: Modem cleanup
+	e5fed0979: Missing build script
+	6762423be: Choice-->ListBox
+	8fef9bbc7: combobox-listbox
+	481be5c0d: FreeBSD One More Time
+	309988df7: RTTY normalize
+	bd42895f9: Sound.cxx cleanup
+	2add98886: Portaudio ring buffer
+	d24494792: Headers update
+	c9f6df04a: Portaudio error reporting
+	105811cdd: Version 3.22.0CN
+
+2014-01-31  Kamal Mostafa  <kamal@whence.com>
+
+	8a1d12f07: Avoid nitems fltk kfreebsd collision
+
+2014-01-31  David Freese  <w1hkj@w1hkj.com>
+
+	5f7d52164: XMLRPC seg fault
+	5754566f7: Mailing address
+
+2014-01-31  John Phelps  <kl4yfd@gmail.com>
+
+	a1d20d551: 64 bit stacktrace
+
+2014-01-31  David Freese  <w1hkj@w1hkj.com>
+
+	86bffb95b: Developer update
+	678f66b46: modem timing test
+	2ca21dd9b: CW timing
+	1bcc31c5d: SKED macro
+	92ab4b619: FreeBSD issues
+	a987fe5ac: PSKR softbits
+	50018ff19: WF max size
+	4cbabee12: packet update
+	071a60c6f: Version 3.22.0CM
+	f967edf26: Waterfall correction
+	8765df64c: Version 3.22.0CL
+
+2013-11-16  Arvo Järve  <arvo@softshark.ee>
+
+	1f77efbf5: RigCAT close
+
+2013-11-16  Andrej Lajovic  <s57ln@hamradio.si>
+
+	d9030901e: CharsetDistiller
+	ab0a464b1: UTF-8
+
+2013-11-16  Arvo Järve  <arvo@softshark.ee>
+
+	80b09022c: Save Wordwrap
+
+2013-11-16  David Freese  <w1hkj@w1hkj.com>
+
+	6313bf7e6: ARQ timeouts
+	37affbc39: Deutsch
+	42ccd2acc: fldigi.pot update
+	e4398dab5: DTMF
+	affa91928: WF latency
+	07652b190: Load preferences
+
+2013-10-29  John Phelps  <kl4yfd@gmail.com>
+
+	45fc67910: MFSK HF Long Modes  * Added MFSK64L and MFSL128L new modes  * 6.25 Second interleaver for very-robust HF reception  * Assigned new RSIDs   * Mode MFSK-64L : 1026   * Mode MFSK-128L : 1029
+
+2013-10-29  David Freese  <w1hkj@w1hkj.com>
+
+	f7ea783c0: Waterfall race condition
+	35a6486a2: Waterfall improvements
+
+2013-10-29  Remi Chateauneu  <remi.chateauneu@gmail.com>
+
+	fc8abd4cb: Fix test_process on MacOS
+	e52626b28: Various speed-ups, fixes and cleanups
+
+2013-10-19  David Freese  <w1hkj@w1hkj.com>
+
+	200db3bc4: Multi-channel decode
+	1a89352d4: Cfft removal
+	5c9f5a258: fft filter
+	59b16c4c8: rsid fft
+	da36c7bd9: WF fft
+	b8f424213: g_fft
+	1afceb0ea: Autostart programs
+
+2013-09-22  Kamal Mostafa  <kamal@whence.com>
+
+	7515787f2: Avoid-nitems-fltk-kfreebsd-collision.patch
+
+2013-09-22  David Freese  <w1hkj@w1hkj.com>
+
+	2112e85e6: RsID Error Control
+	863375dcb: Macro tag Image
+	f5215cbf4: MFSKpic improvements
+	06424bd90: ADIF log database
+	5c1ee46d2: MFSK update
+	0e1e201b9: Thor update
+	87f110bd1: AMP end of text
+	5b8dae64b: ARQ mode character set
+	97ffdb05f: RsID, Macro Queue, DTMF transmit management
+	13120c8f7: Xmlrpc method signatures
+	034bc3e16: RsID fo computation
+	a038411ff: xmlrpcpp methods
+	fa9de7047: Error exit
+	262053bb9: RSID update
+	108ffd453: Sound File
+	d5f460c89: fltk 1.1.x
+	d73fc93bb: initialize active_modem
+	a5f657dc2: CW Farnsworth
+	9ea6687fd: XML parser
+	2cb46f407: 64 bit compile warnings
+	ea4929a3c: Version 3.22.0CK
+	177470784: Automake bug
+	5972d94b5: qrunner mod
+	706df570d: Pskmail-test
+	42b2b3ffa: Rigcat Thread
+
+2013-08-02  John Phelps  <kl4yfd@gmail.com>
+
+	39e8532f9: Doxygen for fldigi  * Added scripts to generate Doxygen documentation from fldigi git repository / source  * Also executes "cppcheck" and includes those results on Doxygen page (if installed on system)  * Generates patches and log for the last 125 commits: includes links on Doxygen page
+
+2013-08-02  David Freese  <w1hkj@w1hkj.com>
+
+	ba3dad0c5: CPPcheck errors
+	6e66d2cd9: Modem class
+	607a696ba: Missing header
+	a4a1ee755: fldigi-shell
+	d9de4b67c: Fl::focus on OS X
+	5394ffb1c: KML thread
+	a6f8accba: Data files
+	eb287d6e5: Fl::flush
+	d3e0feb2c: ADIF_RW thread
+	1a9a42db2: trx semaphore
+	bb7ce32cb: Digiscope buffer
+
+2013-08-02  Robert Stiles  <kk5vd@yahoo.com>
+
+	957a1b49b: Portaudio exceptions
+
+2013-08-02  David Freese  <w1hkj@w1hkj.com>
+
+	f13f26c35: mxe-win32 regex
+	1ff3a7f7a: Thor update
+	b66a887b8: record_loader fix
+
+2013-08-02  Remi Chateauneu  <remi.chateauneu@gmail.com>
+
+	2b9f6af61: KML/Synop/RTTY/Navtex
+
+2013-08-02  David Freese  <w1hkj@w1hkj.com>
+
+	32b0543b8: PSKMAIL/ARQ socket
+	9bde2c60e: Code cleanup
+	04bcbf94f: Pskmail Notify RsID
+	1e77d1e90: MFSK shut down
+
+2013-08-02  Robert Stiles  <kk5vd@yahoo.com>
+
+	f9267b922: Cwidth test for zero
+
+2013-08-02  David Freese  <w1hkj@w1hkj.com>
+
+	f3863c477: Packet timeops
+	366103119: MXE compile
+	3777182ad: XMLRPC
+
+2013-08-02  Stefan Fendt  <smfendt@gmail.com>
+
+	b5f77b612: RTTY decoder
+
+2013-08-02  Dennis Engdahl  <engdahl@snowcrest.net>
+
+	24b9c70dd: RigCAT user commands
+
+2013-08-02  David Freese  <w1hkj@w1hkj.com>
+
+	96b8a49fb: TX state
+	009b118ec: pskmail events
+	aca2b0bf2:   * Changed extended rsid iaw doc/rsid_codes.gnumeric
+
+2013-08-02  Remi Chateauneu  <remi.chateauneu@gmail.com>
+
+	2886b9fa7: Port to MXE / MingW
+	833f56152: QSL VIA
+	633674c07: XML parser
+
+2013-08-02  David Freese  <w1hkj@w1hkj.com>
+
+	1b9f1d016: ARQ support changes
+	fd56e1046: xmlrpcpp
+	5a9287760: PortAudio
+	5539f2cd7: SysV ARQ interface
+	9a63e0aff: RsID
+	8b8444391: METAR format
+	f1b10cd40: Version 3.22.0CJ
+	2140c90cf: RSID logic
+	ffcdeb18a: PSKMAIL
+	b03bde83d: RsID Timeout
+	9e259e667: Colors/Fonts Dialog
+	5b184a0c7: Developer List
+	4adb556f8: About update
+	c83642041: ARQ server
+	4729da187: Wavefile generate
+	ac8302195: MT63 mode selection
+
+2013-05-20  Remi Chateauneu  <remi.chateauneu@gmail.com>
+
+	c64826361: xmlrpc-c removal
+
+2013-05-20  David Freese  <w1hkj@w1hkj.com>
+
+	61314269d: Signal Browser Colors
+	97c2c1946: QRZ query
+	7bad5213c: Rigsupport
+	0ac919971: eQSL url
+	cc11225c5: PSKMAIL
+	799444f41: Contestia/Olivia
+	848481b0f: Tabs Colors
+
+2013-05-20  Arvo Järve  <arvo@softshark.ee>
+
+	fe315583d: Double Click bug fix
+
+2013-05-20  David Freese  <w1hkj@w1hkj.com>
+
+	9dd563a8a: RTTY update
+	fe1e10a48: Fltk backward compatibility
+	b168ea7e5: Compiler warning fix
+
+2013-05-20  Kamal Mostafa  <kamal@whence.com>
+
+	3fcac6e08: Fix glob_t usage
+
+2013-05-20  David Freese  <w1hkj@w1hkj.com>
+
+	417ce51a3: RTTY filters
+	d6fc193a4: RTTY tx symbol shaper
+	c5c4b1139: Spotting
+	8fb7b8028: ADIF case
+	b7dcd8747: QSO NBR/NXT macro tag
+	2c5f42255: TX lower case
+	3d33980fd: WX parser
+	f636509a5: Signal Browser
+	af77a5292: Compiler Warnings
+	ab422bb9b: Free BSD mods
+	3ed409964: Serial by-id
+	860444bca: Misc NBEMS mods
+
+2013-05-19  Arvo Järve  <arvo@softshark.ee>
+
+	8c5581152: CRC16 and ANSII char set
+
+2013-05-19  David Freese  <w1hkj@w1hkj.com>
+
+	75a8e0900: High Speed Playback
+	9d791d28d: flstring
+	793c1cbfe: RTTY config tab
+	63b4eb3d4: RTTY stop bits
+	4dc9bc95f: RTTY FSK modem
+	1444a633c: PSK viewer
+	65c53fba6: Contest fields
+	dc65247a8: RigCAT INIT/CLOSE
+	5a2412115: Olivia FEC reset
+	4ad148bf3: Status / Tx Level Controls
+	664286641: Macros
+	6063b56f4: File Selector
+	dc6b08498: CW modem
+	14329e533: High Speed / Multi-Carrier Modems
+	ce1d5c210: User configurable items
+
+2012-12-26  Makoto Fujiwara  <makoto@ki.nu>
+
+	2a22c31ec: NetBSD compile error
+
+2012-12-15  David Freese  <w1hkj@w1hkj.com>
+
+	6fe5feef9: Dup Cty lookup
+	2a3d1aee6: Get RX buffer
+	200434328: Util.h mod
+	1884f2f2f: Capture Alt-F4
+	2719b0fc4: Macros LOG LNW EXEC
+
+2012-12-03  Remi Chateauneu  <remi.chateauneu@gmail.com>
+
+	836c5c331: Progress widget
+
+2012-11-25  David Freese  <w1hkj@w1hkj.com>
+
+	2252cab1d: ARQ Socket
+	5b9e09fc8: NBEMS modes
+	cb82ed888: Escape aborts
+
+2012-10-31  John Phelps  <kl4yfd@gmail.com>
+
+	51db482d9: Allow xmit of EOT character
+
+2012-10-29  Andrej Lajovic  <s57ln@hamradio.si>
+
+	87afa66b0: UTF-8 overhaul
+
+2012-10-26  David Freese  <w1hkj@w1hkj.com>
+
+	600db9e24: Thumbdrive
+	0fa939647: TLF arq
+	5ac506504: Logbook Dialogs
+	c17590efb: ARQ rx/tx
+	9006fdeaf: View browser
+	2a0f09d8e: FLAMP interface fix
+
+2012-10-04  Andrej Lajovic  <s57ln@hamradio.si>
+
+	7bdf0353e: UTF-8 wide characters
+	6706da00c: flarq bug fix
+	1d7f8c25d: Add_tx_char
+
+2012-10-03  David Freese  <w1hkj@w1hkj.com>
+
+	8917c8668: Version 3.22.0CI
+	fd9848278: Version 3.22.0CH
+	d43f564de: UI update
+	385c33094: Version 3.22.0CG
+	caac75744: Code merge fixes
+	4001d42af: Version 3.22.0CF
+
+2012-10-02  Kamal Mostafa  <kamal@whence.com>
+
+	e203c4e52: Fix crash if no OSS mixer support
+
+2012-10-02  David Freese  <w1hkj@w1hkj.com>
+
+	1880cfe8e: Logbook Call width
+
+2012-09-29  Andrej Lajovic  <s57ln@hamradio.si>
+
+	2a391bcfe: Log file update
+	3e0dac76f: UTF-8 char echo
+	e84c5ce3a: Hamlib sideband menu
+
+2012-09-11  David Freese  <w1hkj@w1hkj.com>
+
+	14346a7c5: flmsg/flamp stream processing
+	1bfdfeecc: flmsg cmd line params
+	6142046a0: DominoEX varicode
+	d02f71487: WRAP binary files
+
+2012-08-31  Andrej Lajovic  <s57ln@hamradio.si>
+
+	e6ee942a8: Backspaces patch
+
+2012-08-31  Daniel F1RMB  <f1rmb.daniel@gmail.com>
+
+	6d6c7b33a: UI enhancements
+
+2012-08-31  David Freese  <w1hkj@w1hkj.com>
+
+	4cb619d4f: Combo update
+	ad43c7383: Extract timeout
+	22ad2be6e: ASCII tables
+	4cf9425b3: Socket send on Linux
+
+2012-08-07  Kamal Mostafa  <kamal@whence.com>
+
+	db7866108: fix spelling error
+
+2012-08-04  David Freese  <w1hkj@w1hkj.com>
+
+	57801e992: Logbook dialog initial size
+	ede0fd89d: RsID Multiple
+	5aefacd22: Version 3.22.0CE
+
+2012-08-02  David J Vanecek  <marmot@pennswoods.net>
+
+	9025bea6e: Open BSD fixes
+
+2012-07-12  David Freese  <w1hkj@w1hkj.com>
+
+	07d5d89b5: Restore post signal rsid
+
+2012-07-08  Kamal Mostafa  <kamal@whence.com>
+
+	dae167edd: Tango icon: Restore missing weather_clear_icon
+
+2012-07-08  David Freese  <w1hkj@w1hkj.com>
+
+	7b999a94c: Version 3.22.0CD
+	b36a5e8ea: RTTY metric
+	143cb1c0b: Logbook Colors-Fonts
+	9f5250f77: RX Text backspace
+	228f2fc68: Version 3.22.0CC
+	55c0372dd: HAMQTH Session ID
+
+2012-06-29  Kamal Mostafa  <kamal@whence.com>
+
+	24b8bcc42: Tango icon pixmaps update to version 0.8.90 (public domain)
+
+2012-06-28  David Freese  <w1hkj@w1hkj.com>
+
+	47b5bf6c8: Merge log records
+
+2012-06-26  Leonardo  <leonardo.masoni@gmail.com>
+
+	ff063eb16: Wavefile playback
+
+2012-06-14  David Freese  <w1hkj@w1hkj.com>
+
+	0dbf248cd: Polish translation
+	91cdbe403: file-chooser
+	b7200d6e3: HamQTH
+	909f3fabb: Main Panel Controls Colors-Fonts
+	6280de9c9: WEFAX/NAVTEX config
+	9b3dabd85: Fork open file descriptors
+	e9587fed1: Logbook Update
+	686e8b5df: Wefax/Navtex
+	f47119c7f: CW decoder update
+	ff25baebc: Rigio thread
+	a7e112269: Version 3.22.0CB
+	52f27c8c3: WEFAX mingw32 fixes
+
+2012-05-10  Remi Chateauneu  <remi.chateauneu@gmail.com>
+
+	a3435a73b: sfft speedup
+
+2012-05-10  David Freese  <w1hkj@w1hkj.com>
+
+	b0b7b7fc0: Version 3.22.0CA
+
+2012-05-08  John Phelps  <kl4yfd@gmail.com>
+
+	93e0a1b0f: DominoEX-THOR mods
+
+2012-05-03  Remi Chateauneu  <remi.chateauneu@gmail.com>
+
+	350f83eb5: Viterbi and filter speed-up.
+	42000367a: Wefax
+
+2012-04-06  David Freese  <w1hkj@w1hkj.com>
+
+	7041a5e57: FreqControl paste
+	4986fcd86: Version 3.22.0BZ
+	ede22f5c7: Base directory
+	5c71fdfb0: Check for updates
+	cd04cad41: Notch indicator color
+	6da3d22cd: Version 3.22.0BY
+	ca5ff4970: ARQ Parse Mode
+	c3f315bb9: Path separator
+	a7169ea22: Debug changes
+	39edf75c2: Clear sent text
+	1abbedf2e: Control-Z fault
+	0d3265f04: Notch
+	7f2cfbef5: EXEC macro
+
+2012-03-02  Remi Chateauneu  <remi.chateauneu@gmail.com>
+
+	e2eb292f5: Wefax fixes, AFC, speedup.
+
+2012-03-02  David Freese  <w1hkj@w1hkj.com>
+
+	23e315b31: Save Macro - Windows
+	331ff2e7c: About copyright date
+	fd9163da5: Version 3.22.0BX
+	c9df72646: MFSK pic dnd
+	4a0833efa: Merge record logic error
+
+2012-02-19  Remi Chateauneu  <remi.chateauneu@gmail.com>
+
+	490058b58: Wefax bin images + debugging.
+
+2012-02-15  David Freese  <w1hkj@w1hkj.com>
+
+	976163ee3: Version 3.22.0BW
+	d2d254e5d: Weather report
+
+2012-02-13  Remi Chateauneu  <remi.chateauneu@gmail.com>
+
+	ccee94d94: Wefax AFC.
+
+2012-02-12  David Freese  <w1hkj@w1hkj.com>
+
+	eae67baba: OSX Lion shutdown
+	dedc82ac1: OSX Lion shutdown
+	c3a79c0fc: Version 3.22.0BV
+	b609cb64d: Config Dialog
+
+2012-02-08  Remi Chateauneu  <remi.chateauneu@gmail.com>
+
+	548f94124: Navtex AFC 	* Automatic Frequency Control. 	* Now the input frequency can be changed.
+
+2012-02-06  David Freese  <w1hkj@w1hkj.com>
+
+	0d287c667: Cyrillic-UTF8 chars
+
+2012-02-05  Remi Chateauneu  <remi.chateauneu@gmail.com>
+
+	268d0f3cf: Wefax AFC and GUI
+
+2012-02-05  David Freese  <w1hkj@w1hkj.com>
+
+	fbca133ea: QSK test
+
+2012-02-01  Remi Chateauneu  <remi.chateauneu@gmail.com>
+
+	f2268b884: Navtex enhancements.
+
+2012-02-01  David Freese  <w1hkj@w1hkj.com>
+
+	7c60aa866: Weather report
+	5a080d5df: Version 3.22.0BU
+	e78677c19: Control sizing
+	9d12f24af: eQSL
+	9882ad411: OS X file chooser
+	9df33700f: WX international
+	07cf4f2d4: Version 3.22.0BT
+	46e446814: Macro filename
+	c844c7adb: Version 3.22.0BS
+	4a7468fcd: Callsign query
+	afc9487f6: WX Celsius
+	d72a018e7: Version 3.22.0BR
+	60bac3cdb: Weather tag
+	56fb06773: Inline tags
+	418721504: OS-X native file chooser
+	48998ff31: rigcat serial test
+	0a4ee0abe: Version 3.22.0BQ
+	19d9b1a5c: Macro load display
+	03c289c4a: File-dir selection
+	e0d4f89e0: Rx text wrap
+	dc190c4d4: UTF-8 rx suppress
+	92f313d92: Get WX
+
+2012-01-18  Remi Chateauneu  <remi.chateauneu@gmail.com>
+
+	25b4499a6: WEFAX windows show/hide bug fix.
+
+2012-01-18  David Freese  <w1hkj@w1hkj.com>
+
+	d2a8b7692: Version 3.22.0BP
+
+2012-01-18  Pavel Milanes Costa  <pavel@conas.co.cu>
+
+	16856e004: es.po update
+
+2012-01-17  David Freese  <w1hkj@w1hkj.com>
+
+	dd1416d77: Update to fltk.m4
+	7a0ffda17: GCC-4.7 fixes
+
+2012-01-15  Remi Chateauneu  <remi.chateauneu@gmail.com>
+
+	2989baf2d: WEFAX : Noise reduction, less disk space.
+
+2012-01-13  David Freese  <w1hkj@w1hkj.com>
+
+	a946efef2: Version 3.22.0BO
+	bcc5e9fe6: Missing files
+	f8d7da3e0: RX last line
+	004c8c2d5: Version 3.22.0BN
+	e3d80a619: Debug text
+	b3e675c18: View browser find control
+	419a23657: Find chars fwd/back
+	444eb6b17: Corner controls
+
+2012-01-08  Remi Chateauneu  <remi.chateauneu@gmail.com>
+
+	6b7067ed7: Wefax b/w fix
+
+2012-01-08  David Freese  <w1hkj@w1hkj.com>
+
+	23b9a177d: Fltk-1.3.0
+
+2012-01-06  Remi Chateauneu  <remi.chateauneu@gmail.com>
+
+	ae363526e: Wefax GUI enhancement.
+
+2012-01-06  David Freese  <w1hkj@w1hkj.com>
+
+	e1c991fe6: Rig cat close
+	14d24d696: OpBrowser font
+	fd602017c: Tune abort
+	a1768e042: Version 3.22.0BM
+	faff48997: VAC PTT delay
+	8373e4b96: Version 3.22.0BL
+	ca82dac56: Mono audio
+	9409d6c14: NAVTEX check-TESTS
+
+2011-12-11  Remi Chateauneu  <remi.chateauneu@gmail.com>
+
+	acd15ca0d: Navtex code cleanup and warnings.
+	cf895e9fd: Added Navtex deviation in waterfall.
+
+2011-12-11  David Freese  <w1hkj@w1hkj.com>
+
+	e37c3e42d: Version 3.22.0BK
+	773c413e4: Right Channel audio
+	8d54e2886: NAVTEX modem
+	0c064c64a: WEFAX update
+	b8ccd770f: Version 3.22.0BJ
+	87cc9d43a: WARN status colors
+
+2011-12-03  Remi Chateauneu  <remi.chateauneu@gmail.com>
+
+	ee1ab43ae: Modem class update
+	8d647fc31: QsoRec comparisons
+
+2011-12-02  David Freese  <w1hkj@w1hkj.com>
+
+	6ac3b345b: Cty.dat
+	56f902002: Version 3.22.0BI
+	0c2b4fc09: Contestia 64/1000
+	3dd38d17d: Call lookups
+	0263d0a76: Compile warnings
+	ce6c39945: ver2int
+	14fb48054: UI changes
+	b9686471d: Main thread hang
+	f575215a8: Merge dups
+	4dd27c23d: Logbook dirty boolean
+	ac9c15b07: Tx Attenuator Control
+	25036db5a: HamQTH app ident
+	5c3c7f681: Version 3.22.0BH
+	6d4326d4a: eQSL QTH nickname
+	972cba1d1: Merge Logs update
+	ff6bd5c84: Version 3.22.0BG
+	7d95b7b39: Merge Logs
+	fe6268185: ADIF i/o tweaks
+	e0bf1284f: Call lookup
+	fddec4225: Version 3.22.0BF
+	9eca86a63: ADIF/EQSL thread shutdown
+	7b04a17a9: Ignore slash postamble
+	f50c79fe1: Log Export by date
+	75acc5eba: Version 3.22.0BE
+	48f71f19b: ADIF integrity check
+	8215cac4b: Version 3.22.0BD
+	d35ed7dc7: Logbook menu
+	c29719895: Log r/w
+	2346bca6d: Version 3.22.0BC
+	3e970b99e: ADIF write_log
+
+2011-11-15  Remi Chateauneu  <remi.chateauneu@gmail.com>
+
+	4103a0729: WEFAX error logging fix
+
+2011-11-15  David Freese  <w1hkj@w1hkj.com>
+
+	ff34b3cdb: Restore Log Sort
+	c9233e2f7: Version 3.22.0BB
+	4aca1f1b5: eQSL update
+	389ce71e9: eQSL thread
+
+2011-11-12  Remi Chateauneu  <remi.chateauneu@gmail.com>
+
+	dab85dc13: Wefax enhancements.
+	21bcc183f: Use Logbook record
+
+2011-11-12  David Freese  <w1hkj@w1hkj.com>
+
+	7f30f2912: eQSL
+	ac3de09d0: Version 3.22.0AB
+	2dae98df1: eQSL
+	b0e37af39: Exec macro
+	3288d8d3d: QRZ on-line lookup
+	bf8812752: HamQTH update
+	0e4127e92: Version 3.22.0AZ
+	15ff024ba: HamQTH
+	b5e788e6b: Auto-send
+	2d1d4844e: RSID defaults
+	db2803d7e: NBEMS-FLMSG Directories
+	9fd70bc17: Resize fault
+	35b8fc807: Version 3.22.0AY
+	bcdc9cff2: RSID limit fault
+	ece4fb7a7: DTMF debug
+	0b041f682: Multi QSY bug fix
+	6f3e5a021: Version 3.22.0AX
+	cb5ddcdaf: Multi QSY
+	f63a77ada: Common QSY
+	8630feb2b: Revert qsy patch
+	6bc6fc804: HamQTH lookup
+	f96fb2557: Packet debug
+	316978025: Version 3.22.0AW
+	cf3bed318: REV macro tag
+	39ebd8bb6: RTTY bandwidth
+	767accac4: Version lookup
+	5c0da523e: MFSK soft decode
+
+2011-10-06  Remi Chateauneu  <remi.chateauneu@gmail.com>
+
+	7542ae98f: Multi-QSY
+
+2011-10-06  David Freese  <w1hkj@w1hkj.com>
+
+	ee1747d35: MACRO code cleanup
+	153e1e812: </EXEC>
+	165e86ed3: Version 3.22.0AV
+	ddab268c3: <EXEC>...</EXEC>
+	0388d6a09: !Queue reset
+	fdf5fe016: Timer delay
+	53edef571: Version 3.22.0AU
+	3df6c3a9e: Olivia tone/bw choices
+	e3e270350: Macro Edit
+	415052dfd: Version 3.22.0AT
+	58c1bd8ca: Macro Editor
+	cd411cf5c: Version 3.22.0AS
+	6b39f526b: WWV xmt mode
+	a99b6eb4f: Version 3.22.0AR
+	1c8cfca97: Scheduled Macro
+	4f5f1c0d3: Version 3.22.0AQ
+	ca4c595ac: RTTY baud
+	bf7ff417c: CW/RTTY init fault
+	75aa9a85a: NULL modem
+	502e62e6a: <!IDLE
+	b1660254e: Version 3.22.0AP
+	d1a574c3b: Timing race
+	95cc04a38: Control-Z bug fix
+	bf02cd0f9: Version 3.22.0AO
+	c62a3955e: NULL modem
+	d6b2a4379: Version 3.22.0AN
+	41a9daad7: Queued QSY
+	b88931eb1: CW QSK
+	bb6da4a9d: Version 3.22.0AM
+	def0e07c9: MT63 eot mod
+
+2011-09-09  Chris Sylvain  <kb3cs@arrl.net>
+
+	7b2ecb6ee: PACKET long blobs
+
+2011-09-09  David Freese  <w1hkj@w1hkj.com>
+
+	1f6398ed0: Delayed macro timing
+	213b4b6d9: Version 3.22.0AL
+	9a2698501: Log Server lookup
+	6a03241f3: Delayed Tags
+
+2011-09-06  Chris Sylvain  <kb3cs@arrl.net>
+
+	31bfb989c: PACKET max level
+
+2011-09-06  David Freese  <w1hkj@w1hkj.com>
+
+	b4dad775d: Version 3.22.0AK
+	563d667ca: Inline macro tags
+	bdd247aae: Version 3.22.0AJ
+	7184fb894: DTMF decoder
+	d6eae02ba: CW Prosign defaults
+	195269f94: Version 3.22.0AI
+
+2011-08-30  Remi Chateauneu  <remi.chateauneu@gmail.com>
+
+	3f08ee997: Macros code cleanup
+
+2011-08-30  David Freese  <w1hkj@w1hkj.com>
+
+	ff3b0b203: DTMF class
+	ae579b49d: Version 3.22.0AH
+	3113c68de: DTMF encoder
+
+2011-08-16  Chris Sylvain  <kb3cs@arrl.net>
+
+	4942a0b2d: Packet audio boost
+
+2011-08-14  David Freese  <w1hkj@w1hkj.com>
+
+	8826d4fbb: Wide Cursor Tracks
+	61d0a1fed: Version 3.22.0AG
+	4f0acd03a: Log resort add record
+	fd8d86f78: New Macro Tags
+	447816527: RTTY MARK coloring
+	60947aa21: RTTY MARK frequency
+	381b809f6: QSY macros
+
+2011-07-13  Remi Chateauneu  <remi.chateauneu@gmail.com>
+
+	f9a459ab5: Added wefax::adjust_metric method.
+	1da9ed17e: modem::display_metric now sets the member modem::m
+
+2011-07-11  David Freese  <w1hkj@w1hkj.com>
+
+	a87724d07: Version 3.22.0AF
+	07c12e07a: TX Attenuator
+
+2011-06-29  Pierfrancesco Caci  <pf@tippete.net>
+
+	12714ebe0: CW Offset optional
+
+2011-06-29  David Freese  <w1hkj@w1hkj.com>
+
+	c2d0b93c6: Pkt compile warnings
+
+2011-06-29  Remi Chateauneu  <remi.chateauneu@gmail.com>
+
+	dc9edc10b: WEFAX compiler warnings
+
+2011-06-28  David Freese  <w1hkj@w1hkj.com>
+
+	8dd630c9f: Version 3.22.0AE
+
+2011-06-27  Remi Chateauneu  <remi.chateauneu@gmail.com>
+
+	406a5eaea: Wefax improvements
+	732f12de2: Wefax fixes
+	cfbfe22ed: Added XML-RPC functions for Wefax
+
+2011-06-27  David Freese  <w1hkj@w1hkj.com>
+
+	f77b48a94: XMLRPC linking error
+
+2011-06-26  Pierfrancesco Caci  <pf@tippete.net>
+
+	eda79c406: Swap mode/frequency change from frequency list
+
+2011-06-19  David Freese  <w1hkj@w1hkj.com>
+
+	25ac0d65a: Version 3.22.0AD
+	b0c694177: XLOG save with xmllog
+	faf6ab866: Version 3.22.0AC
+	13819f590: Logbook server
+	360eedb67: Logbook client
+	27b16f2d9: Logbook County
+
+2011-06-11  Kamal Mostafa  <kamal@whence.com>
+
+	6e0cd5f9b: Mode_info table restrictions
+
+2011-06-06  Pierfrancesco Caci  <ik5pvx@gmail.com>
+
+	af057a4eb: K3 CW-QSY
+
+2011-06-06  David Freese  <w1hkj@w1hkj.com>
+
+	64406547b: TX attenuator
+	2b89e69ab: LOG.ADIF export
+	ec6104e27: Duplicate #defines
+
+2011-05-23  Kamal Mostafa  <kamal@whence.com>
+
+	8c066afe6: GNU/Hurd build fix
+
+2011-05-23  David Freese  <w1hkj@w1hkj.com>
+
+	ff3e16244: Spot-notifier
+
+2011-05-23  John Phelps, KL4YFD  <phjo1001@stcloudstate.edu>
+
+	ab1602b75: High baud rate Dom/Thor
+
+2011-05-23  Chris Sylvain  <kb3cs@arrl.net>
+
+	4931d1d15: Packet Modem
+
+2011-03-29  David Freese  <w1hkj@w1hkj.com>
+
+	964dd00bb: Version 3.22.0AB
+	b74102f9c: Config defaults
+	485a6339b: No rig mode selection
+	f6bb40317: wo save status
+	e04d5f6a7: flmsg auto start
+	2ab853549: Version 3.22.0AA
+	91d93856a: Wrap File reception
+	c054ee63e: EXEC win32 macro tag
+
+2011-03-06  Stelios Bounanos  <vcs@enotty.net>
+
+	e987c66c8: Fix socket/getaddrinfo support
+
+2011-03-01  David Freese  <w1hkj@w1hkj.com>
+
+	b52222f52: Version 3.21.4
+	b1f141f01: LOGBOOK date-order
+	6daba19c0: GRIDSQUARE on reports
+	9cdd4da90: Version 3.21.3
+	a15a9c3a5: PO updates
+	6eb644b85: Waterfall Only
+	43e806231: Version 3.21.2
+
+2011-02-18  Stelios Bounanos  <vcs@enotty.net>
+
+	211ea4c97: Update NEWS
+
+2011-02-18  Pavel Milanes Costa  <co7wt@frcuba.co.cu>
+
+	c01c28ef3: es.po update
+
+2011-02-17  David Freese  <w1hkj@w1hkj.com>
+
+	13fce24d0: Olivia Tone displacement
+	d95ebc656: Version 3.21.1
+
+2011-02-15  Pavel Milanes Costa  <co7wt@frcuba.co.cu>
+
+	ef8b122d2: es.po update
+
+2011-02-14  Leigh L. Klotz Jr  <Leigh@WA5ZNU.org>
+
+	3cc9e5ecb: Add RX frequency tag for search macros
+
+2011-02-13  Stelios Bounanos  <vcs@enotty.net>
+
+	8ad76850a: Adjust notify dialog
+
+2011-02-11  David Freese  <w1hkj@w1hkj.com>
+
+	256f544a8: Version 3.21.0BL
+
+2011-02-11  Pierfrancesco Caci  <pf@tippete.net>
+
+	3634a1198: it.po update
+
+2011-02-11  David Freese  <w1hkj@w1hkj.com>
+
+	d24ee90e1: Macro <MODEM:
+
+2011-02-10  Stelios Bounanos  <vcs@enotty.net>
+
+	0ad002e71: Enable NLS on woe32
+
+2011-02-09  David Freese  <w1hkj@w1hkj.com>
+
+	fe9ee31e4: Version 3.21.0BK
+	23eacc5d2: Cosmetic adjustment
+
+2011-02-07  Pierfrancesco Caci  <pf@tippete.net>
+
+	5bc6b100a: PO update
+
+2011-02-07  David Freese  <w1hkj@w1hkj.com>
+
+	3f46f7986: Version 3.21.0BJ
+	9d2098875: Psk_browser seek_re
+	451b63ff3: MT63 Waterfall Cursors
+
+2011-02-04  Stelios Bounanos  <vcs@enotty.net>
+
+	37369b0c1: Update i18n
+	7ee39dcc7: Update copyright
+	3b11a86ed: Update About dialog box
+	9d68a57fe: Make wf mouse wheel action strings translatable
+
+2011-02-04  Pierfrancesco Caci  <pf@tippete.net>
+
+	355f77683: Add Italian l10n
+	8cefce036: Make more strings translatable
+
+2011-02-04  Pavel Milanes Costa  <co7wt@frcuba.co.cu>
+
+	919a99fbf: Add Spanish l10n
+
+2011-02-03  David Freese  <w1hkj@w1hkj.com>
+
+	885e68a19: Version 3.21.0BI
+	cfd0d027a: MT63 2 tone fix
+	622bd2974: Version 3.21.0BH
+	7cf8bcd4c: MT63 manual tune mod
+
+2011-01-31  Stelios Bounanos  <vcs@enotty.net>
+
+	2d474d938: Config dialog clean ups
+	81a464ee1: Remove macro config images
+
+2011-01-25  David Freese  <w1hkj@w1hkj.com>
+
+	3e2d629c4: Version 3.21.0BG
+	91d62b88c: <RIGMOD <FILWID macro tags
+	9149530a9: Version 3.21.0BF
+	bc61fafb2: <QSY: macro tag
+	ba6b25b74: <FILE:name> exist
+	b30b31405: mvgroup size restore
+	615c9a5a2: Version 3.21.0BE
+	857cd2f34: Macro Bar positions
+	17c2f13a4: Version 3.21.0BD
+	b68ae5fa8: Main Dialog Cosmetics
+	30e882704: Panel Widget
+	2c6043b0e: Compiler warning in trx.cxx
+	c2f5364e0: VTgroup position
+	cfacc550a: Fl_Text_Display_mod
+	65a26deea: Version 3.21.0BC
+	70b57ff5a: Viewer Width adjuster
+	e78f3e0ca: Viewer status
+	5d8e05098: View slider color
+	949a11262: Macro <RX/TX>
+	bdb3ea623: Maximize window error
+	aa6106299: Version 3.21.0BB
+	b8d5fa436: Version 3.21.0BA
+	141218737: Signal Browser Cosmetic
+	12f0f4be4: Logbook Server Connection Disabled
+	9ec791a8a: PSK browser mod
+	6a24e154c: Code cleanup
+	f97218bde: Convenience features
+	29074053f: Signal Viewer History
+	3bc947bc7: Mixer Frame
+	0dd4cec5e: Version 3.21.0AZ
+	d12320819: Version 3.21.0AY
+	809338917: Channel Number
+	a9b88e041: Version 3.21.0AX
+
+2011-01-02  Pierfrancesco Caci  <ik5pvx@gmail.com>
+
+	7e4c1ab27: RX-TX log file
+
+2011-01-02  David Freese  <w1hkj@w1hkj.com>
+
+	98b4cb0d8: PSK detector mod
+	0dd124939: Browser Channel Order
+	c33a85dc9: Tile_Check fix
+	30d8c5898: IPC Date report
+	03390bbc7: Load Macros
+	c118aa051: Version 3.21.0AW
+	3b967fd13: RTTY visible timeout
+	bce4760d1: Browser start frequency
+	8e7629668: Macro Bar Configure
+	2208cfed3: Version 3.21.0AV
+	0c66bd78f: RTTY adjacenies
+	3b55c6977: PSK AFC
+	9b55abc95: Version 3.21.0AU
+	0c5e8a3d1: PSK Browser-WF data
+	714e5738f: Waterfall Only mods
+	56fda4f7a: Version 3.21.0AT
+	75c8e77e7: RTTY BROWSER
+	040c13f2e: Browser reformat
+	04f107e21: PSK browser mod
+	75c9112da: ADIF format fault
+	071dd351c: Version 3.21.0AS
+	7767ff1d9: PSK browser update
+	c7c3a43c7: RTTY viewer
+	4344d5369: Macro Button Bars
+	dc6a6b1f5: CONTESTIA
+	4f6c4aae4: Version 3.21.0AR
+	99f977cd2: Dual Macro Bar
+	685ffc38c: PSK browser detection
+	425c6bf4c: pskBrowser class
+
+2010-12-21  Dan Ankers  <md1clv@md1clv.com>
+
+	09c9569b4: IARU Maidenhead
+
+2010-12-07  David Freese  <w1hkj@w1hkj.com>
+
+	fa165cc76: Countries List
+	9b8fdd864: Check for updates
+	81ebe8173: Carrier Squelch
+	eb0afbbc3: Call Lookup
+	2260b5f6d: Version 3.21.0.AP
+	d6583d8fe: RSID new mode
+	1f8a59fb6: Logbook Menu
+	16dbe6e74: Version 3.21.0AO
+	49cae5f9c: DATE_TIME sorting
+	a5f2f7f1c: Log Client
+
+2010-11-19  Stelios Bounanos  <vcs@enotty.net>
+
+	ca7d30f79: Embed xmlrpc++
+
+2010-11-19  David Freese  <w1hkj@w1hkj.com>
+
+	f2b39b1ed: Reversion of commit 2a957966c1ebda93647a789a75f83aba6af5f98a
+	afeccbb9a: DigiTalk
+	ef188fd73: QSO_DB sort order
+	c372640fa: Macros
+	5614a0abd: Version 3.21.0AN
+
+2010-11-05  Terry Embry  <mrtembry@yahoo.com>
+
+	9c8e837eb: VSP patch
+
+2010-10-20  David Freese  <w1hkj@w1hkj.com>
+
+	c29ee471d: CALLOOK lookup
+
+2010-10-13  Fernando M. Maresca  <fmaresca@gmail.com>
+
+	80e1bcf36: QSO_DATE_OFF field implementation
+
+2010-10-13  David Freese  <w1hkj@w1hkj.com>
+
+	7e1c6cdb2: Build correction
+	bfa18df45: Version 3.21.0AM
+
+2010-10-13  Remi Chateauneu  <rchateau@DuoLnx.(none)>
+
+	a2c9e048f: WEFAX bug fixes
+
+2010-09-23  David Freese  <w1hkj@w1hkj.com>
+
+	c5ea3ce06: FLMSG open NBEMS/WRAP/recv folder
+	f46016f38: ESC action restore
+	0ac873fb5: Hamlib Tests
+	e645b565b: RigCat Width
+	0f52da398: Goertzel filter update
+	c6409f385: Version 3.21.0AL
+	1ad7f164d: CONFIG dialog
+	aa4bee2b8: Abort ARQ
+
+2010-08-30  Chris Sylvain  <kb3cs@arrl.net>
+
+	6cbd20061: RTTY-PSKSCOPE
+	e6d43d4e3: Goertzel Filter
+
+2010-08-30  David Freese  <w1hkj@w1hkj.com>
+
+	a0cca984c: Time Macros
+	0c14c51ef: Logbook Field Sizes
+	72d78b1e1: Macro Mode Change
+	70ef8dbc6: Combo widget
+	f451461c5: Version 3.21.0AK
+	bea2d29d0: TX file insertion
+	6c6f6e005: RsID
+	b24fe8588: Xmlrpc Raw data
+	a9815cdbe: Log Sort
+	1110fe470: Xmlrpc BS char
+	9e6d0f3d2: Logger
+	bc70438d7: Compile Warnings
+	a7ee2aff8: ThrobX
+	dd0d489ea: Post RsID
+	809b218b1: Revert "RSID silence period"
+	4685221e4: Version 3.21.0AJ
+	2a957966c: MultiUser Logbook
+	4a77c0301: Contestia Olivia info
+	7f7aeab2b: RSID silence period
+	e7d9cd128: Logbook Save
+	0af649bb2: '^' Parser
+	f6f945965: Version 3.21.0AI
+
+2010-07-13  Fer Maresca, LU2DFM  <lu2dfm@gmail.com>
+
+	abafe0d42: <LOG> change
+
+2010-07-02  David Freese  <w1hkj@w1hkj.com>
+
+	e6d23f6a1: Version 3.21.0AH
+	0faeecb0c: RX-TX Select
+	e1cfec01c: RTS-DTR ptt
+	9064f150a: REPEAT Macro
+	5f10e417a: Version 3.21.0AG
+	e2ec2391e: Mode prefs
+	6e6b67242: Morse Prosigns
+
+2010-06-21  Chris Sylvain  <kb3cs@arrl.net>
+
+	62335f9af: RTTY class
+	8e26ee4d0: <ID> video text mod
+	773e0ede3: PSK Browser modes
+	40204caa9: Beginners Guide update
+
+2010-06-15  David Freese  <w1hkj@w1hkj.com>
+
+	975459355: Version 3.21.0AF
+	4d1c449d9: PH Cabrillo report
+	fd7ca52e1: QRZ xml service
+	5c0eea9a4: CWID
+	cb4afcfea: Version 3.21.0AE
+	e37116b09: RTTY 75 baud
+	edf6b4b97: Read Config
+	629a4040c: VIDEO ID
+	d9a2e53c8: CTY.DAT-KG4
+	3779b336a: Version 3.21.0AD
+	e5d878577: PA flush
+	c5f12bbb1: RSID code base
+	6b9be6d96: Version 3.21.0AC
+	a7f6d8563: RSID new codes
+	870bfa6fd: WEFAX time
+	7aab2d5c5: Version 3.21.0AB
+	6e617cf2f: TX Wrap disable
+	d46b8a410: RSID squelch
+	03f1ba743: RSID tx suppression
+	079035048: Pulse audio
+
+2010-05-15  Remi Chateauneu  <rchateau@DuoLnx.(none)>
+
+	f6f0ea930: WEFAX bug fixes
+	669ee37ec: WEFAX additions
+	e9d7520f9: WEFAX image size
+
+2010-05-15  David Freese  <w1hkj@w1hkj.com>
+
+	d7d19f07b: PSK RSID
+	c3fbd31a8: RSID DomEX-FEC
+
+2010-05-13  Stelios Bounanos  <vcs@enotty.net>
+
+	e36afb030: Implement CLOCK_MONOTONIC on OS X
+
+2010-05-13  David Freese  <w1hkj@w1hkj.com>
+
+	1387fbed9: WEFAX MINGW32
+
+2010-05-03  Remi Chateauneu  <rchateau@DuoLnx.(none)>
+
+	2508852b0: WEFAX addition
+
+2010-05-03  David Freese  <w1hkj@w1hkj.com>
+
+	3e06566fb: Version 3.21.0AA
+	ed574fbf9: Configure.ac update
+	49b08808d: Version 3.20.11
+	ff47cc4ac: XCVR Freq
+	5186a7490: FLARQ 4.3.1
+	83f42cbd0: Version 3.20.1
+	55eec2a8b: MAP macro update
+	e17ccfb6c: LOCK macro
+	917b5bd14: Freq Browser Select
+	00addd8c1: Version 3.20.0bB
+	4474bd497: MAP macro
+	2da1e5588: ARQ auto file
+	54a056907: Freq Control Font
+
+2010-04-22  Stelios Bounanos  <vcs@enotty.net>
+
+	5b7e83905: Disable sprintf re-declaration
+	c5f34c684: Fix compiler warnings
+	1733f1f1d: Add preliminary support for FLTK-1.3
+
+2010-04-16  David Freese  <w1hkj@w1hkj.com>
+
+	ab092a6f1: psk reporter mode
+	6c15ddde0: Psk Viewer Min Width
+	2bc610505: Revert "SC Time Out"
+	de7c41bbe: Version 3.20.0bA
+
+2010-04-12  Stelios Bounanos  <vcs@enotty.net>
+
+	5da5ba6e5: Update NEWS
+
+2010-04-12  David Freese  <w1hkj@w1hkj.com>
+
+	aaaec180f: WARNINGS
+	8df121a46: SC Time Out
+	45654eab6: PSKR fec metrics
+	faf5e6c6b: Pause-Break
+	975f4a9c7: RX lowercase option
+
+2010-04-12  Stelios Bounanos  <vcs@enotty.net>
+
+	d551f2eff: Disable Czech l10n
+	f1762d7c5: Fix more widget labels
+	4f8056578: Update QSO frequency
+
+2010-04-08  David Freese  <w1hkj@w1hkj.com>
+
+	3754c63d8: Tx Pane Min Height
+	717c15167: Modem Init
+	0469895e2: Contest Menu
+	8f76576fe: AFC-SQL check buttons
+	5dcf5cb1c: ADIF Export
+	1b5f56f6b: Olivia-Contestia bandwidth
+	0d77c1bed: SSB modem
+	586e3d5ea: QPSK dcd postamble
+	1aae11e61: RX_ONLY Modem type
+	d29495f18: QSY Lock disable
+	02767b0ba: Contestia
+	c10ee739a: Freq Analysis Init
+
+2010-04-04  Stelios Bounanos  <vcs@enotty.net>
+
+	391167c14: Add time functions
+
+2010-03-29  David Freese  <w1hkj@w1hkj.com>
+
+	5f540a746: Version 3.20.0b9
+
+2010-03-26  Stelios Bounanos  <vcs@enotty.net>
+
+	80572f5e6: Improve monitoring of transmitted signal
+
+2010-03-25  David Freese  <w1hkj@w1hkj.com>
+
+	c517a1ef2: NBEMS files
+	b794fb14e: Rx Contest Popup Menu
+	09c77b568: Olivia bug fix
+	b6b6d76ad: Contest Rig/Log View
+	4000fe03b: CW Xmt WPM
+	35826a3bc: Cabrillo Report
+	56c8b66c1: Version 3.20.0b8
+	3b63d8f33: XBEG-XEND macro tags
+
+2010-03-20  Giuseppe Ciaccio  <ciaccio@disi.unige.it>
+
+	1fb42ac9c: CW Decoder improvement
+
+2010-03-20  Stelios Bounanos  <vcs@enotty.net>
+
+	e0c62c243: Add new modem macro
+	cdd4457f0: Fix counter widgets
+	cff61120b: Fix Olivia pre/postamble
+
+2010-03-20  David Freese  <w1hkj@w1hkj.com>
+
+	2b97698bf: Version 3.20.0b7
+	269152ef1: AFC-SQL Lighted button
+	876697918: QSOTIME
+	30c247d71: Version 3.20.0b6
+
+2010-03-18  Stelios Bounanos  <vcs@enotty.net>
+
+	2715366c6: Fix label sizes
+	4ed6c1c0e: Add PSK browser font change support
+	735dba219: Cosmetic changes the PSK browser
+	5a1cf7dd8: Add font browser filter
+	bdcca8c39: Add mouse wheel handling
+
+2010-03-17  David Freese  <w1hkj@w1hkj.com>
+
+	b66e4565b: LSB modes - no rig
+	40ae07fd4: Macro Idle
+	a61d92572: Version 3.20.0b5
+	b1702af92: User Config Tab
+	6639fef3d: <TX/RX> macro
+	48552e1c7: Light Button Colors
+
+2010-03-10  Stelios Bounanos  <vcs@enotty.net>
+
+	f7d5af9cf: Fix status load
+	97c65e103: Add scroll hints menu item
+
+2010-03-10  Stephane Fillod  <fillods@users.sf.net>
+
+	7369f4454: Update i18n
+
+2010-03-10  David Freese  <w1hkj@w1hkj.com>
+
+	c2c1b22d9: Version 3.20.0b4
+	e9ec047e7: DigiTalk
+	6c2d20861: Version 3.20.0b3
+
+2010-03-05  Сергей И. Королев  <exception0x0d@gmail.com>
+
+	127380fc8: Add custom RTTY shift option
+
+2010-03-05  Stelios Bounanos  <vcs@enotty.net>
+
+	a8e4f818e: Add XML-RPC methods for Olivia
+	d2df10a5f: Modify FText add() methods
+	92a8fd674: Fix bandwidth marker
+
+2010-03-04  David Freese  <w1hkj@w1hkj.com>
+
+	82eaead78: Olivia Pre/Postamble visibility on waterfall
+	a454879c9: Empty Call Nag
+	e3c7a7694: Initial Configuration
+	7b89984f9: Version 3.20.0b2
+	551d11875: Textout.txt on MS
+
+2010-03-02  Stelios Bounanos  <vcs@enotty.net>
+
+	95eef6304: Version 3.20.0b1
+	2f48f0731: Add release notes
+	cc957f37c: Update copyright headers
+	a9b976a7b: Delete unused code
+
+2010-03-01  David Freese  <w1hkj@w1hkj.com>
+
+	2e78ec6bb: NBEMS folder access
+	995c34e41: <LOG> fix
+	dcbfb7d59: Add option to specify non-word characters
+
+2010-03-01  John Douyere  <vk2eta@gmail.com>
+
+	8cea906f7: Extended Pskmail messaging
+
+2010-02-26  Stelios Bounanos  <vcs@enotty.net>
+
+	ed30b5b0f: Add new WriteARQsocket function
+
+2010-02-25  David Freese  <w1hkj@w1hkj.com>
+
+	5a3d0abc7: RSID detect
+	a6769cbe8: Version 3.13CA
+
+2010-02-24  Stelios Bounanos  <vcs@enotty.net>
+
+	df7caff4c: Fix name_to_device
+
+2010-02-23  David Freese  <w1hkj@w1hkj.com>
+
+	1c18ad2c7: Version 3.13BZ
+
+2010-02-22  Vitaliy Berdinskikh  <ur6lad@i.ua>
+
+	9c846a19d: Remove png_infopp_NULL from picture::save_png
+
+2010-02-22  David Freese  <w1hkj@w1hkj.com>
+
+	9b80c2c93: Portaudio stream persistence mod
+	445c24a9f: Win32 init_stream patch
+	933af6c24: Serial bug fix
+
+2010-02-16  Stelios Bounanos  <vcs@enotty.net>
+
+	ccaaa1eb0: Add RX text scrollbar hints
+	5c82c352c: Fix RX text context menu
+	0459067e0: Log excluded ID modes
+	b3eda4503: Add init_modem frequency argument
+
+2010-02-14  David Freese  <w1hkj@w1hkj.com>
+
+	164c42bd8: Version 3.13BY
+	51700d79a: TX ^r ^R parsing
+	b1c5fa9fa: Startup Fix
+	ead3514e2: Version 3.13BX
+	3f3ddc0c5: FELD improvement
+	3acb7f25e: Wizard Fix
+
+2010-02-11  Stelios Bounanos  <vcs@enotty.net>
+
+	e74201b8f: Fix sound initialisation
+
+2010-02-09  David Freese  <w1hkj@w1hkj.com>
+
+	872f52cca: WF_ONLY height fix
+	64b192197: <INFO1><INFO2> fix
+	e0ff1f2a3: Version 3.13BW
+	617f4590e: ARQ abort
+
+2010-02-06  Stelios Bounanos  <vcs@enotty.net>
+
+	bb37cc1c6: Fix -iconic option handling
+	2c55a62fe: Improve audio initialisation
+	bde818b18: Fix OSS compilation on NetBSD
+	7ac0fd568: Remove -fomit-frame-pointer flag
+	96419d75e: Update manual pages
+	75e0eba8c: Fix main window title modification
+	0467a4183: Fix PulseAudio backend
+	b8d160d33: Fix compiler warnings
+
+2010-01-31  David Freese  <w1hkj@w1hkj.com>
+
+	c5ca09a24: Configure Dialog
+	03eedc4ab: Olivia Divide by Zero Error
+
+2010-01-30  Stelios Bounanos  <vcs@enotty.net>
+
+	0a10feee8: Version 3.13BV
+
+2010-01-29  David Freese  <w1hkj@w1hkj.com>
+
+	33335854f: DUP indicator
+	b895c1a34: Olivia Noise Estimator
+	d4540c06a: Waterfall Offset
+	5c3dd0913: Diamond Indicators
+
+2010-01-28  Stelios Bounanos  <vcs@enotty.net>
+
+	37ffd696e: Update command line argument handling
+
+2010-01-28  Chris Sylvain  <kb3cs@arrl.net>
+
+	80ca36a55: Make CPU speed check information available upon demand
+	0936615db: Fix llabs() namespace ambiguity
+
+2010-01-28  Stelios Bounanos  <vcs@enotty.net>
+
+	78b515c6b: Add verbose log level
+	25e2c82ba: Rig control frame tweaks
+	2f9a0a271: Add rig.get_name
+	b23f5d543: Fix table widget
+	3bbb6ea23: Fix wizard crash on OS X
+
+2010-01-27  David Freese  <w1hkj@w1hkj.com>
+
+	be9dc0a3b: Version 3.13BU
+	6b40f6b76: RTTY demodulator
+	eb9a38567: Rig control changes
+	e87b9df75: Logbook empty record
+	29e891ece: Config Dialog Cosmetics
+	9b6a313cb: Version 3.13BT
+	6354484e1: RTTY mods
+
+2010-01-25  John Douyere  <vk2eta@gmail.com>
+
+	33075e386: PSKR DCD detector
+
+2010-01-22  David Freese  <w1hkj@w1hkj.com>
+
+	7956fbb8b: Version 3.13BS
+	a06bf9354: S/N evaluators
+	070f84d48: Version 3.13BR
+	d84b06052: RTTY decoder mods
+	93bedef1c: RSID fft processing
+	afd3adcd5: HELL AGC improvement
+	b9e25d950: Version 3.13BQ
+
+2010-01-12  Stelios Bounanos  <vcs@enotty.net>
+
+	5b9ea76e4: Add rig control XML-RPC methods
+	ec51533bb: Disable frequency locking in qsy
+	5d3732cf3: Add wizard
+	af78f3465: Improve RSID QSY functionality
+
+2010-01-08  David Freese  <w1hkj@w1hkj.com>
+
+	fd186034d: Version 3.13BP
+	86bbd55e2: Initial UI
+	56610a9a7: NOLOG alternate Callsign entry
+
+2010-01-08  Stelios Bounanos  <vcs@enotty.net>
+
+	239ff98f5: Adjust View menu
+
+2010-01-08  David Freese  <w1hkj@w1hkj.com>
+
+	276e76944: Xchg In capture
+	4cd90d30c: WF freq limit
+	5a37ed9ce: Version 3.13BO
+	eea028767: Auto file transmit
+	c762969d2: CSV Export
+	75be29e6b: Debug code removal
+	ab7dd9346: Version 3.13BN
+	ddc5790b7: Modem Initialization
+	6552c16d2: CSV Export
+	4f52b1ff7: Version 3.13BM
+
+2010-01-06  Stelios Bounanos  <vcs@enotty.net>
+
+	edb217c94: Change waterfall focus handling
+	df5c3ff8b: Improve mode cycling
+
+2010-01-06  Chris Sylvain  <kb3cs@arrl.net>
+
+	0aa643b3c: Add keyboard shortcuts
+	2e476a39b: Open PSK Browser only when last mode is a PSK mode
+
+2010-01-06  Stelios Bounanos  <vcs@enotty.net>
+
+	bf235e26d: Update INSTALL
+	bb537ed6d: Update README
+
+2010-01-06  David Freese  <w1hkj@w1hkj.com>
+
+	9f9e73880: UI adjustments
+	afcf313e4: Version 3.13BL
+	ca0e9a8ac: MS Excel compatibility
+
+2010-01-02  Stelios Bounanos  <vcs@enotty.net>
+
+	0ec66d1c7: Add ID mode exceptions
+
+2010-01-01  David Freese  <w1hkj@w1hkj.com>
+
+	4bf78c634: CW Squelch
+	d494b8af2: QPSK Reverse
+	5d4ac2d44: ARQ parser
+	93a4fb5b3: Version 3.13BK
+	afc5861de: Olivia Mods
+
+2009-12-30  Stelios Bounanos  <vcs@enotty.net>
+
+	4380a1590: Fix xmlrpc locking
+	c7eb9acec: Clean up xmlrpc
+
+2009-12-30  David Freese  <w1hkj@w1hkj.com>
+
+	6bb2a5c11: Revert "XMLRPC set_freq bug fix"
+	b751b9d49: THOR soft decoding
+	b2fa58f34: Version 3.13BJ
+	087b4aa2b: XMLRPC set_freq bug fix
+	90b15d116: Version 3.13BI
+	8e8b41868: Auto Extraction bug fix
+	58148c6d5: Version 3.13BH
+
+2009-12-18  Stelios Bounanos  <vcs@enotty.net>
+
+	56afe38a6: Add new RSID codes
+	4eb51bad9: Fix rig mode menu
+	8af1511ed: Improve rig control methods
+	2a14309ac: Fix Fl_ComboBox
+	80a6ad4b7: Add new XML-RPC methods
+	b5edfc277: Improve XML-RPC log.get_rx method
+	38f76f703: Save PSK Browser search string
+	613ecfaa3: Store old event logs
+	fdc2cdf77: Lower slow CPU speed test threshold
+
+2009-12-18  John Douyere  <vk2eta@gmail.com>
+
+	645b74c84: THOR squelch adjustment
+	58d86f6fa: PSKR - PSK63F - new modem types
+
+2009-12-09  David Freese  <w1hkj@w1hkj.com>
+
+	6cf183157: Version 3.13BG
+
+2009-12-08  Stelios Bounanos  <vcs@enotty.net>
+
+	d4e0a6d08: Add support for persistent xmlrpc connections
+
+2009-12-08  David Freese  <w1hkj@w1hkj.com>
+
+	f5d3e4660: Gaussian Noise Generator
+	d721d87a3: Version 3.13BF
+
+2009-11-29  Stelios Bounanos  <vcs@enotty.net>
+
+	d952ad492: Fix pkg-config error
+
+2009-11-28  David Freese  <w1hkj@w1hkj.com>
+
+	69cb51295: RxID Save
+	107053725: Version 3.13BE
+	b4dba6f9d: Callsign field size mod
+
+2009-11-27  Stelios Bounanos  <vcs@enotty.net>
+
+	53a1e6bb6: Change arq class member types
+	78d5e4dfb: Disable win32 snprintf workaround
+
+2009-11-23  David Freese  <w1hkj@w1hkj.com>
+
+	2962ede65: Version 3.13BD
+
+2009-11-21  Stelios Bounanos  <vcs@enotty.net>
+
+	aaaef29ca: Remove unused variables
+	ab0d77f1c: Add missing USE_X checks
+	b3d02658b: Update crash handler
+	483b53735: Fix LDFLAGS
+	7e3959921: Fix custom pkg-config macro
+	b06339d24: Fix conditional pkg check
+
+2009-11-18  David Freese  <w1hkj@w1hkj.com>
+
+	c226978a1: Hamlib build fix
+	f7acb91cf: Version 3.13BC
+	04992b1eb: Rig CAT mods
+	72959b65d: RigCat Mods
+	53659c424: Hamlib mod fix
+	b6a7cb66a: Hamlib-RigCAT mods
+	306e6c163: Minimalist GUI
+	d85b974e3: Hamlib mod
+
+2009-11-06  Stelios Bounanos  <vcs@enotty.net>
+
+	0997c47b4: Distribute common resource file
+	52caf9b60: Fix guide generation
+
+2009-11-05  David Freese  <w1hkj@w1hkj.com>
+
+	2d95d8204: Version 3.13BB
+	04a9bfc13: Macro Tags
+
+2009-11-05  Stelios Bounanos  <vcs@enotty.net>
+
+	5c856a9d0: Restrict FLTK API version check
+
+2009-11-04  David Freese  <w1hkj@w1hkj.com>
+
+	ec7ef1eb3: Version 3.13BA
+	ade6427de: WAIT macro
+	2cfe7fc15: Version 3.13AZ
+	d02a3c83d: RSID Macro Tags
+	18f4af14b: Flarq email folder
+	9a8fe75dd: Version 3.13AY
+	d60d6d996: Macro Save Log
+	b99366d04: No Rig Save
+
+2009-10-26  Joe Veldhuis  <jvn8fg@gmail.com>
+
+	917353752: Base Rig
+
+2009-10-26  John Douyere  <vk2eta@gmail.com>
+
+	db836ccf4: PSK500 Addition
+
+2009-10-24  David Freese  <w1hkj@w1hkj.com>
+
+	e4c5e8582: Version 3.13AX
+	65f70cd1f: WF Limits
+	4fa12df98: ARQ RSID controls
+	6e4737de4: RST Out clear bug
+	f19e6d24b: Version 3.13AW
+	55168db43: wfdisp-mod
+	05a62fa20: PSK250-AFC
+	9ec650ca5: Version 3.13AV
+	856b5ed2d: Rx/Tx Menu
+	abedc7c1b: Waterfall background
+	df226c9e1: Min-Rig-Log Panel
+	cfd526dba: Version 3.13AU
+	c9560eaf8: Macro Timer
+	ff7d94152: Flarq mods
+	824d65833: Version 3.13AT
+	262521251: Log save bug
+	5f8da6739: Version 3.13AS
+	d1fe5435d: GUI adjustment
+	c092d628e: Rx Contest Popup Menu
+	3d9952ed7: Contest Logging
+	e62b52f1e: ENTER bug fix
+	3e464b85a: Docked Scope
+	0ecc89915: Macro Timer
+	13acee883: Version 3.13AR
+	11b82cd3b: Stop Timer Bug
+	5333ee259: Focus Mod
+	45239f476: Internationalization
+	cc780450c: Minimal UI
+	273622cec: UI - minimized
+	7163ecb65: RigCAT dialog
+	bc78904a2: KISS update
+	15d495442: Version 3.13AQ
+	159ba1e74: KISS update
+	1d2ad5e7f: Version 3.13AP
+	6440fa5e6: KISS
+	9faebb19c: Flarq Directory Structure
+	3aa8c1e41: Version 3.13AO
+	9d9d56b6e: Talker Socket
+
+2009-10-14  Stelios Bounanos  <vcs@enotty.net>
+
+	c574685a9: Update win32 resource files
+	1d2f5788a: Fix threads/exceptions bugs on mingw32
+	ecc297b0a: Revert "Hamlib Exception Handling"
+
+2009-10-09  David Freese  <w1hkj@w1hkj.com>
+
+	a4ecf8e1b: Version 3.13AN
+	526c22235: Macro bug fix
+	4975fcd66: Version 3.13AM
+	5733c106c: Macro bug
+	1d7021c1d: Version 3.13AL
+	d6fc376dc: Wrap Extract
+	536e251c8: Macro TUNE
+	985239d90: Version 3.13AK
+	ab565fb1b: Feld Hell Mod
+	615dd3450: Text file out
+	3d458354d: Version 3.11AJ
+	a5e17e8da: Logbook read bug
+	8c010b3a4: Version 3.11AI
+	e0f86c745: TX Control Code fix
+	05ff91e7a: NBEMS
+	8a97f6b21: Hamlib Exception Handling
+	7fb9639ef: RigCAT mods
+
+2009-09-30  Stelios Bounanos  <vcs@enotty.net>
+
+	e4e1af2f9: Fix silent rules
+
+2009-09-23  David Freese  <w1hkj@w1hkj.com>
+
+	fc18f874a: Browser Discovery
+
+2009-09-22  Stelios Bounanos  <vcs@enotty.net>
+
+	5626e1c90: Add silent build rules
+	8ae5b2225: Do not use -rdynamic on win32
+
+2009-09-22  David Freese  <w1hkj@w1hkj.com>
+
+	a31852210: Code cleanup
+	d373c26c5: Thor squelch mod
+
+2009-09-17  Stelios Bounanos  <vcs@enotty.net>
+
+	0f96bc714: Fix llabs call
+	07bf0c45d: Only set stop_bits for serial port rigs
+	67ff72102: Fix format string
+
+2009-09-16  David Freese  <w1hkj@w1hkj.com>
+
+	8aad147f9: Version 3.13AH
+	60ca5f033: rigCAT bug fix
+	1ed88a22e: Version 3.13AG
+	4e19f0349: rigCAT mods
+	f9423b45b: Serial i/o Stopbits
+	765c6d91b: Dom/Thor mod
+	fbcd1603a: QRZ lookup
+
+2009-09-10  Stelios Bounanos  <vcs@enotty.net>
+
+	4f25a4efe: Version 3.13AF
+
+2009-09-09  David Freese  <w1hkj@w1hkj.com>
+
+	d36b5ded2: ARQ / RSID mod
+
+2009-09-08  Stephane Fillod  <fillods@users.sf.net>
+
+	a06482d5f: Some more work on french l10n
+	4287bd0b7: More i18n
+
+2009-09-04  Stelios Bounanos  <vcs@enotty.net>
+
+	71f2531f4: Remove g++-3 support via boost
+	ed74dfb4b: Update README
+
+2009-09-02  David Freese  <w1hkj@w1hkj.com>
+
+	5e35ec064: Menu bar ui mods
+	da2cc3bf6: RSID ui mod
+	df650031b: RSID eot change
+
+2009-09-01  Stelios Bounanos  <vcs@enotty.net>
+
+	e39fc6a1c: Improve RSID notifications
+	b09cea25f: Enable concurrent RSID decoding
+	4de96c9b3: Clean up RSID code
+	a434afb97: Handle nested qrunner calls
+	854803512: Fix notifier TX text handling
+	78d87d744: Fix log/manual spotting
+	b862f1ac4: Change transmit-lock marker width
+	a3edac857: Add missing include
+
+2009-08-31  David Freese  <w1hkj@w1hkj.com>
+
+	db84e7f77: Version 3.13AE
+	779bf2316: PSK post DCD signal
+	ac1e686f1: Version 3.13AD
+
+2009-08-20  Stelios Bounanos  <vcs@enotty.net>
+
+	3c2a7a646: Add config doc strings
+	b7d5d6ee0: Add transmit-lock marker
+
+2009-08-19  Chris Sylvain  <kb3cs@arrl.net>
+
+	652f43f9a: Add LOCK macro
+
+2009-08-19  Stelios Bounanos  <vcs@enotty.net>
+
+	0a09039c6: Misc UI changes
+
+2009-08-18  David Freese  <w1hkj@w1hkj.com>
+
+	9bda6ed2a: flarq mod
+
+2009-08-18  Stelios Bounanos  <vcs@enotty.net>
+
+	29715401b: Fix benchmark mode output
+	788489b32: Fix notifier event checks
+	c0d08efd1: Use bundled GNU regex on OS X
+	cdf46da23: Fix PSK Browser RE search
+
+2009-08-14  David Freese  <w1hkj@w1hkj.com>
+
+	65000dba3: arq_io seg fault bug fix
+	18b870269: Olivia 8/1000 standard mode
+	62608ea68: PKS mailserver mod
+	bf164ebe9: rigMEM modification
+	3e6a5c48f: WRAP file extract
+	09e4a1603: Version 3.13AC
+	f2b29cb16: RigCAT bug fix
+	5897cf790: Hamlib exit message
+	eba91fff4: Secondary text TX but in DominoEX-FEC and Thor
+
+2009-07-26  Stelios Bounanos  <vcs@enotty.net>
+
+	e1daa1dba: Fix DnD file insert on OS X
+	5925ec30d: Fix sound file selector
+	ce4c179fb: Correctly populate RigCAT menu on OS X
+
+2009-07-26  Leigh L. Klotz, Jr  <Leigh@WA5ZNU.org>
+
+	5f1658c87: Macro variable bug fix
+
+2009-07-25  David Freese  <w1hkj@w1hkj.com>
+
+	15c655390: Version 3.13AB
+	b72cfd505: MT63 mod
+
+2009-07-25  Stelios Bounanos  <vcs@enotty.net>
+
+	4fff1160d: Add missing include
+	d1c206b98: Restore MT-63 options
+	dfab290dd: Initialise pthreads/win32 in flarq
+	4fdba006b: Version 3.13AA
+	ecf1f101a: Restore two channel capture
+	a8a734cb9: Fix millisleep function
+
+2009-07-23  David Freese  <w1hkj@w1hkj.com>
+
+	cf4c6710f: MT63 transmit bug fix
+	52fb02e33: Version 3.12
+	44f869c01: Version 3.12AO
+
+2009-07-13  Stelios Bounanos  <vcs@enotty.net>
+
+	3537f6278: Add RSID notifications
+	2a4cd6852: Improve frequency display kb entry
+
+2009-07-11  David Freese  <w1hkj@w1hkj.com>
+
+	9c291a872: Enable XMLRPC QSY capability
+
+2009-07-06  Stelios Bounanos  <vcs@enotty.net>
+
+	deea0f674: Add ITU zone to countries list
+	d54a2ca07: Fix compilation on glibc 2.10
+
+2009-07-02  David Freese  <w1hkj@w1hkj.com>
+
+	b83eea444: Version 3.12AN
+	9de9eb532: Xmlrpc mods
+	84fb2ebfc: Version 3.12AM
+	07a01b155: Logbook bug fix
+
+2009-07-01  Stelios Bounanos  <vcs@enotty.net>
+
+	42b638df6: Fix socket fd leak
+	58c2f8b0f: Fix compilation error and warnings on 64bit archs
+
+2009-06-30  David Freese  <w1hkj@w1hkj.com>
+
+	2cb387455: Version 3.12AL
+
+2009-06-30  Stelios Bounanos  <vcs@enotty.net>
+
+	c07ec21fc: Add generic notifier
+	88bedac61: Add dragging to table widget
+	757a8f8d0: Simplify RE classes
+	cbf0d871a: Extend macro editor
+	53a2820a2: Improve dxcc, spot, pskrep performance
+	9648c3036: Remove handling for REs without backref support
+	1b474a236: Fix config input field labels
+	d6d597477: Add Fl_Input2 mouse wheel handling
+	bf4cea41e: Add automatic FText text_area resizing
+	e803fcd82: Improve FText drag and drop
+	ec26eb633: Add band to RX text tooltip
+	828383312: Add string join and split functions
+	d70ea6925: Print build info in crash handler
+	f25b5d1c7: Fix azimuth_long_path
+	d11f6fe0e: Add frequency display text paste support
+
+2009-06-30  David Freese  <w1hkj@w1hkj.com>
+
+	3bad2d4b7:     xmlrpc mods
+	3c53fe548: Version 3.12AK
+
+2009-06-12  Stelios Bounanos  <vcs@enotty.net>
+
+	419123c17: Fix text echo functions
+	2a83da3c8: Remove FText text colour adjustment
+	7a87b0bc5: Always set the FText cursor colour
+
+2009-06-12  David Freese  <w1hkj@w1hkj.com>
+
+	b20e2b9b3: Version 3.12AJ
+	a8dfa58cb: Logbook bug fix
+	b5ca5f1e4: Version 3.12AI
+	9b7786f76: RigCAT mods
+	ef8b126bf: Version 3.12AH
+
+2009-06-01  Stelios Bounanos  <vcs@enotty.net>
+
+	9f7b00255: Fix Contest Country Files callsign lookup
+
+2009-06-01  David Freese  <w1hkj@w1hkj.com>
+
+	b539c1cdf: ADIF_2.2.3 compliance
+	8fc582e48: Cut number mod for CW
+
+2009-05-26  dave  <dave@linux-dev.(none)>
+
+	f0d43fe0d: Version 3.12AG
+	7690a1c65: FLARQ
+
+2009-05-26  Stelios Bounanos  <vcs@enotty.net>
+
+	d4b1a038a: Merge flarq
+	91a1425e1: Move setup_nls function
+	9543fa7b1: Move make_pixmap function
+	ada43f4a5: Add new FText classes
+	bf6a2c318: Add thread id logging
+	8207c62c7: Prefer ALSA default devices
+	d04b780d7: Fix initial window sizes
+	4f90ecf51: Fix format strings
+
+2009-05-16  David Freese  <w1hkj@w1hkj.com>
+
+	f4686cdc4: Version 3.12AF
+	6b6cad9bd: PSK search algorithm
+
+2009-05-12  Stelios Bounanos  <vcs@enotty.net>
+
+	b95b8e165: Add win32 installer support
+	d626273fc: Fix VPATH builds
+
+2009-05-05  David Freese  <w1hkj@w1hkj.com>
+
+	b4112dedc: Added <RSID:on
+	5a3132e5d: Version 3.12AE
+	7ae826f67: RTTY pseudo output, corrected stop bit inversion
+
+2009-05-02  Stelios Bounanos  <vcs@enotty.net>
+
+	ae5b9ca57: Add more PNG text comments
+	974e1ec9e: Remove JPEG write support
+	44eceae21: Fix xmlrpc-c m4 macro
+
+2009-05-02  David Freese  <w1hkj@w1hkj.com>
+
+	7b6f99916: Version 3.12AD
+	b030b4b56: Fix OS dependent compile error
+	c58dcb1eb: Version 3.12AC
+	abc11f7c0: Updated memory mapped rig contol
+
+2009-04-26  Stelios Bounanos  <vcs@enotty.net>
+
+	31e19021a: Add missing includes
+	6b2260caf: Macro changes
+	8f3739919: Fix possible trx_startup deadlock
+	edca45216: Fix Makefile DEBUG flag
+
+2009-04-25  David Freese  <w1hkj@w1hkj.com>
+
+	affae099b: CW default WPM (numeric keypad *) bug fix
+	7ca417cca: Version 3.12AB
+
+2009-04-23  Stelios Bounanos  <vcs@enotty.net>
+
+	f7309ef24: Make the combo box popup modal
+	ed0ae5ce5: Fix OS X native file selector
+	88b3fd75b: Fix uHRouter and parport PTT
+	9c63531cd: Fix format string
+
+2009-04-23  David Freese  <w1hkj@w1hkj.com>
+
+	89441983e: CW replay bug
+	0f9793b9f: Version 3.12AA
+	fc50717d5: CW Farnsworth timing addition
+	63ccc2f24: MinGW serial i/o, hamlib, rigcat mods
+
+2009-04-18  Stelios Bounanos  <vcs@enotty.net>
+
+	206f8159d: Fix build without hamlib
+
+2009-04-18  David Freese  <w1hkj@w1hkj.com>
+
+	a9c21e513: Escape key bug fix
+	d2674d54f: Macro <XOUT> parse error fix
+
+2009-04-17  Stelios Bounanos  <vcs@enotty.net>
+
+	9e060b868: Update version output
+	77bc96640: Use band functions in logbook
+	21247913e: Add functions to set the socket buffer size
+	4b1292ca7: Improve logging and error notification
+	d73c8fd31: Add OS X and MinGW stack tracing
+	e192d1d4d: Add preliminary support for MinGW
+	01fd3d991: Change set_log macro
+	9d566564c: Clean up headers
+	b4bf47ffe: Distribute cr.sh test script
+
+2009-04-11  David Freese  <w1hkj@w1hkj.com>
+
+	dd9caa835: Version 3.11
+
+2009-04-11  Stelios Bounanos  <vcs@enotty.net>
+
+	8646ccb72: Fix rigMEM compilation on OS X
+	8fe2028d8: Fix uHRouter log message
+
+2009-04-10  David Freese  <w1hkj@w1hkj.com>
+
+	e94628c2b: Man page correction
+
+2009-04-06  Stelios Bounanos  <vcs@enotty.net>
+
+	c8981312b: Add documentation
+	88d067da4: Disable SysV IPC on OS X
+	d039aab5f: Add missing include
+
+2009-04-06  David Freese  <w1hkj@w1hkj.com>
+
+	e5dd8e08c: Version 3.11AX
+	e4d3f6a71: updated i18n
+	b1ff3f58a: Status prefs mod
+	5249bd9ef: FFT processing - prefilter recognition
+	104e8f548: Version 3.11AW
+	f8c06f4ba: Waterfall FFT fix
+	fb2c4d9c1: RigCAT code cleanup
+	9ac9c1fc0: Version 3.11AV
+	0437cc7de: Update i18n
+	c261af319: Beginner Help
+	bdf8ffbe3: XMLRPC mod
+	038868e7b: Logfile logic change
+	aa40d40b8: RigCAT mod
+	a04d47502: Hamlib mod
+	b89df53af: Version 3.11AU
+	43d0e8df5: update i18n
+	3c7d0045c: Miscellaneous fixes
+	dfd721bd1: Version 3.11AT
+	c8d1e1eb6: update i18n
+	a49228469: Beginners Help update
+	cc73610e4: HamLib PTT bug fix
+	3993b5b7d: Hamlib DTR / RTS state
+	efc4259d6: Logger32 default folder change
+	22b70a52f: Version 3.11AS
+	a1c6d7541: Mods Logbook
+	38a606629: Version 3.11AR
+	0bb3f8fe2: Modification to logbook file processing
+	4dfb2c596: Mod - RSID propability of detection improvements
+	6c0d3777b: RSID decoder bug fix
+	d77b8cc7b: Cosmetic change to adif_io.cxx code
+
+2009-03-18  Stephane Fillod  <fillods@users.sf.net>
+
+	53e631b86: Update i18n
+	292933672: Czech l10n by Josef Klimosz, OK2WO
+
+2009-03-17  David Freese  <w1hkj@w1hkj.com>
+
+	0262c8615: Version 3.11AQ
+
+2009-03-16  Stelios Bounanos  <vcs@enotty.net>
+
+	3a65fa108: Fix hex/bin string output
+
+2009-03-14  David Freese  <w1hkj@w1hkj.com>
+
+	0c15f12f4: Version 3.11AP
+	228a4bd67: Hamlib modification
+	35fe37b48: QSO logging date-time
+	867ee123e: Rig Control modifications
+
+2009-03-12  Stelios Bounanos  <vcs@enotty.net>
+
+	1155b533f: Modify variable-width font warning
+
+2009-03-12  David Freese  <w1hkj@w1hkj.com>
+
+	6b4a4f6d5: CQ decoder improvement
+
+2009-03-11  Stelios Bounanos  <vcs@enotty.net>
+
+	c054a5b66: Fix hamlib RTS/CTS callback
+	36952a12b: Add fldigi-shell pskrqsy command
+	ee69ba371: Reduce PSK reporter re-spot interval
+
+2009-03-10  David Freese  <w1hkj@w1hkj.com>
+
+	fc2ad9c52: Version 3.11AO
+	fc4a43601: CW shape modification
+	d98d95ff5: Version 3.11AN
+	6d92b4d73: Change to FreqControl behavior
+	2391e67e5: Bug fix - missing inpNotes
+	787c67cf1: CW / QSK
+
+2009-03-08  Stelios Bounanos  <vcs@enotty.net>
+
+	6e513f5b2: Fix hamlib sideband check
+	4a0d11b29: Version 3.11AM
+
+2009-03-07  David Freese  <w1hkj@w1hkj.com>
+
+	b93ac73e1: Fixed rounding errors in CW encoder symbollen timing
+
+2009-03-07  Stelios Bounanos  <vcs@enotty.net>
+
+	09230eef8: Add reset config button
+	f391c9358: Update config UI
+	95bd6bd4c: Add hamlib sideband override
+	c879f550c: Add frequency list clear confirmation
+
+2009-03-07  David Freese  <w1hkj@w1hkj.com>
+
+	2b54b0e29: CW / QSK modification
+	b5dc666d8: Palette mod
+	6148d035e: Cosmetic change to config dialog
+
+2009-02-27  Stelios Bounanos  <vcs@enotty.net>
+
+	37e182d56: Version 3.11AL
+	a2fc0c8db: Add better support for proportional fonts
+	f6466f2ab: Fix font name/number compatibility code
+	eb1ec8ac8: Fix printf format string
+
+2009-02-25  David Freese  <w1hkj@w1hkj.com>
+
+	afc4e0b89: Added right audio channel PTT signal
+	5417cf2b9: Restore pre 1/29    FTextView.cxx,    Fl_Text_Display_mod .cxx,    Fl_Text_Dislay_mod.H
+	529cd68b9: Cosmetic change to font_browser Exception handling fix for portaudio Thread shutdown bug fix for win32 Cosmetic change to colorsfonts dialog Change to FTextView family   revert to character counting for proportional fonts
+
+2009-02-19  Stelios Bounanos  <vcs@enotty.net>
+
+	e1c4b0b0f: Set LC_CTYPE to C
+	9cc42368b: Add SINC_BEST_QUALITY warning
+	e8309d017: Add optimisation flag
+	e037b215e: Fix ptt deletion
+
+2009-02-18  David Freese  <w1hkj@w1hkj.com>
+
+	58d2d0da3: Version 3.11AJ   alpha release
+	a0c9a45fa: Added new palette, fldigi.pal
+	d2094f46b: Bug fix ... error in extracting font_number from font_name
+
+2009-02-18  Stelios Bounanos  <vcs@enotty.net>
+
+	4b719fc0c: Close PTT when exiting
+	e4e65fa8b: Add locator tooltip
+	b9699d14f: Remove bad sample rate converters
+	6d173bcad: Improve font handling
+	1ac52d78f: Initialise hamlib's RTS +12 setting
+
+2009-02-17  David Freese  <w1hkj@w1hkj.com>
+
+	77d0b4ece: Olivia pulse shape changes
+	4181ca882: Bug fix RTTY cpu usage
+
+2009-02-15  Stelios Bounanos  <vcs@enotty.net>
+
+	56d7f0eac: Fix va_args calls
+	b8d267ab8: OS X fixes
+	6ff0e6965: Fix fetch_http_gui timeout check
+
+2009-02-14  David Freese  <w1hkj@w1hkj.com>
+
+	529956762: Added RTTY x-y scope extinguish on loss of signal Added PSK modes set_sigsearch(...) on modem change to any psk mode.
+	c8d68a775: Added DSP filter width adjustment to RTTY
+	396a51e93: Bug fix for Feld FM modes
+	8a8317ef2: Added FEC_snr and FEC_freq_offset displays to status bar
+	e5bdb1a1a: Cosmetic changes to mt63 source - increase white space for easier reading
+	5f224546d: Olivia decoder/encoder improvements   removed all extraneous double/integer/double conversions   added new signal/noise computation method
+	8c8f59cb9: Bug fix - PTT via rigCAT serial h/w   RTS/DTR was inaccessible Bug fix - Xlog stream; suppress newlines in Notes field Added binary string format to display bit fields, ie: RTS / DTR state Changed 'Comments' to 'Notes' in all references re: logbook   Comments ADIF field is single line character   Notes ADIF field is multi-line character   Converts all ADIF comment fields to Notes; backward compatibility
+	135562e3d: Version 3.11AG alpha test build
+	bef4f92d2: Added sub-directores "wrap" and "talk" to the files directory Fixed missing quick-pick pop up menus
+	fc81592b8: Version 3.11AF alpha test version   updated i18n
+	edeb401ee: Fix hamlib RTTY/RTTYR sideband inversion
+
+2009-02-04  Stelios Bounanos  <vcs@enotty.net>
+
+	718522277: Add LoTW and eQSL hints to dxcc popup
+	f134124dd: Add benchmark and batch decoding switches
+	3ab8df2b6: Fix uhrouter support
+	362d88bed: Fix cygwin gcc-4 compilation
+	cb4b2f8f2: Fix local strcasestr
+	0b7d62d1b: Fix new version check
+	4ee758d90: Add PSK reporter activity text field
+	d6a88f429: Add new quick_choice popups
+	3e19c4d90: Add fetch_http_gui
+	ee82e29d1: Update guide
+	b50f92a83: Update platform ifdefs
+	798834d41: Fix open URL function
+	0913a74ae: Fix compilation error with --without-hamlib
+
+2009-02-03  David Freese  <w1hkj@w1hkj.com>
+
+	cc880d993: Bug fix to wf_audioscale waterfall scale changes
+	23d8c7bd6: Added Rx text output to temporary text file.   Intended use: text to speech conversion for blind operators
+	069099fcf: Deleted all references to afcIND
+	995d4715a: Changed waterfall event behavior for disabling <TIMER:nn> operation
+	458a87e78: Version 3.11AE alpha test version
+	b89635e38: Fixed PSKnnn ADIF naming convention to comply with adif 2.0 spec
+	d20fd1148: Version 3.11AD alpha test
+	31c05ea41: Added logbook save to file after every change to the logbook
+	4f307c791: Added Cabrillo field defaults per Contest selection
+	e28d1d834: Modified Cabrillo report line QSO: format
+	f1abbe2dc: Version 3.11AC alpha test
+	184ce5ae5: Bug fix, Cabrillo report generator
+	831170bde: Version 3.11AB alpha test version   updated i18n
+	ca5bb8cd5: Modified contest exchange fill-in; appends if field partially filled Reversed #Out and #In fields for contest log
+	af6b8dc52: Added Cabrillo report writer for logbook / contest use   Removed free form Exchange fields #2 and #3   Renamed Exchange field #1 to Exchange Out   Added Exchange In field to the logbook
+	39721ce55: Added rx stream file extraction   Extracts all text between and including [WRAP:beg]...[WRAP:end]
+	01b916c1b: Add stop macro timer to all waterfall events
+	40dc19889: Corrected adif strings for modes BPSK31...QPSK250
+	c6f5d658b: Bug fix to correct rig xml <PORT dependency
+	c89998183: Bug fix for rigCAT_init Event Log output Bug fix for cursor position in QSO Call field
+	e184117d1: Bug fix for DxKeeper adif file output   Changed date format to YYYYMMDD
+	47b65ad49: Version 3.10   Release version 3.10
+	eddd24f39: Update i18n
+	71ebd5d26: Expanded open logbook message error message:   "Empty ADIF logbook file"   "No records in ADIF logbook file" or   "Not an ADIF file"
+	ea1eeebb9: Correct seg fault on Vista when audio overdriven   condition observed on Vista notebook with microphone input
+	e2777f6fe: Correct invalid parameters in memset calls
+	42da9880a: Version 3.1   Distribution version 3.1
+	e6cfebe18: Update i18n
+	3bae30189: Version 3.1preC   alpha test version 3.1preC
+	1c5e66253: KDE / xdg-open problem - cosmetics   KDE - xdg-open call causes seg fault on some revs of KDE desktop     This fix does not fix all occurances - user may need to set     environment FL_BROWSER to default browser before executing fldigi   Cosmetic change to align xchg fields in contest panel
+	a2239b159: update i18n
+
+2009-01-12  Stelios Bounanos  <vcs@enotty.net>
+
+	3586c220d: Fix version comparison
+	bb44e467a: Fix memory leaks
+
+2009-01-09  David Freese  <w1hkj@w1hkj.com>
+
+	5fea1340a: Version 3.1preB   Alpha release 3.1preB
+	993e74ead: Update i18n
+	689d679b5: KDE refocus to QSO logging widgets   Moving between desktops on KDE caused all QSO log widgets to be   refocused.  Caused QSO log to appear as changed when no change   had occured.
+
+2009-01-09  Stelios Bounanos  <vcs@enotty.net>
+
+	b48fbdc35: Cosmetic UI changes
+	51d015f3d: Remove extraneous includes
+	f4c006331: Fix PSK reporter RE matching
+	f71661c29: Revert "Changes to spotting regex parsing"
+
+2009-01-08  David Freese  <w1hkj@w1hkj.com>
+
+	155311c4a: Version 3.1preA   Alpha test release 3.1preA
+	615ff4a09: Update to i18n
+	fbca00494: Changes to spotting regex parsing   Windows does not recognize '\2' reference tag in regular   expression defined in pskrep.cxx.  Changed to combination   of regexec and string find processing for required result.   Added modem frequency to spotting call when logging or   forcing a spot report.
+	495ac85df: ADIF import   Relaxed the test for accepting adi/adif file as valid ADIF     too many other logbook programs not in compliance.     Minimal test is for file to contain at least one adif field     as "<call:", case insignificant
+	dbfc72f6e: ARQ and Logbook changes   Removed all MultiPsk compatibilty code from arq_io.cxx     Simplified ARQ data stream to be compatible with flarq.4.x     Changed default ARQ socket port to 7322   Added clear DXCC field when saving QSO data to logbook   Fixed QSO field erasure when user changed desktops
+
+2009-01-05  Stelios Bounanos  <vcs@enotty.net>
+
+	821407927: Add log sources
+	afb8d9e1a: Add parallel port PTT
+
+2009-01-03  David Freese  <w1hkj@w1hkj.com>
+
+	c8d32c29c: Version 3.1pre   pre-release version for 3.1 - final testing
+	c826c1a8d: Update i18n
+	9b18d81f0: Clean up preparation for release 3.1   Added "Echo" configuration item for rigCAT     removed <ECHO>...</ECHO> parsing of rig.xml files   Suppressed clearing Country, Loc and Azimuth fields by a call sign     database query when the db does not support those fields   Added missing tooltips to all configuration items
+	34b145617: Version 3.04BZ Alpha distribution version 3.04BZ
+	da55bec4a: Update i18n
+	d13421419: Added missing fields to log.adi export (Windows only) Corrected logic associated with duplicate checking.
+	7e4c4b7d9: Update i18n
+	e32279969: Various bug fixes   Restore fldigi.adif Windows logger file   Fix missing <string.h> in util.h   Fix missing Country field fill-in in lookupcall   Fix logic errors in keyboard / auto entry of callsign in qso log field
+	09801d44b: Version 3.04BX Alpha distribution version 3.04BX release
+	444633db3: Update i18n
+	a193ebab5: MT63 receiver buffer flush Added rx_flush to MT63 modem class.  Allows immediate transition from Rx to Tx after remote station ceases transmission.  No loss in Rx characters
+
+2009-01-01  Stelios Bounanos  <vcs@enotty.net>
+
+	3833fd815: Add microHam keyer PTT support via uH Router
+	62627ec45: Fix restore_signals
+	83736b570: Add hex print functions
+	56927d00f: Fix compiler warnings
+	39decae4a: Simplify FText dxcc lookup
+	ef055bf23: Fix OS X compilation
+	b7926ba9e: Fix directory creation
+	f3a8e554b: Update FTextView context menu
+	238997956: Simplify cb_call
+	6a061c828: Update build system
+
+2009-01-01  David Freese  <w1hkj@w1hkj.com>
+
+	435b93731: Remove logbook font number/size specifiers Allows system font specificatin via command line switch
+	6e5b077ac: Restore MT63 cursor Force MT63 wf cursor to fixed tracking points; 750, 1000, 1500 for MT63-500/1000/2000 respectively
+	122653e42: Remove AFC indicator Commented all lines in fl_digi.cxx relevant to AFCindicator This is a control that is useful during modem decoder development but no for the casual user
+	68fd70298: Olivia bug fix Changed bandwidth, preamble, postamble tones to be consistent with other popular Olivia implementations, ie: MultiPsk
+	7933badee: Version 3.04BW alpha test version 3.04BW
+	ec652059c: Update i18n
+	3daf3d9a1: Changed show callsign behavior Popup now shows the Name, Last QSO date, Azimuth & Distance based on logbook record if the station was previously worked Otherwise the cty.dat file is used if present.
+	5709faf60: Version 3.04BV alpha release 3.04BV
+	fccba5c6d: Bug fix IOTA not clearing Added clear IOTA field when QSO log saved to logbook Added comments to locator.c
+
+2008-12-29  Dave Freese  <w1hkj@w1hkj.com>
+
+	568f5c555: Fix qrb function
+
+2008-12-27  David Freese  <w1hkj@w1hkj.com>
+
+	6d9415c2b: Version 3.04BU alpha release 3.04BU
+	e50a5ae25: Update i18n
+	fba9fb283: Macro tag modification Changed <TIMER>nn AND <IDLE>nn to <TIMER:NN> and <IDLE:NN> respectively
+	4468f1026: Increased average Olivia power Balanced tone power between pre/post amble tones and the mfsk tones
+	30054367a: Version 3.04BT alpha distribution verion 3.04BT
+	8e4029646: update i18n
+	fa90e92a4: Delete last log entry bug fix
+	e5b2a2adf: Version 3.04BS alpha test version 3.04BS
+	60e909bd3: Update i18n
+	1ec4341da: Add missing qso fields to adif export TX_PWR, COUNTRY missing from export Simplified the export function
+	11eb3e923: Version 3.04BR alpha distribution 3.04BR
+	eb09b3f04: Update i18n
+	b12640993: Restored log IPC output to xlog etal. Added additional fields now supported by internal fldigi logbook Added configuration item for Tx Power
+	8e4a6b8fc: Version 3.04BQ alpha distribution verion 3.04BQ
+	a8b704313: update i18n
+	4b5b4f67d: Rx text quick pick menu change Moved Call from quick pick to normal menu listing
+	46d15d070: Additional fix for TimeOn logic
+	fe4b9a506: Version 3.04BP alpha release 3.04BP
+	36c3ab337: update i18n
+	edda7b09e: New logbook fields added TX_PWR, DXCC and IOTA to logbook renamed Notes to Comment to be consistent between main dialog and logbook dialog
+	79f61b505: Update Rx/Tx popup menus Changed logic for restoring Rx/Tx menu status to status.cxx
+	0947e5623: Version 3.04BO alpha distribution
+	e187ecc1b: update i18n
+	179e8de57: Bug fix - TimeOn TimeOn was being reset every time fl_digi received focus Fixed in fl_digi.cxx
+	6595e7f14: Fix compile warning in confdialog.cxx
+	e882949c6: Version 3.04BN
+	9c0a78bc3: update i18n
+	bd1cf1c1a: Additional state variables Save & restore state of: ReceiveText quick entry, ReceiveText word wrap and TransmitText word wrap
+	b5933cd5f: Bug fixes - 3.04BM Fixed --config-dir failure on MS Changed qso clear to only clear the search field on logbook dialog
+	1d2225de7: Version 3.04BM     Alpha test version distribution
+	12011e61e: Update i18n
+	53910187a: Organize HomeDir contents Create HomeDir Create HomeDir/rigs Create HomeDir/scripts Create HomeDir/palettes Create HomeDir/logs Create HomeDir/images Create HomeDir/help Create HomeDir/macros Create HomeDir/temp and populate with default files.
+	63c9f9495: Fix qso clear button bug Clear would only work with NagMe set.  Corrected logic
+	a821c17f4: Merge commit 'berlios/pu/sb'
+	0d8f8bf3a: Logbook text i/o bug fixes Changed all logbook text out to use CRLF convention in MS Fixed "-30" bug in text output for comment field
+
+2008-12-22  Stelios Bounanos  <vcs@enotty.net>
+
+	b1054cbe8: More focus fixes
+	0b1daf6f9: Fix logbook update
+	fd277d664: Fix PSK browser crash
+
+2008-12-21  David Freese  <w1hkj@w1hkj.com>
+
+	f23c6745e: Version 3.04BL Alpha test distribution
+	b93112405: Clear logbook fields with clear qso fields Clear both qso fields & logbook fields when the clear button is pressed.
+	eeb334c04: Display Macro-Loaded message Modified the Load Macro message behavior to display whenever a Macro file is loaded or a new one created - dependent on the state of the associated configuration item
+	75096a904: QSO log focus fixes Fixed Enter refocus inhibit for Loc field Fixed refocus inhibit under certain conditions for Call field
+	554d5e1ec: Logbook browser focus Restore focus to the logbook dialog browser whenever a button control on that dialog is pressed.
+	15ffc81a4: Version 3.04BK new alpha test release
+	37022f7d3: Save modified Macros Added test to save modified macros before opening a new file
+	75b3a5afe: RTTY bug fix Fixed improper echo of Unshift-On-Space characters
+	3cb070943: Correct logbook-table-widget focus
+	2afd96a2b: Fix restore focus from log fields Create configuration item for upper case call field
+
+2008-12-18  Stelios Bounanos  <vcs@enotty.net>
+
+	afee01bdb: Version 3.04BJ
+	8353e8d43: Update i18n
+	1909b7558: Miscellaneous UI changes
+	f524c3fc6: Change FText menu handling
+	a9459df7b: Remove contest menu
+	433a3c562: Fix PSK viewer crash
+	708ac48c3: Fix logbook update
+	54aad83fa: Fix ADIF format check
+	a0efbd227: Fix waterfall cursor and marker
+	97339202c: Add FLDIGI_BROWSER check
+	e767b68a8: Fix logbook selection colour
+	8e1ef5a7f: Fix QRZ lookup type enum
+	fc55afb7e: Auto-update log fields
+	5a57c5f81: Fix callsign info tooltip
+	17530a428: Add locator functions
+	2d7b21e8a: Add missing va_end
+
+2008-12-10  David Freese  <w1hkj@w1hkj.com>
+
+	5c6709f41: Version 3.04BI
+
+2008-12-10  Stelios Bounanos  <vcs@enotty.net>
+
+	99aa2cc84: Update po files
+	7f77ba6e1: Add FText country information tooltip
+	f7fee0bfb: Add preliminary contest country file support
+	eef48e7b6: Add Fl_Input2 up/downcase key bindings
+	e7a6812fd: Fix mode status button
+	7e368b2c6: Change Olivia status fields
+	f498b19f7: Fix log timer
+
+2008-12-10  David Freese  <w1hkj@w1hkj.com>
+
+	c24196744: Version 3.04BI
+	98e63fc54: Modifed search routines for psk viewer
+	2712de8ba: QRZ callback modification
+	9728d0d86: Add fixed field text report generator for logbook
+	b51ef6c3f: Add .,;
+	5d305c971: Macro tag changes
+	5af4ad7e0: Logbook field transfer
+	bd3a8a292: Logbook file open/close changes
+	90224b77d: Version 3.04BH
+	c2764f021: Changed logbook text export to tab delimited format
+	924b2b76e: Added time_on field to the logbook
+	88e0ad0c2: Split state/county into state country fields
+	6cffd9a97: Replaced Olivia Freq: nn.n with Tones/Bw in status2 widget
+	d3cbe49e6: Changed fldigi.log to fldigiYYYYMMDD.log, always append
+	6a3908ecd: Added <CLRRX> macro tag - clar Rx pane
+	b92ea214b: Added dup field, time-span in minutes to duplicate QSO testing
+	154952f14: Add rudimentary contest functionality
+	163acfea1: Use global confirm-save option for logbook
+	59984e766: Use filename in logbook window title
+	540e35c68: Version 3.04BF
+	83b453f41: Invert logbook search
+	7c0e2831a: Add logbook status preferences
+
+2008-12-04  Stelios Bounanos  <vcs@enotty.net>
+
+	c609e29b9: Add FText double-click option
+
+2008-11-29  David Freese  <w1hkj@w1hkj.com>
+
+	585493163: Add tab color configuration item
+
+2008-11-29  Stelios Bounanos  <vcs@enotty.net>
+
+	08776759c: UI update
+
+2008-11-29  David Freese  <w1hkj@w1hkj.com>
+
+	9333ae1f5: Fix waterfall buttons
+	4b53a7c84: Fix QRZ lookup
+
+2008-11-26  Stelios Bounanos  <vcs@enotty.net>
+
+	80f43f679: Delete carriage returns
+
+2008-11-26  David Freese  <w1hkj@w1hkj.com>
+
+	aef541e3e: Add fl_logbook
+
+2008-11-26  Stelios Bounanos  <vcs@enotty.net>
+
+	2b79053f9: Update fldigi-shell
+	3d6f7bbf8: Add Fl_Input2
+	5077ca624: Hamlic changes
+	0aa3c19d9: Improve make_pixmap
+	6013b1533: XML-RPC update
+	c3814bc1a: Add NLS support
+	cc3677694: Merge with upstream
+	1f6e9c670: Upstream version 3.04BE
+	dea0ee902: Upstream version 3.04BD
+	690daadf5: Add spotting
+	c8a6ae11e: Add UDP socket support
+	984bf8b65: Add simpler RE class
+	91cf6d14c: Merge with upstream
+	edc3049ef: Upstream version 3.04BC
+	8960485c2: Upstream version 3.04BB
+	2b19fba6e: Upstream version 3.04BA
+	315a3aff2: Upstream version 3.04AZ
+	fca79b415: Upstream version 3.04AY
+	047e8bb9f: Improve hamlib support
+	d32a86e8b: RE class changes
+	3eeb6391c: Fl_ComboBox changes
+	15e7c2ff3: Toggle menu icons at runtime
+	37b38e176: Fix MFSK image menu item
+	5639f4b97: Fix FTextView text lookup
+	71b9b489c: Clean up callsign search code
+	7013c6258: Frequency list fixes
+	73e082bd3: Add icons option
+	64cbeebe7: Merge with upstream
+	6b1c29756: Upstream version 3.04AX
+	9a0fadc49: Fix wfall/rxtext links
+	704cfd62b: Fix IZDT time format
+	c452607e5: Restore wfall wheel/qsy step
+	853658791: Add QSO data mouse binding
+	5eda8b607: Add RX text and waterfall links
+	a0af30f20: Add more icons
+	685f7dfa9: Fix combo browser label
+	47a624967: Merge with upstream
+	d8211853c: Upstream version 3.04AW
+	1ed76f0cc: Upstream version 3.04AV
+	2114401ab: Upstream version 3.04AU
+	9461dc670: Upstream version 3.04AT
+	dfa8465b9: Upstream version 3.04AS
+	a5062ae24: Upstream version 3.04AR
+	40555942a: Upstream version 3.04AQ
+	f22ce6538: Upstream version 3.04AP
+	9a161f100: Upstream version 3.04AO
+	096e1eb1b: Upstream version 3.04AN
+	21f16cb4a: Improve config performance
+	fa4ff95e6: Fix window resizing on OS X
+	2d9f7bb05: Fix a memory leak
+	3bc4b6e1a: Merge with upstream
+	4709ddb4c: Upstream version 3.04AM
+	ce8c6385f: Simplify xml config
+	7d2ea0d44: Merge with upstream
+	09b75d7ae: Upstream version 3.04AL
+	e8ecf2a0c: Update ChangeLog
+	0c5b18ca7: Add log format check Fix some LOG calls that were passing the wrong type/number of args
+	dd121fcba: Rewrite xml config
+	00af73035: Add scope dock option
+	c41749c83: Handle deprecated args better Also remove unused --experimental switch
+	731c7a537: Fix signal handling * Add generic functions to save and restore the disposition of all   signals, and use these to remove the handlers installed by xmlrpc's   abyss server.
+	e9ddc8f2a: Add licence notices (thanks to Stephance F8CFE for the reminder) Tweak About dialog html
+	62b901f7b: Rewrite change_modem_param Add new config menu for waterfall mouse-1 handling
+	09fde4d7a: Add default qsy arg
+	b4a7e3216: Add mode group ids
+	61f04d6ef: Merge with upstream
+	53e71e80a: Upstream version 3.04AK
+	87aa9d5da: Upstream version 3.04AJ
+	685298dc4: Add fldigi-shell time command
+	f0195d40a: Unclutter title bar
+	cd5a338ac: Reduce min window height
+	ec83b170d: Add thread checks
+	1c9f450f6: Fix log clear Ask confirmation when trying to exit without saving the log
+	629014d98: Fix wfall cursor freq
+	dae8995bc: Change winapi precedence
+	5e3df23e2: Add update check
+	aa7d7bf5f: Fix XML-RPC error handling
+	5553466ab: Add HTTP URL fetching
+	0bc58ae3c: Fix re_t substring matching Delete extra copy of adjust_port() Remove includes from serial.h
+	9e71ac0b3: Merge with upstream
+	b4460881a: Upstream version 3.04AI
+	8421e4943: Upstream version 3.04AH
+	00fab81d8: Upstream version 3.04AG
+	70e44b57e: Upstream version 3.04AF
+	69f4c90b6: Upstream version 3.04AE
+	fbbcae1b4: Upstream version 3.04AD
+	448b34b24: Add wfall mouse options
+	d4af3d6c2: Add qsy function
+	2d6799419: Add rig control freq entry
+	322af76d6: Merge with upstream
+	af5d499fe: Upstream version 3.04AC
+	e759dc7ab: Qrunner updates Read from pipe/socket before executing queued callbacks; improves performance and avoids some recursive dequeueing with REQ_FLUSH Change REQ_FLUSH to take a thread argument Flush the trx thread in init_modem_sync
+	e944abb6b: Remove fl_thread wrappers
+	667f67248: Add thread signal handling Send SIGUSR2 to interrupt xmlrpc and arq_socket threads Restore the default signal disposition for various signals handled by xmlrpc-c's abyss server
+	3c560ae5a: Add simple XML-RPC access control Also add --xmlrpc-list switch
+	84b105230: Simplify XML-RPC error handling
+	5332a87ed: XML-RPC fixes Use REQ in Main_set_sb and Log_set_call
+	e23803ae1: Merge with upstream
+	5476c0e6a: Upstream version 3.04AB
+	9cfa07997: Upstream version 3.04AA
+	eda3c5298: Upstream version 3.03
+	03be0d1bb: Upstream version 3.03AP
+	94606ed69: Upstream version 3.03AO
+	69c8fad53: Revert "Use fl_open_uri"
+	a428fc4d5: Sound fixes
+	8496ca758: Merge with upstream
+	2b352bc8f: Upstream version 3.03AN
+	78c6ec92f: Use arg in src speed test
+	baeac6a35: XML-RPC fixes
+	d71a69d88: Fix FLTK m4 macro
+	64de50dc5: Merge with upstream
+	28abb21cf: Upstream version 3.03AM
+	4975a5d6e: Upstream version 3.03AL
+	b2401dc0d: Fix SoundPort log message
+	1044be3ab: Leave room for OS X resize handle
+
+2008-09-08  Leigh L. Klotz, Jr  <Leigh@WA5ZNU.org>
+
+	d4c7b8798: Add history replay option
+
+2008-09-07  Stelios Bounanos  <vcs@enotty.net>
+
+	4d3d1892f: Improve serial port discovery
+	a46526a0e: Merge with upstream
+	aff666dd7: Upstream version 3.03AK
+	91eac1e15: Upstream version 3.03AJ
+	f395464c3: Add default event handler
+	82296f10b: Disable mouse cursor hiding
+	f3d895ef6: Increase default window width
+	d70089bc0: Use fl_open_uri
+	bcbd70128: Update build system Rename OS X app bundle directories Use correct ld switch to link hamlib statically on Linux
+	1d42855a2: Use REQ in start_tx
+	4b41ce093: Merge with upstream
+	eab55d521: Upstream version 3.03AI
+	3cdd28273: Upstream version 3.03AH
+	3e3c2d135: Don't leak fds
+	0508eb7ba: Use regex class in PSK viewer
+	c862e8220: Update regex class
+	4c1620c8c: Save MT63 settings
+	70faa1246: Minor sound fixes Fix "device not found" message On Linux, a PortAudio device has zero channels if it's busy; omit that check for other platforms.
+	efe814026: Merge with upstream
+	db64583e9: Upstream version 3.03AG
+	67bec3df8: Upstream version 3.03AF
+	ba3a9eadf: Fix FTextLog menu handler
+	581aad22a: Display mixer slider values
+	b653a7b4e: Redo colours/fonts dialog Add colorsfonts.fl Change font browser to use colour chooser Correctly set text attributes to handle dark backgrounds
+	05fecac6a: Merge with upstream
+	fba29c03c: Upstream version 3.03AE
+	6af1a4b50: Upstream version 3.03AD
+	f72c72789: Fix MFSK TXspp assignment
+	0427298fe: Set tooltip font
+	6561c6e31: Update build scripts
+	dd548b244: Socket fixes
+	035df1ea6: Sound fixes
+	97535c2d6: Event log changes
+	8e7d12313: Merge with upstream
+	cf0942386: Upstream version 3.03AC
+	ab26ef2d5: Upstream version 3.03AB
+	0e26dc97d: Upstream version 3.03AA
+	cb7f27e0d: Use event logging
+	5a8db7fe5: Add event logging
+	079be642f: Fix FLTK detection
+	9ef33900e: Merge with upstream
+	a0418bc62: Upstream version 3.02
+	8137b8bb0: Upstream version 3.02AC
+	61bfa8140: Upstream version 3.02AB
+	a7f4c6131: Fix OS X help menu Also set font used by fl_message
+	e0e49d0ef: Convert serial port names on win32
+	49c28760c: Add simple regex class
+	8edc6a5cc: Update build scripts Add a script and Makefile target to relink fldigi with a static hamlib
+	c7255803e: Merge with upstream
+	594e70d47: Upstream version 3.02AA
+	05dc2476d: XMLRPC updates Add an rpc method to call macros Add the fldigi-shell Perl client
+	c6c32aaa2: Replace some sem calls
+	e4a45bae3: Merge with upstream
+	2c52ee864: Upstream version 3.01
+	b615c8a64: OS X compatibility Use 127.0.0.1 instead of localhost Define AI_NUMERICSERV to 0 if undefined Do not use the non-POSIX MSG_NOSIGNAL send flag
+	20689b8fc: Merge with upstream
+	3f7b2d6c5: Upstream version 3.0
+	95d5786ac: FText updates
+	a5a71ae46: ARQ fixes
+	985ce14bb: Fix image library detection
+	1b38e5354: Merge with upstream
+	9b6c05b6a: Upstream version 3.0rc2
+	57853724a: Upstream version 3.0rc1
+	becd3f772: Add arq/tcp cmdline switches
+	9b3f7fa23: Merge with upstream
+	00b140e12: Upstream version 3.0preAD
+	316e53697: Repo maintenance
+	238b61b39: Repo maintenance
+	bb1c1707e: Upstream version 3.0preAC
+	3238fc421: Socket fixes
+	c9cbbf556: Switch to Socket
+	1c69e5196: Add new socket class
+	a89024284: Add fake sem_timedwait Also, use named semaphores on OS X
+	9444527fb: Add fake clock_gettime
+	49097a590: Add new search_libs m4 macro
+	d8ac50778: OS X build fixes
+	16132045e: Merge with upstream
+	940642e7b: Upstream version 3.0preAB
+	1813c0074: Upstream version 3.0preAA
+	785c504ee: Plug memory leaks
+	487ad6619: Merge with upstream
+	e08fd3031: Upstream version 3.0preZ
+	325bdde26: Upstream version 3.0preY
+	45294abde: Upstream version 3.0preX
+	e3fe8af6d: Improve clock_gettime detection Also use the monotonic clock, if available, in the samplerate speed test function.
+	6e7ea86d9: Merge with upstream
+	29d5fe68e: Upstream version 3.0preW
+	ba91adf7d: Upstream version 3.0preV
+	9e7aa563b: Fix FText kb focus
+	d92e346e8: MFSK fixes
+	e30e06c79: Merge with upstream
+	b15f821ab: Upstream version 3.0preU
+	7675123a8: Add image drag/drop support Also fix a couple of memory allocation bugs
+	64a30ca88: Merge with upstream
+	697650aba: Upstream version 3.0preT
+	467a05720: FText drag/drop
+	350a099cc: Update RSID
+	f8fcfa6f1: Fix xmlrpc logging
+	5c2d8f4a6: Deactivate AFC/Rev buttons
+	58fcf3b2f: Modem cleanups
+	93bd60595: Merge with upstream
+	9da69cb0b: Upstream version 3.0preS
+	9f8298afa: Upstream version 3.0preR
+	7205cac93: Upstream version 3.0preQ
+	a577acc3a: Upstream version 3.0preP
+	818465181: Update help
+	200444697: Fix sample rate menu update
+	7468baa67: Fix Store button
+	7a21d600a: Convert trx REQ_SYNC calls
+	d7a25cb19: Delete old textview code
+	4c5839dfb: Add some missing changes
+	466529dca: Merge with upstream
+	ea4bb7db2: Upstream version 3.0preO
+	38e9249fa: Upstream version 3.0preN
+	cd32c9d42: Fix kf_cut/copy/paste calls
+	de1a0a14c: Merge with upstream
+	fb1d570e7: Upstream version 3.0preM
+	d7a6eb5d4: Upstream version 3.0preL
+	04f81ee50: Add Show Config menu item
+	70f558cd6: Cosmetic GUI changes
+	47cbab320: No PSK snr/imd clearing
+	1ec31cb3f: XML-RPC updates for RSID
+	730c8e242: RSID fixes
+	f613c0406: Fix tune audio glitch
+	c8fe0037c: Change AFC/SQL toggle buttons
+	2676fdb6c: Add speed test
+	194a18e03: Merge with upstream
+	09a5ed91d: Upstream version 3.0preK
+	1beac0a36: Upstream version 3.0preJ
+	84e495e99: Update INSTALL
+	d77816192: Cache waterfall cursor type
+	40b91286d: Disable FLAC on win32
+	96cb8469e: Fix distcheck
+	dbf6efce5: Merge with upstream
+	dd8dd9e23: Upstream version 3.0preI
+	38c152ab1: Upstream version 3.0preH
+	78ed492b8: Use one channel capture
+	4591980c3: Update configure summary
+	9c06cc28f: Sound config updates
+	610016b84: Merge with upstream
+	a684c4161: Upstream version 3.0preG
+	d6976e377: Hamlib fixes
+	0f9fe520f: Add waterfall PAUSE speed
+	ed2224f9e: Add waterfall scope lines
+	78e443450: Merge with upstream
+	56542508d: Upstream version 3.0preF
+	3a76af9f6: Upstream version 3.0preE
+	8fdb1e2d8: Upstream version 3.0preD
+	b9a4d5e45: Warn about invalid REs Colour the Find field text red if the pattern is not a valid regular expression
+	6f36cdcfa: Merge with upstream
+	21d352f18: Upstream version 3.0preC
+	4cc73f064: Upstream version 3.0preB
+	6a79318f1: Upstream version 3.0preA
+	69039e405: Fix Ftext ASCII char insertion
+	0fc80b3a7: Html help corrections
+	7bea959b6: Use conditional for xmlrpc args
+	5bf2a9346: Merge with upstream
+	f379ad5ea: Upstream version 3.0pre1
+	1c7bb9bd2: Misc. speedups
+	c7cd457d6: Simplify qrunner
+	7237b8941: Merge with upstream
+	92ebc3e93: Upstream version 2.11AU
+	f1c4906ab: Add status dimming
+	838fd3fd2: Safely resize audio buffers Add a pause state for the stream_process, and also rewrite its state handling code
+	4baeaffe6: Correctly handle audio timeouts The samplerate API specifies that the read callback must return 0 to indicate that there are no more frames, but it seems that the frames pointer must also be set to NULL.
+	f8fcb0e8d: Delete redundant sound_update calls
+	021237f11: Default to PortAudio
+	b33829fcf: Simplify the status timeout callbacks
+	306ad4430: Fix generation of html audio info
+	5208be634: Fix mode status cycle order Move THOR mode_info definition below RTTY in order to be consistent with the Op Mode menu. Comment out TSOR enum to restore correct cycle order in both directions.
+	3f3e3a0f1: Arg handling fixes Correctly check for the option argument being part of the option name. Gracefully shut down when --exit-after is given. Remove string_wrap, which is no longer required.
+	7dd4259b1: Merge with upstream
+	04962dd6f: Upstream version 2.11AT
+	7f835d1c1: Upstream version 2.11AS
+	411e1c831: Upstream version 2.11AR
+	416670d0a: Fix sample rate probing It seems that PortAudio/ALSA streams may misbehave when Pa_IsFormatSupported is called for a device that has already been opened for I/O.  Probe for supported sample rates in both directions for each device and cache the results.
+	ca7f9c3e4: Merge with upstream
+	e1bdfc510: Upstream version 2.11AQ
+	7e4a7f50a: Upstream version 2.11AP
+	fc13288c9: Upstream version 2.11AO
+	3fc69d9c4: Upstream version 2.11AN
+	1887bd8df: Upstream version 2.11AM
+	08bb92705: Upstream version 2.11AL
+	582f275a6: Delete unused modem instances
+	a7010f88b: Merge with upstream
+	2dedd020e: Revert changeset 3e3e5628512e
+	cab9ff86a: Upstream version 2.11AK
+	eb5bd6f51: Upstream version 2.11AJ
+	a3a1775cd: Fix a cxx error and warning
+	cdb43fa08: Make PortAudio the default backend
+	ee5471d30: Use conditionals for audio backends
+	699c2dcd7: Default to medium src converter
+	e5a719313: Improve audio device info Show supported sample rates in Audio device info help text Only show supported rates in sample rate menus
+	6203c6f47: Add audio info help
+	ea2597855: Fix mfsk error w/o jpeg support
+	852f585a3: More XML-RPC fixes
+	2b9d7388c: Update XML-RPC Check for bind errors and don't try to start the server if the address is already in use. Call REQ directly inside methods to avoid two REQ calls. Add a modem.get_names method.
+	f43b23c18: Update m4 macros Simplify pkg-config.m4 and make sure that pkg-config can be overridden by setting CFLAGS & LIBS variables. Likewise for xmlrpc.m4. Also add static switches around xmlrpc linker flags when --enable-static has been specified.
+	ba1dcae09: Merge with upstream
+	713f7e18e: Upstream version 2.11AI
+	3de19b668: Undo Thor damage
+	1232776ed: Merge with upstream
+	6b81b3747: Upstream version 2.11AH
+	e3ab3bdcc: Add xml-rpc support
+	63bc32a02: Update README
+	7ecc8de08: Save rigctl window size
+	e48851b61: FText CR/LF fixes Add CRs to saved files on win32. Use a more efficient way of stripping CRs when loading a file.
+	29b714732: Update file selector Allocate File Chooser object on the heap to get the right font size. Use a new thread on win32 to avoid blocking FLTK.
+	2eaf50447: Retouch confirmation dialogs
+	58a1021c1: Remember phasescope mode
+	a96e72abc: Merge with upstream
+	ff356e0b1: Upstream version 2.11AG
+	bbcea9db3: Upstream version 2.11AF
+	ed054eb00: Upstream version 2.11AE
+	6aa0e8a3b: Upstream version 2.11AD
+	7a0668b78: Fix pkg-config m4 macro
+	a3f783739: Merge with upstream
+	66da44c68: Upstream version 2.11AC
+	ffc692c17: Upstream version 2.11AB
+	625e8b088: Fix crash with missing mixer device
+	b20213516: MFSK fixes Initialise stopflag. Clear txpic widget before loading a new picture.
+	850524f35: Fix DominoEX/DEX warnings Also use std::map for MuPskSec2Pri lookup
+	9fa082363: Merge with upstream
+	7c2464d22: Upstream version 2.11AA
+	6958a8897: Update fileselector Remember, and default to, directory of previous open/saveas call.
+	8f0239b99: Use fileselect filter values
+	709afd28f: Use the src callback API
+	632e1f455: Update PulseAudio code
+	713c49366: Use PortAudio extensions
+	f9e1da57d: Stacktrace updates Don't print the stack and version information twice when a signal is caught. Cosmetic changes to the output text.
+	c013c16d5: Use Fl_Preferences for the status
+	4828cbc80: Merge tags
+	34adb843b: Add tags
+	f75b4126f: Merge with upstream
+	8954ca2db: Upstream version 2.11Z
+	621e0501b: Upstream version 2.11Y
+	d15cb1ba0: Upstream version 2.11X
+	6e4a8bea5: Upstream version 2.11W
+	717adb328: Upstream version 2.11V
+	6f2d342a6: End all threads before exiting
+	ed339d938: Use unnamed semaphores Also check for zoh/linear converters by enum name
+	92fa4ad9e: Merge with upstream
+	fb87343eb: Upstream version 2.11U
+	967748da7: Upstream version 2.11T
+	e8ccd4cdf: Merge with upstream
+	92268e341: Upstream version 2.11S
+	d970311e2: Merge with upstream
+	fffcb8256: Upstream version 2.11R
+	1ffd2406a: Upstream version 2.11Q
+	c4a07cae1: Upstream version 2.11P
+	754dd4b4f: Fix image flags
+	23d04eaba: Merge with upstream
+	388a805c6: Upstream version 2.11O
+	057ce3e89: Sound callback
+	d27136da0: MFSK and images changes
+	7fc3d5d1c: Close handler changes
+	8a61ea744: Add resampler options
+	34b82fad6: Adjust cmdline args
+	9b82166b3: GUI fixes
+	e6a86f84d: Merge with upstream
+	22aef1b34: Upstream version 2.11N
+	d5b8fecd6: Upstream version 2.11M
+	226e560cb: Add PNG save support
+	c85ee8da3: GUI updates
+	6f289ee57: Merge with upstream
+	ded087d8f: Upstream version 2.11L
+	fd25a6220: Redirect streams on win32
+	f1e86c8a6: Fix online help on win32
+	56e2643be: Add optimisation switches
+	c0bd551cb: Merge with upstream
+	2f3f30ad0: Upstream version 2.11J
+	03f25698a: Upstream version 2.11I
+	a3cc8f8e9: Upstream version 2.11H
+	35e95f330: Merge with upstream
+	21dab8322: Upstream version 2.11G
+	e927d0dbe: Merge with upstream
+	fd4a64465: Upstream version 2.11F
+	0ffc020cc: Sound file i/o fixes
+	00add7273: trx/sound fixes
+	8764fa62c: Add check for jpeg header Also update the INSTALL file
+	ceb418cb1: New file chooser
+	19514d354: Merge updates
+	674a4c41e: Merge with upstream
+	067cda025: Upstream version 2.11E
+	3085c2601: Close PA/MME devices after TX
+	8449e4f44: New sound_init
+	897e3faa4: Add cygwin support
+	43f3252ea: Merge with upstream
+	ecb383b79: Upstream version 2.11D
+	b58de4ff8: Update EXEC macro Delete the trailing new line of the external program's output Add the scripts dir to the front of PATH
+	7cd2cddfa: Add macro bar mwheel handling
+	23a8a17cc: Merge with upstream
+	3c662b8d2: Upstream version 2.11C
+	ccaf1c489: Delete fast text widgets
+	a0e78c03c: Delete libsamplerate
+	48ec6e181: Fix sound_init crash This would happen with an empty progdefaults.OSSdevice (e.g. new install) on a system without OSS devices.
+	2088a09a3: Fix MODEM macro hang in tx Also remove unnecessary REQ_FLUSH in btnMem_cb()
+	ab887adcb: Add EXEC macro
+	2865170a3: Merge with upstream
+	d725f0941: Upstream version 2.11B
+	090c39fd7: Upstream version 2.11A
+	cf7ed309b: Correctly calculate src_ratio
+	267e0ccaf: Merge with upstream
+	6d97a4e93: Upstream version 2.10
+	5bf735c18: Sound fixes Call Close() before returning from trx receive exception handler Use same code to calculate receive src_ratio in resample() and src_data_reset()
+	998814396: Merge with upstream
+	122cac96e: Upstream version 2.10Z
+	78fc91593: Upstream version 2.10Y
+	fbf2bf4dd: Add shortcut to cancel xmit
+	3b1e08453: MODEM macro fix Add REQ_FLUSH call to make sure that waterfall::opmode has been run before returning from init_modem_sync.
+	dc33a16e6: Use region in rx menu
+	dbc40df69: Merge with upstream
+	cdb15b024: Merge with upstream
+	768e50958: Upstream version 2.10X
+	6a33924ac: Merge with upstream
+	202f5e275: Upstream version 2.10W
+	bca62e671: Upstream version 2.10V
+	a8806092c: Fix MODEM macro
+	9a5ba8cfe: Use correct squelch var
+	d2855a20c: Merge with upstream
+	86956a231: Upstream version 2.10U
+	08792eb5b: Wfall/viewer freq paste
+	659331f9e: RMB audio history playback Also prevent playback when dragging, and restore kb focus to the transmit text widget
+	f1da5bbca: Adjust FText styles
+	f7bc45e5b: Correct Olivia defaults
+	080d1bebd: Enable extended chars
+	403025325: Sound init error checking Also restore Close() calls for OSS
+	0bd57961c: Hide mixer frame correctly
+	eead0fc9d: Viewer freq paste shortcuts
+	e03925125: Merge with upstream
+	ec3aa3820: Upstream version 2.10T
+	68936c6e8: repo maintenance
+	82fd85744: Merge with upstream
+	c2dab0af3: Upstream version 2.10S
+	ae0441596: Merge with upstream
+	92d6b342f: Upstream version 2.10R
+	42ca1787e: TX font config
+	3c4499f1b: Alt. macro button
+	366a2e26a: repo maintenance
+	2463e328a: Merge with upstream
+	91c260f91: Upstream version 2.10Q
+	6f162db3f: Merge with upstream
+	cdcdc6c32: Upstream version 2.10P
+	45138e988: Add missing config.h include Also add a missing xclass call and test script
+	0d2312d5a: Fix arg parsing
+	bc04b0766: Merge with upstream
+	63c4ec355: Upstream version 2.10o
+	7d8684b34: Merge with upstream
+	2b68f1100: Upstream version 2.10N
+	cce24a106: Stream init fixes
+	18007fe2e: Add OS X app bundling support Also add support for building OS X universal binaries, define version macros and variables, and update the INSTALL file.
+	f4f7fd0ec: Merge with upstream
+	b4bd00695: Upstream version 2.10M
+	9cb988133: Merge with upstream
+	b295c0f87: Upstream version 2.10L
+	8bd46f1e9: Merge with upstream
+	28718230c: Upstream version 2.10K
+	e5476cb2b: Separate in/out snd dev support Also add a SoundNull backend and rework sound configuration
+	c6d01b554: Callsign query clean-ups
+	018d0a788: Merge with upstream
+	ac64df569: Upstream version 2.10J
+	d3f234b2c: Merge with upstream
+	f30ffbf5a: Upstream version 2.10I
+	a867b0f66: Merge with upstream
+	8261f9808: Upstream version 2.10H
+	f80acc92c: Merge with upstream
+	4177365bd: Upstream version 2.10G
+	d66621498: Sound interface changes
+	981bedf53: Correctly calculate ncount
+	13d3c248b: Merge with upstream
+	6aac6bc05: Upstream version 2.10F
+	3dce149bb: Refactor configure.ac
+	6bea09319: Add PulseAudio support
+	501fa5eeb: Add REQ_DROP
+	bc4ff951a: Use default audio dev Also remove the deprecated --sample-rate switch
+	8a755f9d4: Merge with upstream
+	2e12ab418: Upstream version 2.10E
+	352a2cb67: Merge with upstream
+	a458af58a: Upstream version 2.10D
+	923a0b02f: Add macro to change modem Also rearrange the macro list in the editor into groups and add separator lines.
+	d5934f0be: Merge with upstream
+	7e3d8b2f2: Merge with upstream
+	66bbde241: Upstream version 2.10C
+	ccd970fe7: Upstream version 2.10B
+	d91b5915c: Add check for -rdynamic support Also add calls for the build, target, host macros.
+	38eb18def: Correctly calculate number of samples
+	ea3260118: Resolve name clashes on OSX (2) Rename sound classes to avoid a conflict with an enum named cSound and defined in a system header on OSX: cSound -> SoundBase, cSoundOSS -> SoundOSS, cSoundPA -> SoundPort cMixer -> MixerBase, cMixerOSS -> MixerOSS Also enable MixerBase ctor & virtual dtor, and delete some old comments in the SoundPort declaration.
+	f8a2c08ad: Resolve name clashes on OSX (1)
+	de237390c: Rename Config files Config.{fl,h,cxx} -> confdialog{fl,h,cxx}. This ensures that there will be no ambiguity between Config.h and the autogenerated config.h on case-insensitive but case-preserving filesystems.
+	7b5254de7: Add fluid target
+	2fc36599e: Disable pixmap icon on OSX
+	fc9477a0f: Make OSS optional Split cMixer into base class and OSS implementation. Add configure.ac macros to detect OSS and disable cMixerOSS and cSoundOSS. Hide volume sliders if OSS is disabled, or if we are not managing the mixer.
+	cffd639e0: Use HAVE_REGEX_H in psk viewer
+	d8304ae60: Use a rb for audio history
+	3248b7685: Merge with upstream
+	a137030ce: Upstream version 2.10A
+	2599113a4: Merge with upstream
+	a915633f3: Upstream version 2.09
+	575c17f57: Upstream version 2.09K
+	83a8d00e0: Upstream version 2.09J
+	12b1d6807: Fix argument handling Long arguments without a space (--opt=arg) now work correctly. Also, move sound initialisation to a separate function, add an undocumented --exit-after SECONDS argument, and update mkversions.sh to include CXXFLAGS in the --version output.
+	795ac21e5: Merge with upstream
+	e2083f2f0: Upstream version 2.09I
+	1c8dac9bb: Merge with upstream
+	bf19d9d6f: Upstream version 2.09H
+	1a7896785: Merge with upstream
+	41519882c: Upstream version 2.09G
+	a60ca6ed9: Merge with upstream
+	c836b738c: Upstream version 2.09F
+	4c06b8317: Merge with upstream
+	c57b41130: Add regex support Add a beep button. Insert "@." when resizing Set inpSeek to constant width font Extend character range to include { 
+	ad9f2d6a3: sprintf considered harmful Also fix a bug in putadif() where strings longer than the max field size would be truncated to one less than that size. Add a configure-time check for snprintf and vsnprintf because flstring.h looks for HAVE_SNPRINTF and HAVE_VSNPRINTF
+	c40dccc5b: Upstream version 2.09E
+	58839a1a4: Adjust PSK Viewer colours Also set window class and insert end-of-formatting char
+	2eecd2e93: Upstream version 2.09D
+	41e003e38: Merge with upstream
+	bcecfe43e: Use sndfile C API Also add .au support
+	ead061ffd: Fix unchecked retval warnings
+	c3d55a6ce: Fix for sync AM rig modes These are new in hamlib 1.2.6. We could require >= 1.2.6 in configure.ac, but then we would make packaging difficult on Debian stable (etch) for no good reason.
+	c5a706477: Upstream version 2.09C
+	f5582953c: Upstream version 2.09B
+	b18ab16eb: Upstream version 2.09A
+	2736cb79b: Upstream version 2.09 (alpha)
+	d4ad63770: Upstream version 2.08
+	398f3a3bb: Enable std-options With this automake option, "make distcheck" will also require the binary to write text to stdout and exit with code 0 when called with --version and --help. This way we get a free (but fairly basic) runtime check. Also, use the AC_COPYRIGHT macro instead of a comment.
+	9d5187bbd: HTML/cmdline help changes
+	0bb60b2a8: Makefile freebsd compat. On FreeBSD include files for portaudio-1 are in /usr/local/include/portaudio include files for portaudio-2 are in /usr/local/portaudio2 similarly for the libs.
+	4d72d2b4e: Merge with upstream
+	34f68be95: Upstream version 2.08G
+	1d0eee36b: Remove freqlist hscrollbar
+	bd87ef5e3: Rigdialog changes Make the window shrinkable, and also add a mouse shortcut to replace items in the frequency list. Update tooltip.
+	0a33c9d16: Version text changes Break long lines in version text Minor changes to help text
+	ed02583c7: Clean up min/max macros
+	70de915ac: Merge with upstream
+	3756b2e15: Upstream version 2.08F
+	c410ff866: Remove .desktop Encoding
+	505518045: Fix freq/mode selection Setting some rig modes may also change the frequency; set the rig mode first
+	c2f76891d: Retry PA/OSS errors
+	67c2c691a: Audio playback fix Do not apply the receive mixer volume to the audio samples read from files when the mixer is disabled.
+	0a0e32247: Rig dialog changes Display saved rig mode, digital mode, and wfall carrier in the rigcontrol window frequency list
+	2ecb92289: DominoEX bug fix Fix a decodesymbol() loop that was accessing memory below the start of symbolbuf
+	86d89d0e0: Use correct check for OSS This only affects error printing when PortAudio/OSS returns with an "Unanticipated Host Error"
+	c77b1e66b: Add some help items
+	8d8760761: Cosmetic changes to rx menu
+	3f10b9ff7: Squeeze wfall controls
+	7e7e2aa03: Hide QRZ password
+	15ee11a2f: Clean up QSO frame
+	5f366be46: FTextEdit paste fix
+	f673947a2: Update INSTALL file
+	792b6b53e: Merge with upstream
+	580cc2110: Upstream version 2.08d
+	73fde2af9: Use execvp
+	4cbfa4bd9: Add Olivia settings
+	ba64201e7: PSK bug fix Initialise s/n and imd variables
+	99c0d578d: Throb bug fix Plug a memory leak caused by using the wrong delete operator
+	e6a0caaa6: CW fix Initialise usedefaultWPM in ctor to avoid valgrind warning about conditional jump depending on access to uninitialised memory
+	220c41f54: MFSK bug fixes Set some variables to avoid accessing uninitialised memory. Initialise interleave table with 0s; the original gmfsk code used g_new0 to do this. This avoids another access to random bits. Fix memory leak by creating the small syms array on the stack. Initialise symbolpair[] with 0s in ctor to avoid vargrind warnings
+	a30e84f63: Olivia bug fixes Set smargin and sinteg to avoid access to uninitialised memory Also set lastfreq to 0 in ctor to avoid valgrind warnings
+	d3ff0adf9: Fix key bindings loop
+	642e63629: Add debug_exec
+	8cb6ccbc4: Print host API errors
+	0d934eec1: Stacktrace updates Kill a newline in Aborting... message Skip pstack's own frame when printing stack trace
+	904e7f4fc: Add selectFreq delay
+	f2bdf7a3e: Add #if USE_PORTAUDIO check
+	5f4ea0646: Merge with upstream
+	60d3b3d71: Upstream version 2.08c
+	e1e230774: Mention Native sample rate
+	09e25894f: Add .desktop, move icons to data/ configure.ac updates Thanks to Steve Conklin for the .desktop file and the Makefile.am patch
+	8a89e6417: Set locale only for LC_TIME
+	37cddb39f: Update README
+	fb86586f9: Set default cursor for popup
+	f88e55979: Merge with upstream
+	5eeb18464: Upstream version 2.08b
+	24a1f89bf: Remove mention of TLS
+	4ac6ad074: Upstream version 2.08a
+	341dd6c52: No sigsearch on RMB release
+	ce52dd17d: Add Native sample rate
+	0dc1e2357: Use std::bind if available
+	d3849ae87: Switch cSoundPA to the C API
+	d32954878: Merge with upstream
+	b237fd655: Copy CXXFLAGS to CFLAGS
+	9662164e8: Correctly initialise CW modem
+	e3d1e1647: New ringbuffer, misc. utilities
+	635f3d1fa: Add TLS autodetection
+	3f0701cca: Upstream version 2.07
+	6843d6917: Merge with upstream
+	0a1dab204: qrunner updates Rename QUEUE to REQ and delete CMP_CB
+	7ed427426: Merge with upstream
+	93ded34b7: Upstream version 2.06
+	cda31bdcc: Merge with upstream
+	3cc681c35: Upstream version 2.066
+	c7088d960: rigsupport.cxx fixes
+	60c9060d7: Merge with upstream
+	f03625945: Upstream version 2.065
+	b7dd1c0ca: Move Audio under Files
+	77e315cb3: hamlib.cxx fixes
+	05f035b33: Default to NONE when adding new freqs
+	5c8680a38: Merge with upstream
+	4e2827447: Upstream version 2.064
+	5ce658afb: Add more date macros
+	50c99e9e7: Merge with upstream
+	fbe33b9a2: Add digiscope mwheel handling
+	14939ae3a: Remove adjuster widget
+	67889b78f: More tweaks
+	2605fca04: Set opMODE in selectFreq
+	74f384232: Don't copy freqlist to cout
+	c8633a838: Upstream version 2.062
+	133664eff: Add cast to adjFreq callback
+	e33f12f74: New stacktrace code
+	8dae0d958: Rigcontrol dialog changes
+	023e1f391: Fix g++-4.3 errors and warnings
+	38a677e79: Fix new assertions
+	80f6f30cc: Remove extra includes
+	606a047ce: Merge with upstream
+	17e5dc5c2: Upstream version 2.06 (alpha)
+	a78544851: Compiler fixes
+	e7795ef50: Merge with upstream
+	131f09c38: Upstream version 2.05
+	4aba0d51f: Upstream version 2.05d
+	13f5c8807: Add M clear shortcut
+	4b322bc17: More status button tweaks The mouse wheel now cycles through the modems in the same order as they appear in the main Op Mode menu
+	5b44ca282: Analysis: put_MODEstatus in rx_init
+	caa3e3ed2: Merge with upstream
+	e229f2849: Upstream version 2.05c
+	161112b8a: Fix btnMem mouse2 handling
+	72099f442: Fix waterfall marker drawing The markers may wrap around the other end of the waterfall if the AFC search range is large enough Also narrow the AFC search range and reduce the squelch threshold when the mouse wheel is scrolled down
+	614e601f3: Add a sample rate config menu Change get_best_srate to try the modem sample rate and device sample rate only Print exception messages to the status bar
+	e5549c5f9: Add a waterfall Mem button Also add a mode_info structure and hence delete the modem init functions. Add a new init_modem_sync and QUEUE_FLUSH. Tweak the status button menu.
+	85173b9d4: Get rid of CRs
+	90ee5d594: Fix FText event handler
+	c068900a7: Add an INSTALL file
+	d1f6a29ed: configure.ac fixes
+	57b8fb9be: Merge with upstream
+	d30f0b382: Delete debugging message
+	4a59d66cd: Fall back to bundled samplerate
+	868452150: Make sndfile optional
+	4dec0c20b: PA args should depend on USE_PORTAUDIO
+	bf547e849: Upstream version 2.05b-exp
+	41f65cdd0: autoconfiscate
+	e67229514: Upstream version 2.05b
+	fe9d142f9: Reset sq label; reverse mwheel direction
+	14f1019e6: Squelch label
+	9dad9b9ee: Fix cc warnings; print src version
+	e9d1cd8c4: Merge with upstream
+	0ddcf6b92: Upstream version 2.05a
+	6b6bd5bc7: Makefile updates
+	e28b57b60: Clean up; add copyright headers
+	8e949e899: sample-rate and frames-per-buf switches
+	ea37d3044: FLAC and sndfile comments
+	53b6c206a: Keep the audio stream open
+	aa71760df: More waterfall hacks
+	4cf9874ff: Add clear_sent method Use this instead of clear when encountering a ^r
+	434634eaf: Merge with upstream
+	11af06016: Upstream version 2.04e
+	7580a6e37: Use pkg-config where possible
+	be35436ac: Merge with upstream
+	9d1d3def6: Upstream version 2.04d
+	1d7380da2: Merge with upstream
+	a28f2f871: Upstream version 2.04c
+	5031bbae8: Merge with upstream
+	587711a78: Fix AFC shortcut handling
+	896894229: Upstream version 2.04b
+	d23ca917e: Upstream version 2.04a
+	2dab69f7a: Upstream version 2.04 (rc)
+	c222a6600: Upstream version 2.03
+	7de4d361b: Upstream version 2.02
+	d00fa6942: Upstream version 2.01
+	c075bd101: Upstream version 2.0
+	25b4b87eb: Upstream version 2.0 (rc)
+	a9831c865: Upstream version 2.0pre2
+	f9e982066: Upstream version 2.0pre
+	436e90ea4: Upstream version 1.38.15
+	94355bf93: Upstream version 1.38.14
+	3aee619ba: Upstream version 1.38.11
+	5872467d8: Upstream version 1.38.10
+	1e5172cb3: Upstream version 1.38.09
+	3ae308a60: Upstream version 1.38.08
+	3c922de1f: Upstream version 1.38.07
+	6a161c8ef: Upstream version 1.38.06
+	50d02cc50: Upstream version 1.38.05
+	c71808d3d: Upstream version 1.38.04
+	fc4caa167: Upstream version 1.38.03
+	fc457abab: Upstream version 1.38.02
+	23b6edc85: Upstream version 1.38.01
+	4d5b9e7a3: Upstream version 1.37U
+	d4621401d: Upstream version 1.37S
+	5ab32c854: Upstream version 1.37R
+	ecd9157d4: Upstream version 1.37Q
+	48ad45edf: Upstream version 1.37p
+	04b32dc4f: Upstream version 1.37o
+	6d4e6e7c0: Upstream version 1.37n
+	cbae4492e: Upstream version 1.37L
+	6f058a284: Upstream version 1.37k
+	819904b72: Upstream version 1.37j
+	6d7eb5c09: Upstream version 1.37i
+	23860fbd0: Upstream version 1.37h
+	e1efe8c81: Upstream version 1.37f-exp
+	087232221: Upstream version 1.37e-exp
+	c3d146d1b: Upstream version 1.37c-exp
+	52e0bb1f3: Upstream version 1.37a-exp
+	df27a2376: Upstream version 1.37exp
+	81f00f665: Upstream version 1.36e
+	a4c5c49d9: Upstream version 1.36c
+	f2e8c9a21: Upstream version 1.36b
+	54de891c5: Upstream version 1.35R
+	ffb63c1c9: Upstream version 1.35q
+	a140f8460: Upstream version 1.35o
+	dcf89d532: Upstream version 1.35N
+	3be91c169: Upstream version 1.35M
+	33f4b4910: Upstream version 1.35L
+	e37ebe13a: Upstream version 1.35J
+	962179007: Upstream version 1.34
+	4d5c3d476: Upstream version 1.33

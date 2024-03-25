@@ -1,0 +1,3 @@
+soundcard/fldigi-steam_train.o: soundcard/steam_train.cxx \
+ /usr/include/stdc-predef.h
+/usr/include/stdc-predef.h:

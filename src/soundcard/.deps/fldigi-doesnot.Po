@@ -1,0 +1,3 @@
+soundcard/fldigi-doesnot.o: soundcard/doesnot.cxx \
+ /usr/include/stdc-predef.h
+/usr/include/stdc-predef.h:

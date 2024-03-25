@@ -1,0 +1,95 @@
+libtiniconv/fldigi-tiniconv_desc.o: libtiniconv/tiniconv_desc.c \
+ /usr/include/stdc-predef.h libtiniconv/tiniconv_int.h \
+ libtiniconv/tiniconv.h /usr/include/assert.h /usr/include/features.h \
+ /usr/include/features-time64.h \
+ /usr/include/x86_64-linux-gnu/bits/wordsize.h \
+ /usr/include/x86_64-linux-gnu/bits/timesize.h \
+ /usr/include/x86_64-linux-gnu/sys/cdefs.h \
+ /usr/include/x86_64-linux-gnu/bits/long-double.h \
+ /usr/include/x86_64-linux-gnu/gnu/stubs.h \
+ /usr/include/x86_64-linux-gnu/gnu/stubs-64.h libtiniconv/encdec/ascii.h \
+ libtiniconv/encdec/cp1250.h libtiniconv/encdec/cp1251.h \
+ libtiniconv/encdec/cp1252.h libtiniconv/encdec/cp1253.h \
+ libtiniconv/encdec/cp1254.h libtiniconv/encdec/cp1255.h \
+ libtiniconv/encdec/flushwc.h libtiniconv/encdec/cp1256.h \
+ libtiniconv/encdec/cp1257.h libtiniconv/encdec/cp1258.h \
+ libtiniconv/encdec/vietcomb.h libtiniconv/encdec/iso8859_1.h \
+ libtiniconv/encdec/iso8859_2.h libtiniconv/encdec/iso8859_3.h \
+ libtiniconv/encdec/iso8859_4.h libtiniconv/encdec/iso8859_5.h \
+ libtiniconv/encdec/iso8859_6.h libtiniconv/encdec/iso8859_7.h \
+ libtiniconv/encdec/iso8859_8.h libtiniconv/encdec/iso8859_9.h \
+ libtiniconv/encdec/iso8859_10.h libtiniconv/encdec/iso8859_11.h \
+ libtiniconv/encdec/iso8859_13.h libtiniconv/encdec/iso8859_14.h \
+ libtiniconv/encdec/iso8859_15.h libtiniconv/encdec/iso8859_16.h \
+ libtiniconv/encdec/cp866.h libtiniconv/encdec/koi8_r.h \
+ libtiniconv/encdec/koi8_ru.h libtiniconv/encdec/koi8_u.h \
+ libtiniconv/encdec/mac_cyrillic.h libtiniconv/encdec/ucs2.h \
+ libtiniconv/encdec/utf7.h libtiniconv/encdec/utf8.h \
+ libtiniconv/encdec/gb2312.h libtiniconv/encdec/euc_cn.h \
+ libtiniconv/encdec/gbk.h libtiniconv/encdec/gbkext1.h \
+ libtiniconv/encdec/gbkext2.h libtiniconv/encdec/gbkext_inv.h \
+ libtiniconv/encdec/cp936ext.h libtiniconv/encdec/ces_gbk.h \
+ libtiniconv/encdec/big5.h libtiniconv/encdec/ces_big5.h \
+ libtiniconv/encdec/jisx0208.h libtiniconv/encdec/jisx0201.h \
+ libtiniconv/encdec/cp936.h libtiniconv/encdec/iso2022_jp.h
+/usr/include/stdc-predef.h:
+libtiniconv/tiniconv_int.h:
+libtiniconv/tiniconv.h:
+/usr/include/assert.h:
+/usr/include/features.h:
+/usr/include/features-time64.h:
+/usr/include/x86_64-linux-gnu/bits/wordsize.h:
+/usr/include/x86_64-linux-gnu/bits/timesize.h:
+/usr/include/x86_64-linux-gnu/sys/cdefs.h:
+/usr/include/x86_64-linux-gnu/bits/long-double.h:
+/usr/include/x86_64-linux-gnu/gnu/stubs.h:
+/usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
+libtiniconv/encdec/ascii.h:
+libtiniconv/encdec/cp1250.h:
+libtiniconv/encdec/cp1251.h:
+libtiniconv/encdec/cp1252.h:
+libtiniconv/encdec/cp1253.h:
+libtiniconv/encdec/cp1254.h:
+libtiniconv/encdec/cp1255.h:
+libtiniconv/encdec/flushwc.h:
+libtiniconv/encdec/cp1256.h:
+libtiniconv/encdec/cp1257.h:
+libtiniconv/encdec/cp1258.h:
+libtiniconv/encdec/vietcomb.h:
+libtiniconv/encdec/iso8859_1.h:
+libtiniconv/encdec/iso8859_2.h:
+libtiniconv/encdec/iso8859_3.h:
+libtiniconv/encdec/iso8859_4.h:
+libtiniconv/encdec/iso8859_5.h:
+libtiniconv/encdec/iso8859_6.h:
+libtiniconv/encdec/iso8859_7.h:
+libtiniconv/encdec/iso8859_8.h:
+libtiniconv/encdec/iso8859_9.h:
+libtiniconv/encdec/iso8859_10.h:
+libtiniconv/encdec/iso8859_11.h:
+libtiniconv/encdec/iso8859_13.h:
+libtiniconv/encdec/iso8859_14.h:
+libtiniconv/encdec/iso8859_15.h:
+libtiniconv/encdec/iso8859_16.h:
+libtiniconv/encdec/cp866.h:
+libtiniconv/encdec/koi8_r.h:
+libtiniconv/encdec/koi8_ru.h:
+libtiniconv/encdec/koi8_u.h:
+libtiniconv/encdec/mac_cyrillic.h:
+libtiniconv/encdec/ucs2.h:
+libtiniconv/encdec/utf7.h:
+libtiniconv/encdec/utf8.h:
+libtiniconv/encdec/gb2312.h:
+libtiniconv/encdec/euc_cn.h:
+libtiniconv/encdec/gbk.h:
+libtiniconv/encdec/gbkext1.h:
+libtiniconv/encdec/gbkext2.h:
+libtiniconv/encdec/gbkext_inv.h:
+libtiniconv/encdec/cp936ext.h:
+libtiniconv/encdec/ces_gbk.h:
+libtiniconv/encdec/big5.h:
+libtiniconv/encdec/ces_big5.h:
+libtiniconv/encdec/jisx0208.h:
+libtiniconv/encdec/jisx0201.h:
+libtiniconv/encdec/cp936.h:
+libtiniconv/encdec/iso2022_jp.h:

@@ -1,0 +1,49 @@
+Installation Instructions for fldigi
+************************************
+
+To compile fldigi you will need:
+
+  * A recent C++ compiler.  The GNU C++ compilers in the 4.x series are
+    known to work.
+
+  * Version 1.3.4 or later of the Fast Light Tool Kit (FLTK), with its
+    development library and headers.  FLTK's multi-threading support is
+    required.
+
+  * The samplerate (a.k.a. secret rabbit code) library.
+
+  * The PNG library.
+
+  * The libxft library.
+
+  * The libudev-dev library.
+
+You should read and follow the instructions for building on various OS
+platforms that are on the fldigi wiki:
+
+http://www.w1hkj.com/doku/doku.php?id=howtos
+
+The simplest way to compile this package on Linux is:
+
+  1. `cd' to the directory containing the package's source code and type
+     `./configure' to configure the package for your system.
+
+     Running `configure' might take a while.  While running, it prints
+     some messages telling which features it is checking for.
+
+  2. Type `make' to compile the package.
+
+  3. Optionally, type `make check' to run any self-tests that come with
+     the package.
+
+  4. Type `make install' to install the programs and any data files and
+     documentation.
+
+  5. You can remove the program binaries and object files from the
+     source code directory by typing `make clean'.  To also remove the
+     files that `configure' created (so you can compile the package for
+     a different kind of computer), type `make distclean'.  There is
+     also a `make maintainer-clean' target, but that is intended mainly
+     for the package's developers.  If you use it, you may have to get
+     all sorts of other programs in order to regenerate files that came
+     with the distribution.

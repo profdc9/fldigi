@@ -1,0 +1,234 @@
+NEWS for version 4.x
+
+Version 4.0.4
+
+  cw scanner
+    . adds multi signal scanner / browser
+  Sound Card
+    . keep input and output sound card devices open for duration of
+      fldigi execution
+    . Corrected tune output device
+    . Changed tune, wfid, video and cw id to use tx offset
+  CW QSY
+    . Correct QSY when transceiver in CW and CW-R type modes
+  CALL field size
+    . Increased CALL, OP_CALL, STA_CALL from 15 to 30 chars
+  LOG area controls
+    . Resize controls to add County entry control.  Allow user
+      to select which extra qso field is displayed; country or
+      county.
+
+Version 4.0.3
+
+  CW code update
+    . Changed all element timing to number of samples
+      both CW and CW scanning detectors
+    . Removed FIR filter. FFT filter only for CW signal path.
+    . Removed Hilbert transform from CW signal path
+    . Update CW documentation
+
+  OS X Wizard
+    . Discovered cause of Wizard failure on OS X
+      - newly created dialogs cannot be accessed until actually shown.
+
+  CW wait
+    . Correct Windows performance at end of CW Tx text
+      - program should wait for keyboard input
+      - terminate with the ^r character pair
+      - terminate with control-r
+      - terminate with the T/R button
+
+Version 4.0.2
+
+  Revert "wefax"
+    . This reverts commit 5609415222335e9376defc325f20ae29c5c8c8ca.
+    . Modifies wefax.cxx iaw request from Remi, wefax author
+
+  Lotw Match
+    . fix failure to mark logbook as dirty when records are matched
+
+  flrigi bw synch
+    . Improve bandwidth table / selection sync with flrig when changing 
+      xcvr mode from fldigi
+
+  Clang 8.1.0
+    . Correct warning notification with latest Clang compiler on
+      macOS Sierra 10.12.4
+
+  Sound card
+    . Changed to separate Rx/Tx soundcard instances
+      - only open/close when samplerate changes
+      - attempt to reduce incidence of lost sound card in OS X
+
+  IFKP image processing
+    . Rx processing failed to return to TEXT state upon conclusion of 
+      image transfer
+
+  Macro Save
+    . Corrected issue with macro tag "Save"
+
+  CW end of transmit
+    . Add <LF> character to Rx echo text when going from Tx to Rx
+      - provides visual separation of Tx and Rx text in the Rx panel
+      - color rendition still applies.
+
+  Font Initialization
+    . Force all font initialization to be name dependent
+    . Font name / Font number can change as user installs or removes 
+      fonts from the OS with potentially fatal impact on fldigi font usage.
+    . May require user to reconfigure various font selections
+
+  OS X socket connect
+    . connect test for fail conditions not correct for OS X
+
+  Winkeyer exit process
+    . Release resources when closing Winkeyer
+    . Issue ADMIN:CLOSE command to Winkeyer when disconnecting or
+      closing fldigi.
+
+Version 4.0.1
+
+  Socket connect
+    . FreeBSD mod causes seg fault on non BSD platforms
+      - make change OS dependent
+
+Version 4.0.0
+
+  OS X 10.12 build
+    . Compile changes for OS X Darwin 10.12 Clang build
+
+  STATION_CALLSIGN
+    . Change adif field STATION_CALL to STATION_CALLSIGN compliant with
+      adif specification
+
+  Free BSD mods
+    . Compliance mods for current version of Clang compiler
+
+  Logbook mods
+    . Update log field LOTWSDATE for each record sent to LOTW when the
+      upload file is created
+    . clear LOTWSDATE field if lotw rejects submission or fails to 
+      respond within 25 seconds
+    . insure that lotw review dialog closes on program exit
+    . restore tabular sort order when adding a record
+
+  Default Tx Audio
+    . Change default audio output to both channels
+
+  remove sprintf
+    . change all remaining occurances of sprintf to snprintf
+
+  Documentation update
+    . New documentation for winkeyer interface
+
+  n3fjp logger search
+    . set initial search for n3fjp server to 5 second intervals
+
+  fopen->fl_fopen
+    . update to UDF-8 compatible fopen call
+
+  48 bar macro
+    . allow user to select above / below Rx/Tx panels
+
+  CW decoder
+    . Improved CW decoder
+      - removed user adjustable signal level controls
+      - added automatic tracking filters for Rx signal level
+      - tracking filters change parameters with detected WPM.
+
+  DX cluster
+    . Update dxcluster QSY to correctly align signal to sweet spot
+      when transceiver is in a CW mode.
+    . add ability to respond to password prompt
+
+  Logbook support
+    . Add checkband test to new log entry before writing record
+    . Added BAND control to log view, contest tab
+      - fldigi does not use the BAND field, it is present as a
+        convenience for exporting or importing from log programs
+        that do use it.
+      - the control is on the contest tab since that seems to be
+        the most common use for BAND (e.g. field day event).
+    . OS X file naming dialog drops the ".adif" extension.
+      - add code to insure newlog etc have the correct extension.
+
+  WinKeyer
+    . Added embedded WinKeyer interface
+
+  fsq ifkp s/n computation
+    . Additional change to s/n measurement
+
+  fltk version update
+    . update all fluid generated source and header files
+
+  Macro Date Time Formats
+    . Allow user to specify the date time format using strftime format
+      strings
+      - <ZT> becomes <ZT:"%H%M%S">; <ZT:"%H:%M:%SZ"> etc.
+      - <ZT:fmt> fmt is the strftime format string
+        if the ':fmt' is not in the macro tag then the current format
+        is used
+
+  lotw addition
+    . Add jt9 modes for lotw upload
+    . Allow up to 7 numerals in frequency element
+
+  THOR/IFKP Image transfers
+    . Add auto save Rx images to
+      - Thor
+      - IFKP
+    . Corrected IFKP send image sequencing
+      - pic%[T] where T is image scale was not being sent before the
+        image fascimille.
+    . Added Thor and IFKP image transfer using the <IMAGE:fname> macro
+      tag
+
+  ifkp s/n update
+    . Change to s/n measurement
+      - noise measured over full range of possible signal bins
+      - noise referenced to 3000 Hz bandwidth
+
+  fsq s/n update
+    . Change to s/n measurement
+      - noise measured over full range of possible signal bins
+      - noise referenced to 3000 Hz bandwidth
+
+  OSS bug fix
+    . Add missing parenthesis to reverse audio test
+      - bug fix submitted by Guiseppe, IZ1QZE
+
+  PSKMAIL PTT fault protection
+    . add REQ(...) to show_tx_timer function call
+
+  Logbook File Handling
+    . Change new log file naming paradigm
+      - move logbook open/save/merge to a separate sub    -menu
+    . Change logbook merge logic
+      - discover and cull duplicates in both current and merge records
+      - write duplicates to adif file for user review
+      - annotate Rx Panel with user information on merger performance
+
+  Russian UTF-8 translation
+    . Added Russian po files
+
+  Tooltips
+    . Correct and update various tooltips
+
+  n3fjp contest update
+    . Add read next serial to send from n3fjp logger
+    . Add send TXTENTRYSERIALNOR to n3fjp generic logger
+    . Add new macro tags
+      - <SERNO>   current serial number
+      - <LASTNO>  last serial number
+    . add support fields for N3FJP NAQP contest logging
+
+  Hamlib/RigCAT/XMLRPC Interface
+    . Hamlib (K5JAE)
+      - Add user adjustable poll rate
+      - Add Defaults button
+      - Modify activation of controls based on hamlib selection
+    . RigCAT (W1HKJ)
+      - removed btnRevertRIGCAT & associated functions
+      - toggle Initialize button state with change in rigcat enable
+    . XMLRPC (W1HKJ)
+      - toggle Initialize button state with change in xmlrpc enable

@@ -1,0 +1,3 @@
+soundcard/fldigi-dinnerbell.o: soundcard/dinnerbell.cxx \
+ /usr/include/stdc-predef.h
+/usr/include/stdc-predef.h:
