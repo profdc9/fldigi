@@ -671,6 +671,13 @@
         ELEM_(bool, WK_K3NGsketch, "WK_K3NGsketch",                                     \
               "Mortty loaded with K3NG WinKeyer emulator sketch",                       \
               false)                                                                    \
+        /* SCAMP */                                                                     \
+        ELEM_(int, ScampResync, "SCAMPRESYNC",                                          \
+              "SCAMP Resync Frames 0-9",                                                \
+              0)                                                                        \
+        ELEM_(int, ScampRepeat, "SCAMPREPEAT",                                          \
+              "SCAMP Repeat Frames 1-9",                                                \
+              1)                                                                        \
         /* FELD HELL */                                                                 \
         ELEM_(double, HELL_BW, "HELL_BW0", "Feld Hell working bandwidth",  245.0)       \
         ELEM_(double, HELL_BW_FH, "HELL_BW1", "FH bandwidth",  245.0)                   \
