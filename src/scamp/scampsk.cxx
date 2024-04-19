@@ -247,7 +247,7 @@ void SCAMPSK::send_baudot(int ch)
 	scampskbit((ch & 0x04) == 0x04 ? SCAMPSK_MARK : SCAMPSK_SPACE, BITLEN);
 	scampskbit((ch & 0x08) == 0x08 ? SCAMPSK_MARK : SCAMPSK_SPACE, BITLEN);
 	scampskbit((ch & 0x10) == 0x10 ? SCAMPSK_MARK : SCAMPSK_SPACE, BITLEN);
-	scampskbit(SCAMPSK_MARK, BITLEN * (progdefaults.scampsk_STOPBITS ? 1.5 : 2.0));
+	scampskbit(SCAMPSK_MARK, BITLEN * 1.5);
 }
 //----------------------------------------------------------------------
 
@@ -292,7 +292,7 @@ int SCAMPSK::callback_method()
 
 void *scampsk_loop(void *data)
 {
-	SET_THREAD_ID(SCAMPSK_TID);
+	SET_THREAD_ID(FSK_TID);
 
 	SCAMPSK *scampsk = (SCAMPSK *)data;
 	while (1) {

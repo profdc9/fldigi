@@ -76,7 +76,7 @@ static char figures[32] = {
 	'9',	'?',	'&',	' ',	'.',	'/',	';',	' '
 };
 
-int dspcnt = 0;
+int dspcnsc = 0;
 
 static char msg1[20];
 
@@ -161,7 +161,7 @@ void scamp::init()
 	stopflag = false;
 
 	if (progdefaults.StartAtSweetSpot)
-		set_freq(progdefaults.SCAMPsweetspot);
+		set_freq(progdefaults.RTTYsweetspot);
 	else if (progStatus.carrier != 0) {
 		set_freq(progStatus.carrier);
 #if !BENCHMARK_MODE
@@ -180,7 +180,7 @@ void scamp::init()
 	if (progdefaults.PreferXhairScope)
 		set_scope_mode(Digiscope::XHAIRS);
 	else
-		set_scope_mode(Digiscope::SCAMP);
+		set_scope_mode(Digiscope::RTTY);
 	for (int i = 0; i < MAXPIPE; i++) mark_history[i] = space_history[i] = cmplx(0,0);
 
 	lastchar = 0;
@@ -210,27 +210,27 @@ void scamp::reset_filters()
 {
 	delete mark_filt;
 	mark_filt = new fftfilt(scamp_baud/samplerate, filter_length);
-	mark_filt->scamp_filter(scamp_baud/samplerate);
+	mark_filt->rtty_filter(scamp_baud/samplerate);
 	delete space_filt;
 	space_filt = new fftfilt(scamp_baud/samplerate, filter_length);
-	space_filt->scamp_filter(scamp_baud/samplerate);
+	space_filt->rtty_filter(scamp_baud/samplerate);
 }
 
 void scamp::restart()
 {
 	double stl;
 
-	scamp_shift = shift = (progdefaults.scamp_shift < numshifts ?
-				  SHIFT[progdefaults.scamp_shift] : progdefaults.scamp_custom_shift);
-	if (progdefaults.scamp_baud > numbauds - 1) progdefaults.scamp_baud = numbauds - 1;
-	scamp_baud = BAUD[progdefaults.scamp_baud];
-	filter_length = FILTLEN[progdefaults.scamp_baud];
+	scamp_shift = shift = (progdefaults.rtty_shift < numshifts ?
+				  SHIFT[progdefaults.rtty_shift] : progdefaults.rtty_custom_shift);
+	if (progdefaults.rtty_baud > numbauds - 1) progdefaults.rtty_baud = numbauds - 1;
+	scamp_baud = BAUD[progdefaults.rtty_baud];
+	filter_length = FILTLEN[progdefaults.rtty_baud];
 
-	nbits = scamp_bits = BITS[progdefaults.scamp_bits];
+	nbits = scamp_bits = BITS[progdefaults.rtty_bits];
 	if (scamp_bits == 5)
 		scamp_parity = SCAMP_PARITY_NONE;
 	else
-		switch (progdefaults.scamp_parity) {
+		switch (progdefaults.rtty_parity) {
 			case 0 : scamp_parity = SCAMP_PARITY_NONE; break;
 			case 1 : scamp_parity = SCAMP_PARITY_EVEN; break;
 			case 2 : scamp_parity = SCAMP_PARITY_ODD; break;
@@ -245,7 +245,7 @@ void scamp::restart()
 
 	set_bandwidth(shift);
 
-	scamp_BW = progdefaults.SCAMP_BW = scamp_baud * 2;
+	scamp_BW = progdefaults.RTTY_BW = scamp_baud * 2;
 
 	wf->redraw_marker();
 
@@ -259,7 +259,7 @@ void scamp::restart()
 	bit = nubit = true;
 
 // stop length = 1, 1.5 or 2 bits
-	scamp_stop = progdefaults.scamp_stop;
+	scamp_stop = progdefaults.rtty_stop;
 	if (scamp_stop == 0) stl = 1.0;
 	else if (scamp_stop == 1) stl = 1.5;
 	else stl = 2.0;
@@ -282,7 +282,7 @@ void scamp::restart()
 	sigpwr = 0.0;
 	noisepwr = 0.0;
 	sigsearch = 0;
-	dspcnt = 2*(nbits + 2);
+	dspcnsc = 2*(nbits + 2);
 
 	clear_zdata = true;
 
@@ -305,7 +305,7 @@ void scamp::restart()
 
 	if (scampviewer) scampviewer->restart();
 
-	progStatus.scamp_filter_changed = false;
+	progStatus.rtty_filter_changed = false;
 
 }
 
@@ -313,16 +313,16 @@ void scamp::resetSCAMPSK() {
 	delete scampsk_tty;
 	scampsk_tty = 0;
 
-	if (progdefaults.useSCAMPSK) {
+	if (progdefaults.useFSK) {
 		scampsk_tty = new SCAMPSK;
-		if (progdefaults.scampsk_shares_port) {
+		if (progdefaults.fsk_shares_port) {
 			scampsk_tty->scampsk_shares_port(&rigio);
-		} else if (!progdefaults.scampsk_port.empty()) {
-			scampsk_tty->open_port(progdefaults.scampsk_port);
+		} else if (!progdefaults.fsk_port.empty()) {
+			scampsk_tty->open_port(progdefaults.fsk_port);
 		}
-		scampsk_tty->shift_on_space(progdefaults.scampsk_shift_on_space);
-		scampsk_tty->reverse(progdefaults.scampsk_reverse);
-		if (progdefaults.scampsk_on_dtr)
+		scampsk_tty->shift_on_space(progdefaults.fsk_shift_on_space);
+		scampsk_tty->reverse(progdefaults.fsk_reverse);
+		if (progdefaults.fsk_on_dtr)
 			scampsk_tty->dtr(true);
 		else
 			scampsk_tty->rts(true);
@@ -348,11 +348,11 @@ scamp::scamp(trx_mode tty_mode)
 
 	scampviewer = new view_scamp(mode);
 
-	m_Osc1 = new Oscillator( samplerate );
-	m_Osc2 = new Oscillator( samplerate );
+	m_Osc1 = new SCAMPOscillator( samplerate );
+	m_Osc2 = new SCAMPOscillator( samplerate );
 
-	m_SymShaper1 = new SymbolShaper( 45, samplerate );
-	m_SymShaper2 = new SymbolShaper( 45, samplerate );
+	m_SymShaper1 = new SCAMPSymbolShaper( 45, samplerate );
+	m_SymShaper2 = new SCAMPSymbolShaper( 45, samplerate );
 
 	scampsk_tty = 0;
 
@@ -413,7 +413,7 @@ int scampparity(unsigned int c, int nbits)
 {
 	c &= (1 << nbits) - 1;
 
-	switch (progdefaults.scamp_parity) {
+	switch (progdefaults.rtty_parity) {
 	default:
 	case scamp::SCAMP_PARITY_NONE:
 		return 0;
@@ -539,7 +539,7 @@ bool scamp::rx(bool bit) // original modified for probability test
 	return flag;
 }
 
-char snrmsg[80];
+char scnrmsg[80];
 void scamp::Metric()
 {
 	double delta = scamp_baud/8.0;
@@ -556,8 +556,8 @@ void scamp::Metric()
 
 	snr = 10*log10(sigpwr / noisepwr);
 
-	snprintf(snrmsg, sizeof(snrmsg), "s/n %-3.0f dB", snr);
-	put_Status2(snrmsg);
+	snprintf(scnrmsg, sizeof(scnrmsg), "s/n %-3.0f dB", snr);
+	put_Status2(scnrmsg);
 	metric = CLAMP((3000 / delta) * (sigpwr/noisepwr), 0.0, 100.0);
 	display_metric(metric);
 }
@@ -628,8 +628,8 @@ int scamp::rx_process(const double *buf, int len)
 		 dlgViewer->visible() || progStatus.show_channels )
 		if (!bHistory && scampviewer) scampviewer->rx_process(buf, len);
 
-	if (progStatus.scamp_filter_changed) {
-		progStatus.scamp_filter_changed = false;
+	if (progStatus.rtty_filter_changed) {
+		progStatus.rtty_filter_changed = false;
 		reset_filters();
 	}
 {
@@ -702,7 +702,7 @@ if (mnum < 2 * filter_length)
 			if (mclipped < noise_floor) mclipped = noise_floor;
 			if (sclipped < noise_floor) sclipped = noise_floor;
 
-			switch (progdefaults.scamp_cwi) {
+			switch (progdefaults.rtty_cwi) {
 				case 1 : // mark only decode
 					space_env = sclipped = noise_floor;
 					break;
@@ -736,7 +736,7 @@ if (mnum < 2 * filter_length)
 //					(sclipped - noise_floor) * (sclipped - noise_floor) - 0.25 * (
 //					(mark_env - noise_floor) * (mark_env - noise_floor) -
 //					(space_env - noise_floor) * (space_env - noise_floor));
-//				switch (progdefaults.scamp_demodulator) {
+//				switch (progdefaults.rtty_demodulator) {
 //			switch (2) { // Optimal ATC
 //			case 0: // linear ATC
 //				bit = v1 > 0;
@@ -822,7 +822,7 @@ if (mnum < 2 * filter_length)
 
 			inp_ptr = (inp_ptr + 1) % MAXPIPE;
 
-			if (dspcnt && (--dspcnt % (nbits + 2) == 0)) {
+			if (dspcnsc && (--dspcnsc % (nbits + 2) == 0)) {
 				pipe[pipeptr] = bit - 0.5; //testbit - 0.5;
 				pipeptr = (pipeptr + 1) % symbollen;
 			}
@@ -831,7 +831,7 @@ if (mnum < 2 * filter_length)
 // rx(...) returns true if valid TTY bit stream detected
 // either character or idle signal
 			if ( rx( reverse ? !bit : bit ) ) {
-				dspcnt = symbollen * (nbits + 2);
+				dspcnsc = symbollen * (nbits + 2);
 				if (!bHighSpeed) Update_syncscope();
 				clear_zdata = true;
 				bitcount = 5 * nbits * symbollen;
@@ -846,8 +846,8 @@ if (mnum < 2 * filter_length)
 							arg(conj(space_history[mp1]) * space_history[mp0]));
 				if (fabs(ferr) > scamp_baud / 2) ferr = 0;
 				freqerr = decayavg ( freqerr, ferr / 8,
-					progdefaults.scamp_afcspeed == 0 ? 8 :
-					progdefaults.scamp_afcspeed == 1 ? 4 : 1 );
+					progdefaults.rtty_afcspeed == 0 ? 8 :
+					progdefaults.rtty_afcspeed == 1 ? 4 : 1 );
 				if (progStatus.afconoff &&
 					(metric > progStatus.sldrSquelchValue || !progStatus.sqlonoff))
 					set_freq(frequency - freqerr);
@@ -876,7 +876,7 @@ if (mnum < 2 * filter_length)
 // SCAMP transmit
 //=====================================================================
 //double freq1;
-double maxamp = 0;
+double maxamsc = 0;
 
 double scamp::nco(double freq)
 {
@@ -906,7 +906,7 @@ void scamp::send_symbol(int symbol, int len)
 
 	acc_symbols += len;
 
-	if (!progStatus.shaped_scamp) {
+	if (!progStatus.shaped_rtty) {
 		double freq;
 
 		if (symbol)
@@ -927,7 +927,7 @@ void scamp::send_symbol(int symbol, int len)
 		double mark = 0, space = 0;
 		double signal = 0;
 
-		if (maxamp == 0) {
+		if (maxamsc == 0) {
 			int sym = 0;
 			for (int j = 0; j < 100; j++) {
 				if (sym) sym = 0;
@@ -937,7 +937,7 @@ void scamp::send_symbol(int symbol, int len)
 					space = m_SymShaper2->Update(!sym) * m_Osc2->Update( freq2 );
 					signal = mark + space;
 
-					if (maxamp < fabs(signal)) maxamp = fabs(signal);
+					if (maxamsc < fabs(signal)) maxamsc = fabs(signal);
 				}
 			}
 		}
@@ -947,11 +947,11 @@ void scamp::send_symbol(int symbol, int len)
 			space = m_SymShaper2->Update(!symbol) * m_Osc2->Update( freq2 );
 			signal = mark + space;
 
-			if (maxamp < fabs(signal)) {
-				maxamp = fabs(signal);
+			if (maxamsc < fabs(signal)) {
+				maxamsc = fabs(signal);
 			}
 
-			outbuf[i] = maxamp ? (signal / maxamp) : 0.0;
+			outbuf[i] = maxamsc ? (signal / maxamsc) : 0.0;
 
 			if (symbol)
 				SCAMPSKbuf[i] = SCAMPSKnco();
@@ -960,7 +960,7 @@ void scamp::send_symbol(int symbol, int len)
 		}
 	}
 
-	if (progdefaults.PseudoSCAMPSK)
+	if (progdefaults.PseudoFSK)
 		ModulateStereo(outbuf, SCAMPSKbuf, symbollen);
 	else
 		ModulateXmtr(outbuf, symbollen);
@@ -969,7 +969,7 @@ void scamp::send_symbol(int symbol, int len)
 
 void scamp::send_stop()
 {
-	if (!progStatus.shaped_scamp) {
+	if (!progStatus.shaped_rtty) {
 		double freq;
 		bool invert = reverse;
 
@@ -999,9 +999,9 @@ void scamp::send_stop()
 			space = m_SymShaper2->Update(!symbol)*m_Osc2->Update( freq2 );
 			signal = mark + space;
 
-			if (maxamp < fabs(signal))
-				maxamp = fabs(signal);
-			outbuf[i] = maxamp ? (signal / maxamp) : 0.0;
+			if (maxamsc < fabs(signal))
+				maxamsc = fabs(signal);
+			outbuf[i] = maxamsc ? (signal / maxamsc) : 0.0;
 
 			if (reverse)
 				SCAMPSKbuf[i] = 0.0;
@@ -1010,7 +1010,7 @@ void scamp::send_stop()
 		}
 	}
 
-	if (progdefaults.PseudoSCAMPSK)
+	if (progdefaults.PseudoFSK)
 		ModulateStereo(outbuf, SCAMPSKbuf, stoplen);
 	else
 		ModulateXmtr(outbuf, stoplen);
@@ -1028,15 +1028,15 @@ void scamp::flush_stream()
 		space = m_SymShaper2->Update(0)*m_Osc2->Update( freq2 );
 		signal = mark + space;
 
-		if (maxamp < fabs(signal)) maxamp = fabs(signal);
+		if (maxamsc < fabs(signal)) maxamsc = fabs(signal);
 		
-		outbuf[i] = maxamp ? (signal / maxamp) : 0.0;
+		outbuf[i] = maxamsc ? (signal / maxamsc) : 0.0;
 
 		SCAMPSKbuf[i] = 0.0;
 	}
 
 	sig_stop = true;
-	if (progdefaults.PseudoSCAMPSK)
+	if (progdefaults.PseudoFSK)
 		ModulateStereo(outbuf, SCAMPSKbuf, symbollen * 6);
 	else
 		ModulateXmtr(outbuf, symbollen * 6);
@@ -1140,7 +1140,7 @@ void scamp::flrig_scampsk_send(char c)
 {
 	static std::string s = " ";
 	s[0] = c;
-	flrig_scampskio_send_text(s);
+	flrig_fskio_send_text(s);
 //	if (c == '[' || c == ']')
 //		return;
 	wait_one_byte(45.45, 1.5);
@@ -1152,7 +1152,7 @@ int scamp::tx_process()
 
 	int c = get_tx_char();
 
-	if (progdefaults.use_FLRIG_SCAMPSK) {
+	if (progdefaults.use_FLRIG_FSK) {
 		if (preamble) {
 			start_deadman();
 			flrig_scampsk_send('[');
@@ -1174,7 +1174,7 @@ int scamp::tx_process()
 		return 0;
 	}
 
-	if (progdefaults.useSCAMPSK) {
+	if (progdefaults.useFSK) {
 
 		if (c == GET_TX_CHAR_ETX || stopflag) {
 			stopflag = false;
@@ -1200,7 +1200,7 @@ int scamp::tx_process()
 		return 0;
 	}
 
-	if (progStatus.nanoSCAMPSK_online) {
+	if (progStatus.nanoFSK_online) {
 		if (preamble) {
 			start_deadman();
 			sig_start = true;
@@ -1247,16 +1247,16 @@ int scamp::tx_process()
 		return 0;
 	}
 
-	if (progStatus.WK_online && progStatus.WKSCAMPSK_mode) {
+	if (progStatus.WK_online && progStatus.WKFSK_mode) {
 		if (preamble) {
 			start_deadman();
-			WKSCAMPSK_send_char('[');
+			WKFSK_send_char('[');
 			preamble = false;
 		}
 
 		if (c == GET_TX_CHAR_ETX || stopflag) {
-			if (stopflag) WKSCAMPSK_send_char('\\');
-			WKSCAMPSK_send_char(']');
+			if (stopflag) WKFSK_send_char('\\');
+			WKFSK_send_char(']');
 			stop_deadman();
 			stopflag = false;
 			return -1;
@@ -1265,20 +1265,20 @@ int scamp::tx_process()
 // must insert a suitable time delay to account for the idle
 		if (c == GET_TX_CHAR_NODATA) {
 			wait_one_byte(
-				(progStatus.WKSCAMPSK_baud == 0 ? 45.45 :
-				 progStatus.WKSCAMPSK_baud == 1 ? 50.0 :
-				 progStatus.WKSCAMPSK_baud == 2 ? 75.0 : 100.0),
-				 (progStatus.WKSCAMPSK_stopbits == 0 ? 2.0 : 1.5));
+				(progStatus.WKFSK_baud == 0 ? 45.45 :
+				 progStatus.WKFSK_baud == 1 ? 50.0 :
+				 progStatus.WKFSK_baud == 2 ? 75.0 : 100.0),
+				 (progStatus.WKFSK_stopbits == 0 ? 2.0 : 1.5));
 			return 0;
 		}
 		else {
-		WKSCAMPSK_send_char(c);
+		WKFSK_send_char(c);
 		put_echo_char(c);
 		wait_one_byte(
-			(progStatus.WKSCAMPSK_baud == 0 ? 45.45 :
-			 progStatus.WKSCAMPSK_baud == 1 ? 50.0 :
-			 progStatus.WKSCAMPSK_baud == 2 ? 75.0 : 100.0),
-			 (progStatus.WKSCAMPSK_stopbits == 0 ? 2.0 : 1.5));
+			(progStatus.WKFSK_baud == 0 ? 45.45 :
+			 progStatus.WKFSK_baud == 1 ? 50.0 :
+			 progStatus.WKFSK_baud == 2 ? 75.0 : 100.0),
+			 (progStatus.WKFSK_stopbits == 0 ? 2.0 : 1.5));
 		}
 		return 0;
 	}
@@ -1295,11 +1295,11 @@ int scamp::tx_process()
 		stopflag = false;
 		line_char_count = 0;
 		if (nbits != 5) {
-			if (progdefaults.scamp_crcrlf) send_char('\r');
+			if (progdefaults.rtty_crcrlf) send_char('\r');
 			send_char('\r');
 			send_char('\n');
 		} else {
-			if (progdefaults.scamp_crcrlf) send_char(0x08);
+			if (progdefaults.rtty_crcrlf) send_char(0x08);
 			send_char(0x08);
 			send_char(0x02);
 		}
@@ -1324,11 +1324,11 @@ int scamp::tx_process()
 		++line_char_count;
 	}
 
-	if (progdefaults.scamp_autocrlf && (c != '\n' && c != '\r') &&
-		(line_char_count == progdefaults.scamp_autocount ||
-		 (line_char_count > progdefaults.scamp_autocount - 5 && c == ' '))) {
+	if (progdefaults.rtty_autocrlf && (c != '\n' && c != '\r') &&
+		(line_char_count == progdefaults.rtty_autocount ||
+		 (line_char_count > progdefaults.rtty_autocount - 5 && c == ' '))) {
 		line_char_count = 0;
-		if (progdefaults.scamp_crcrlf)
+		if (progdefaults.rtty_crcrlf)
 			send_char(0x08); // CR-CR-LF triplet
 		send_char(0x08);
 		send_char(0x02);
@@ -1342,7 +1342,7 @@ int scamp::tx_process()
 	}
 	if (c == '\n') {
 		line_char_count = 0;
-		if (progdefaults.scamp_crcrlf)
+		if (progdefaults.rtty_crcrlf)
 			send_char(0x08); // CR-CR-LF triplet
 		send_char(0x02);
 		return 0;
@@ -1453,14 +1453,14 @@ void scamp::send_SCAMPSK(int c)
 // methods for class Oscillator and class SymbolShaper
 //======================================================================
 
-Oscillator::Oscillator( double samplerate )
+SCAMPOscillator::SCAMPOscillator( double samplerate )
 {
 	m_phase = 0;
 	m_samplerate = samplerate;
 //	std::cerr << "samplerate for Oscillator:"<<m_samplerate<<"\n";
 }
 
-double Oscillator::Update( double frequency )
+double SCAMPOscillator::Update( double frequency )
 {
 	m_phase += frequency/m_samplerate * TWOPI;
 	if ( m_phase > TWOPI ) m_phase -= TWOPI;
@@ -1468,18 +1468,18 @@ double Oscillator::Update( double frequency )
 	return ( sin( m_phase ) );
 }
 
-SymbolShaper::SymbolShaper(double baud, double sr)
+SCAMPSymbolShaper::SCAMPSymbolShaper(double baud, double sr)
 {
 	m_sinc_table = 0;
 	Preset( baud, sr );
 }
 
-SymbolShaper::~SymbolShaper()
+SCAMPSymbolShaper::~SCAMPSymbolShaper()
 {
 	delete [] m_sinc_table;
 }
 
-void SymbolShaper::reset()
+void SCAMPSymbolShaper::reset()
 {
 	m_State = false;
 	m_Accumulator = 0.0;
@@ -1497,7 +1497,7 @@ void SymbolShaper::reset()
 	m_Factor5 = 0.0;
 }
 
-void SymbolShaper::Preset(double baud, double sr)
+void SCAMPSymbolShaper::Preset(double baud, double sr)
 {
     double baud_rate = baud;
     double sample_rate = sr;
@@ -1542,10 +1542,10 @@ void SymbolShaper::Preset(double baud, double sr)
 
 // reset internal states
     reset();
-    maxamp = 0;
+    maxamsc = 0;
 }
 
-double SymbolShaper::Update( bool state )
+double SCAMPSymbolShaper::Update( bool state )
 {
 	if( m_State != state ) {
 		m_State = state;
@@ -1591,7 +1591,7 @@ double SymbolShaper::Update( bool state )
 	return ( m_Accumulator / sqrt(2) );
 }
 
-void SymbolShaper::print_sinc_table()
+void SCAMPSymbolShaper::print_sinc_table()
 {
 	for (int i = 0; i < 1024; i++) printf("%f\n", m_SincTable[i]);
 }

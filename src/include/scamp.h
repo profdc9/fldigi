@@ -55,11 +55,11 @@
 #define dispwidth 100
 
 // simple oscillator-class
-class Oscillator
+class SCAMPOscillator
 {
 public:
-	Oscillator( double samplerate );
-	~Oscillator() {}
+	SCAMPOscillator( double samplerate );
+	~SCAMPOscillator() {}
 	double Update( double frequency );
 
 private:
@@ -67,11 +67,11 @@ private:
 	double m_samplerate;
 };
 
-class SymbolShaper
+class SCAMPSymbolShaper
 {
 public:
-	SymbolShaper(double baud = 45.45, double sr = 8000.0);
-	~SymbolShaper();
+	SCAMPSymbolShaper(double baud = 45.45, double sr = 8000.0);
+	~SCAMPSymbolShaper();
 	void reset();
 	void Preset(double baud, double sr);
 	void print_sinc_table();
@@ -130,10 +130,10 @@ enum SCAMP_PARITY {
 
 private:
 
-	Oscillator		*m_Osc1;
-	Oscillator		*m_Osc2;
-	SymbolShaper	*m_SymShaper1;
-	SymbolShaper	*m_SymShaper2;
+	SCAMPOscillator		*m_Osc1;
+	SCAMPOscillator		*m_Osc2;
+	SCAMPSymbolShaper	*m_SymShaper1;
+	SCAMPSymbolShaper	*m_SymShaper2;
 
 	double shift;
 	int symbollen;
