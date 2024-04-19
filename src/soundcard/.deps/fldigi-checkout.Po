@@ -1,3 +1,0 @@
-soundcard/fldigi-checkout.o: soundcard/checkout.cxx \
- /usr/include/stdc-predef.h
-/usr/include/stdc-predef.h:

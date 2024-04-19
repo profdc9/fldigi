@@ -206,6 +206,12 @@ modem *contestia_64_1000_modem = 0;
 modem *contestia_64_2000_modem = 0;
 
 modem *rtty_modem = 0;
+modem *scampfsk_modem = 0;
+modem *scampook_modem = 0;
+modem *scfskfst_modem = 0;
+modem *scfskslw_modem = 0;
+modem *scookslw_modem = 0;
+modem *scfskvsl_modem = 0;
 modem *pkt_modem = 0;
 
 modem *thormicro_modem = 0;

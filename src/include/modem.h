@@ -422,6 +422,13 @@ extern modem *psk500r_c4_modem;
 extern modem *rtty_modem;
 //extern modem *pkt_modem;
 
+extern modem *scampfsk_modem;
+extern modem *scampook_modem;
+extern modem *scfskfst_modem;
+extern modem *scfskslw_modem;
+extern modem *scookslw_modem;
+extern modem *scfskvsl_modem;
+
 extern modem *olivia_modem;
 extern modem *olivia_4_125_modem;
 extern modem *olivia_4_250_modem;

@@ -106,6 +106,7 @@
 #include "navtex.h"
 #include "mt63.h"
 #include "view_rtty.h"
+#include "view_scamp.h"
 #include "olivia.h"
 #include "contestia.h"
 #include "thor.h"
