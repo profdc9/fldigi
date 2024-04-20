@@ -94,6 +94,7 @@ extern Fl_Scroll       *wefax_pic_rx_scroll;
 #include "view_rtty.h"
 #include "olivia.h"
 #include "contestia.h"
+#include "scamp.h"
 #include "thor.h"
 #include "dominoex.h"
 #include "feld.h"
@@ -970,6 +971,16 @@ static const Fl_Menu_Item quick_change_mt63[] = {
 	{ 0 }
 };
 
+static const Fl_Menu_Item quick_change_scamp[] = {
+	{ mode_info[MODE_SCAMPFSK].name, 0, cb_init_mode, (void *)MODE_SCAMPFSK },
+	{ mode_info[MODE_SCAMPOOK].name, 0, cb_init_mode, (void *)MODE_SCAMPOOK },
+	{ mode_info[MODE_SCFSKFST].name, 0, cb_init_mode, (void *)MODE_SCFSKFST },
+	{ mode_info[MODE_SCFSKSLW].name, 0, cb_init_mode, (void *)MODE_SCFSKSLW },
+	{ mode_info[MODE_SCOOKSLW].name, 0, cb_init_mode, (void *)MODE_SCOOKSLW },
+	{ mode_info[MODE_SCFSKVSL].name, 0, cb_init_mode, (void *)MODE_SCFSKVSL },
+	{ 0 }
+};
+
 static const Fl_Menu_Item quick_change_thor[] = {
 	{ mode_info[MODE_THORMICRO].name, 0, cb_init_mode, (void *)MODE_THORMICRO },
 	{ mode_info[MODE_THOR4].name, 0, cb_init_mode, (void *)MODE_THOR4 },
@@ -1812,6 +1823,14 @@ void init_modem(trx_mode mode, int freq)
 //		modem_config_tab = tabCW;
 		break;
 
+    case MODE_SCAMPFSK: case MODE_SCAMPOOK: case MODE_SCFSKFST:
+    case MODE_SCFSKSLW: case MODE_SCOOKSLW: case MODE_SCFSKVSL:
+		startup_modem(*mode_info[mode].modem ? *mode_info[mode].modem :
+				  *mode_info[mode].modem = new scamp(mode), freq);
+		quick_change = quick_change_scamp;
+//		modem_config_tab = tabSCAMP;
+		break;
+        
 	case MODE_THORMICRO: case MODE_THOR4: case MODE_THOR5: case MODE_THOR8:
 	case MODE_THOR11:case MODE_THOR16: case MODE_THOR22:
 	case MODE_THOR32: case MODE_THOR44: case MODE_THOR56:
@@ -2367,6 +2386,10 @@ void cb_mnuConfigModems(Fl_Menu_*, void*) {
 	switch (active_modem->get_mode()) {
 		case MODE_CW:
 			open_config(TAB_CW);
+			break;
+	    case MODE_SCAMPFSK: case MODE_SCAMPOOK: case MODE_SCFSKFST:
+	    case MODE_SCFSKSLW: case MODE_SCOOKSLW: case MODE_SCFSKVSL:
+			open_config(TAB_SCAMP);
 			break;
 		case MODE_THORMICRO: case MODE_THOR4: case MODE_THOR5: case MODE_THOR8:
 		case MODE_THOR11: case MODE_THOR16: case MODE_THOR22:
@@ -6147,6 +6170,15 @@ static Fl_Menu_Item menu_[] = {
 { _("Custom..."), 0, cb_rttyCustom, (void *)MODE_RTTY, 0, FL_NORMAL_LABEL, 0, 14, 0},
 {0,0,0,0,0,0,0,0,0},
 
+{"SCAMP", 0, 0, 0, FL_SUBMENU, FL_NORMAL_LABEL, 0, 14, 0},
+{ mode_info[MODE_SCAMPFSK].name, 0, cb_init_mode, (void *)MODE_SCAMPFSK, 0, FL_NORMAL_LABEL, 0, 14, 0},
+{ mode_info[MODE_SCAMPOOK].name, 0, cb_init_mode, (void *)MODE_SCAMPOOK, 0, FL_NORMAL_LABEL, 0, 14, 0},
+{ mode_info[MODE_SCFSKFST].name, 0, cb_init_mode, (void *)MODE_SCFSKFST, 0, FL_NORMAL_LABEL, 0, 14, 0},
+{ mode_info[MODE_SCFSKSLW].name, 0, cb_init_mode, (void *)MODE_SCFSKSLW, 0, FL_NORMAL_LABEL, 0, 14, 0},
+{ mode_info[MODE_SCOOKSLW].name, 0, cb_init_mode, (void *)MODE_SCOOKSLW, 0, FL_NORMAL_LABEL, 0, 14, 0},
+{ mode_info[MODE_SCFSKVSL].name, 0, cb_init_mode, (void *)MODE_SCFSKVSL, 0, FL_NORMAL_LABEL, 0, 14, 0},
+{0,0,0,0,0,0,0,0,0},
+
 {"THOR", 0, 0, 0, FL_SUBMENU, FL_NORMAL_LABEL, 0, 14, 0},
 { mode_info[MODE_THORMICRO].name, 0, cb_init_mode, (void *)MODE_THORMICRO, 0, FL_NORMAL_LABEL, 0, 14, 0},
 { mode_info[MODE_THOR4].name, 0, cb_init_mode, (void *)MODE_THOR4, 0, FL_NORMAL_LABEL, 0, 14, 0},
@@ -7795,6 +7827,15 @@ static Fl_Menu_Item alt_menu_[] = {
 { _("Custom..."), 0, cb_rttyCustom, (void *)MODE_RTTY, 0, FL_NORMAL_LABEL, 0, 14, 0},
 {0,0,0,0,0,0,0,0,0},
 
+{"SCAMP", 0, 0, 0, FL_SUBMENU, FL_NORMAL_LABEL, 0, 14, 0},
+{ mode_info[MODE_SCAMPFSK].name, 0, cb_init_mode, (void *)MODE_SCAMPFSK, 0, FL_NORMAL_LABEL, 0, 14, 0},
+{ mode_info[MODE_SCAMPOOK].name, 0, cb_init_mode, (void *)MODE_SCAMPOOK, 0, FL_NORMAL_LABEL, 0, 14, 0},
+{ mode_info[MODE_SCFSKFST].name, 0, cb_init_mode, (void *)MODE_SCFSKFST, 0, FL_NORMAL_LABEL, 0, 14, 0},
+{ mode_info[MODE_SCFSKSLW].name, 0, cb_init_mode, (void *)MODE_SCFSKSLW, 0, FL_NORMAL_LABEL, 0, 14, 0},
+{ mode_info[MODE_SCOOKSLW].name, 0, cb_init_mode, (void *)MODE_SCOOKSLW, 0, FL_NORMAL_LABEL, 0, 14, 0},
+{ mode_info[MODE_SCFSKVSL].name, 0, cb_init_mode, (void *)MODE_SCFSKVSL, 0, FL_NORMAL_LABEL, 0, 14, 0},
+{0,0,0,0,0,0,0,0,0},
+
 {"THOR", 0, 0, 0, FL_SUBMENU, FL_NORMAL_LABEL, 0, 14, 0},
 { mode_info[MODE_THORMICRO].name, 0, cb_init_mode, (void *)MODE_THORMICRO, 0, FL_NORMAL_LABEL, 0, 14, 0},
 { mode_info[MODE_THOR4].name, 0, cb_init_mode, (void *)MODE_THOR4, 0, FL_NORMAL_LABEL, 0, 14, 0},
@@ -9407,6 +9448,13 @@ void resetCONTESTIA() {
 //    if (active_modem->get_mode() == MODE_PACKET)
 //	trx_start_modem(active_modem);
 //}
+
+void resetSCAMP() {
+	trx_mode md = active_modem->get_mode();
+	if (md == MODE_SCAMPFSK || md == MODE_SCAMPOOK || md == MODE_SCFSKFST || md == MODE_SCFSKSLW ||
+		md == MODE_SCOOKSLW || md == MODE_SCFSKVSL )
+		trx_start_modem(active_modem);
+}
 
 void resetTHOR() {
 	trx_mode md = active_modem->get_mode();

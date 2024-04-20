@@ -4820,6 +4820,18 @@ static void cb_btnPSK8Preamble(Fl_Check_Button* o, void*) {
   progStatus.psk8DCDShortFlag = o->value();
 }
 
+Fl_Counter *ScampResync=(Fl_Counter *)0;
+
+static void cb_ScampResync(Fl_Counter* o, void*) {
+  progdefaults.ScampResync = o->value(); progdefaults.changed = true;
+}
+
+Fl_Counter *ScampRepeat=(Fl_Counter *)0;
+
+static void cb_ScampRepeat(Fl_Counter* o, void*) {
+  progdefaults.ScampRepeat = o->value(); progdefaults.changed = true;
+}
+
 Fl_ListBox *i_listbox_rtty_afc_speed=(Fl_ListBox *)0;
 
 static void cb_i_listbox_rtty_afc_speed(Fl_ListBox* o, void*) {
@@ -14432,6 +14444,36 @@ ver a +/- 10 WPM range.  Calibration/Test is 1 minute of\n\'PARIS \'."));
       CONFIG_PAGE *p = new CONFIG_PAGE(o, _("Modem/Psk"));
       config_pages.push_back(p);
       tab_tree->add(_("Modem/Psk"));
+      o->end();
+    } // Fl_Group* o
+    { Fl_Group* o = new Fl_Group(200, 0, 600, 350, _("Modem/SCAMP"));
+      o->box(FL_ENGRAVED_BOX);
+      o->align(Fl_Align(FL_ALIGN_TOP_LEFT|FL_ALIGN_INSIDE));
+      o->hide();
+      { Fl_Counter* o = ScampResync = new Fl_Counter(399, 152, 75, 22, _("Scamp Resync Frames"));
+        ScampResync->tooltip(_("Number of Frames to Resync 0 to 9"));
+        ScampResync->minimum(0);
+        ScampResync->maximum(9);
+        ScampResync->step(1);
+        ScampResync->callback((Fl_Callback*)cb_ScampResync);
+        ScampResync->align(Fl_Align(FL_ALIGN_TOP_LEFT));
+        o->value(progdefaults.ScampResync);
+        o->labelsize(FL_NORMAL_SIZE);
+      } // Fl_Counter* ScampResync
+      { Fl_Counter* o = ScampRepeat = new Fl_Counter(399, 192, 75, 22, _("Scamp Repeat Frames"));
+        ScampRepeat->tooltip(_("Number of times to repeat frames 1 to 9"));
+        ScampRepeat->minimum(1);
+        ScampRepeat->maximum(9);
+        ScampRepeat->step(1);
+        ScampRepeat->value(1);
+        ScampRepeat->callback((Fl_Callback*)cb_ScampRepeat);
+        ScampRepeat->align(Fl_Align(FL_ALIGN_TOP_LEFT));
+        o->value(progdefaults.ScampRepeat);
+        o->labelsize(FL_NORMAL_SIZE);
+      } // Fl_Counter* ScampRepeat
+      CONFIG_PAGE *p = new CONFIG_PAGE(o, _("Modem/SCAMP"));
+      config_pages.push_back(p);
+      tab_tree->add(_("Modem/SCAMP"));
       o->end();
     } // Fl_Group* o
     { Fl_Group* o = new Fl_Group(200, 0, 600, 350, _("Modem/TTY/Rx"));
