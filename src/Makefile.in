@@ -335,7 +335,7 @@ am__fldigi_SOURCES_DIST = include/xmlrpc.h network/xmlrpc.cxx \
 	cw/cw.cxx cw/ICOMkeying.cxx cw/KYkeying.cxx cw/morse.cxx \
 	cw/nanoIO.cxx cw/Nav.cxx cw/view_cw.cxx cw/winkeyer.cxx \
 	cw/YAESUkeying.cxx rtty/fsk.cxx rtty/rtty.cxx \
-	rtty/view_rtty.cxx scamp/scampsk.cxx scamp/scamp.cxx \
+	rtty/view_rtty.cxx scamp/scamp.cxx scamp/scamp_protocol.cxx \
 	scamp/view_scamp.cxx debug/debug.cxx debug/debug_dialog.cxx \
 	dialogs/confdialog.cxx dialogs/fl_digi.cxx \
 	dialogs/font_browser.cxx dialogs/htmlstrings.cxx \
@@ -514,9 +514,9 @@ am_fldigi_OBJECTS = $(am__objects_13) $(am__objects_15) \
 	cw/fldigi-Nav.$(OBJEXT) cw/fldigi-view_cw.$(OBJEXT) \
 	cw/fldigi-winkeyer.$(OBJEXT) cw/fldigi-YAESUkeying.$(OBJEXT) \
 	rtty/fldigi-fsk.$(OBJEXT) rtty/fldigi-rtty.$(OBJEXT) \
-	rtty/fldigi-view_rtty.$(OBJEXT) scamp/fldigi-scampsk.$(OBJEXT) \
-	scamp/fldigi-scamp.$(OBJEXT) scamp/fldigi-view_scamp.$(OBJEXT) \
-	debug/fldigi-debug.$(OBJEXT) \
+	rtty/fldigi-view_rtty.$(OBJEXT) scamp/fldigi-scamp.$(OBJEXT) \
+	scamp/fldigi-scamp_protocol.$(OBJEXT) \
+	scamp/fldigi-view_scamp.$(OBJEXT) debug/fldigi-debug.$(OBJEXT) \
 	debug/fldigi-debug_dialog.$(OBJEXT) \
 	dialogs/fldigi-confdialog.$(OBJEXT) \
 	dialogs/fldigi-fl_digi.$(OBJEXT) \
@@ -936,7 +936,7 @@ am__depfiles_remade = ./$(DEPDIR)/fldigi-main.Po \
 	rtty/$(DEPDIR)/fldigi-fsk.Po rtty/$(DEPDIR)/fldigi-rtty.Po \
 	rtty/$(DEPDIR)/fldigi-view_rtty.Po \
 	scamp/$(DEPDIR)/fldigi-scamp.Po \
-	scamp/$(DEPDIR)/fldigi-scampsk.Po \
+	scamp/$(DEPDIR)/fldigi-scamp_protocol.Po \
 	scamp/$(DEPDIR)/fldigi-view_scamp.Po \
 	soundcard/$(DEPDIR)/fldigi-audio_alert.Po \
 	soundcard/$(DEPDIR)/fldigi-bark.Po \
@@ -1790,26 +1790,25 @@ EXTRA_fldigi_SOURCES = $(HAMLIB_SRC) $(XMLRPC_SRC) \
 	include/flinput2.h include/flmisc.h include/flslider2.h \
 	include/fmt.h include/fmt_dialog.h include/font_browser.h \
 	include/fontdef.h include/FreqControl.h include/fsk.h \
-	include/scampsk.h include/fsq.h include/FTextRXTX.h \
-	include/FTextView.h include/gettext.h include/gfft.h \
-	include/globals.h include/hidapi.h include/hid_lin.h \
-	include/hid_mac.h include/hid_win.h include/htmlstrings.h \
-	include/https.h include/icons.h include/ifkp.h \
-	include/interleave.h include/jalocha/pj_cmpx.h \
-	include/jalocha/pj_fft.h include/jalocha/pj_fht.h \
-	include/jalocha/pj_fifo.h include/jalocha/pj_gray.h \
-	include/jalocha/pj_lowpass3.h include/jalocha/pj_mfsk.h \
-	include/jalocha/pj_struc.h include/kiss_io.h \
-	include/kmlserver.h include/ICOMkeying.h include/KYkeying.h \
-	include/YAESUkeying.h include/lgbook.h include/locator.h \
-	include/logbook.h include/logger.h include/log.h \
-	include/logsupport.h include/lookupcall.h include/maclogger.h \
-	include/macroedit.h include/macros.h include/main.h \
-	include/mbuffer.h include/metar.h include/mfsk.h \
-	include/mfskvaricode.h include/misc.h include/modem.h \
-	include/morse.h include/mt63base.h include/mt63.h \
-	include/n3fjp_logger.h include/nanoIO.h include/Nav.h \
-	include/navtex.h include/navtex.h include/nco.h \
+	include/fsq.h include/FTextRXTX.h include/FTextView.h \
+	include/gettext.h include/gfft.h include/globals.h \
+	include/hidapi.h include/hid_lin.h include/hid_mac.h \
+	include/hid_win.h include/htmlstrings.h include/https.h \
+	include/icons.h include/ifkp.h include/interleave.h \
+	include/jalocha/pj_cmpx.h include/jalocha/pj_fft.h \
+	include/jalocha/pj_fht.h include/jalocha/pj_fifo.h \
+	include/jalocha/pj_gray.h include/jalocha/pj_lowpass3.h \
+	include/jalocha/pj_mfsk.h include/jalocha/pj_struc.h \
+	include/kiss_io.h include/kmlserver.h include/ICOMkeying.h \
+	include/KYkeying.h include/YAESUkeying.h include/lgbook.h \
+	include/locator.h include/logbook.h include/logger.h \
+	include/log.h include/logsupport.h include/lookupcall.h \
+	include/maclogger.h include/macroedit.h include/macros.h \
+	include/main.h include/mbuffer.h include/metar.h \
+	include/mfsk.h include/mfskvaricode.h include/misc.h \
+	include/modem.h include/morse.h include/mt63base.h \
+	include/mt63.h include/n3fjp_logger.h include/nanoIO.h \
+	include/Nav.h include/navtex.h include/navtex.h include/nco.h \
 	include/network.h include/newinstall.h include/notifydialog.h \
 	include/notify.h include/nullmodem.h include/olivia.h \
 	include/outputencoder.h include/Panel.h include/picture.h \
@@ -1823,35 +1822,35 @@ EXTRA_fldigi_SOURCES = $(HAMLIB_SRC) $(XMLRPC_SRC) \
 	include/re.h include/rigCAT.h include/rigio.h \
 	include/rigsupport.h include/rigxml.h include/ringbuffer.h \
 	include/rsid.h include/rtty.h include/scamp.h \
-	include/rx_extract.h include/rxmon.h include/serial.h \
-	include/smeter.h include/squelch_status.h include/vumeter.h \
-	include/socket.h include/soundconf.h include/sound.h \
-	include/speak.h include/spectrum.h include/spectrum_viewer.h \
-	include/spot.h include/ssb.h include/stacktrace.h \
-	include/status.h include/status_box.h include/strutil.h \
-	include/synop.h include/tabdefs.h include/table.h \
-	include/testmodem.h include/test_signal.h include/testsigs.h \
-	include/textio.h include/thor.h include/thorvaricode.h \
-	include/threads.h include/throb.h include/timeops.h \
-	include/trx.h include/utf8file_io.h include/util.h \
-	include/view_cw.h include/Viewer.h include/viewpsk.h \
-	include/view_rtty.h include/view_scamp.h include/viterbi.h \
-	include/waterfall.h include/weather.h include/wefax.h \
-	include/wefax_map.h include/wefax-pic.h include/winkeyer.h \
-	include/wwv.h include/xmlreader.h libtiniconv/tiniconv.h \
-	libtiniconv/tiniconv_int.h libtiniconv/encdec/ascii.h \
-	libtiniconv/encdec/big5.h libtiniconv/encdec/ces_big5.h \
-	libtiniconv/encdec/ces_gbk.h libtiniconv/encdec/cp1250.h \
-	libtiniconv/encdec/cp1251.h libtiniconv/encdec/cp1252.h \
-	libtiniconv/encdec/cp1253.h libtiniconv/encdec/cp1254.h \
-	libtiniconv/encdec/cp1255.h libtiniconv/encdec/cp1256.h \
-	libtiniconv/encdec/cp1257.h libtiniconv/encdec/cp1258.h \
-	libtiniconv/encdec/cp866.h libtiniconv/encdec/cp936ext.h \
-	libtiniconv/encdec/cp936.h libtiniconv/encdec/euc_cn.h \
-	libtiniconv/encdec/flushwc.h libtiniconv/encdec/gb2312.h \
-	libtiniconv/encdec/gbkext1.h libtiniconv/encdec/gbkext2.h \
-	libtiniconv/encdec/gbkext_inv.h libtiniconv/encdec/gbk.h \
-	libtiniconv/encdec/iso2022_jp.h \
+	include/scamp_protocol.h include/rx_extract.h include/rxmon.h \
+	include/serial.h include/smeter.h include/squelch_status.h \
+	include/vumeter.h include/socket.h include/soundconf.h \
+	include/sound.h include/speak.h include/spectrum.h \
+	include/spectrum_viewer.h include/spot.h include/ssb.h \
+	include/stacktrace.h include/status.h include/status_box.h \
+	include/strutil.h include/synop.h include/tabdefs.h \
+	include/table.h include/testmodem.h include/test_signal.h \
+	include/testsigs.h include/textio.h include/thor.h \
+	include/thorvaricode.h include/threads.h include/throb.h \
+	include/timeops.h include/trx.h include/utf8file_io.h \
+	include/util.h include/view_cw.h include/Viewer.h \
+	include/viewpsk.h include/view_rtty.h include/view_scamp.h \
+	include/viterbi.h include/waterfall.h include/weather.h \
+	include/wefax.h include/wefax_map.h include/wefax-pic.h \
+	include/winkeyer.h include/wwv.h include/xmlreader.h \
+	libtiniconv/tiniconv.h libtiniconv/tiniconv_int.h \
+	libtiniconv/encdec/ascii.h libtiniconv/encdec/big5.h \
+	libtiniconv/encdec/ces_big5.h libtiniconv/encdec/ces_gbk.h \
+	libtiniconv/encdec/cp1250.h libtiniconv/encdec/cp1251.h \
+	libtiniconv/encdec/cp1252.h libtiniconv/encdec/cp1253.h \
+	libtiniconv/encdec/cp1254.h libtiniconv/encdec/cp1255.h \
+	libtiniconv/encdec/cp1256.h libtiniconv/encdec/cp1257.h \
+	libtiniconv/encdec/cp1258.h libtiniconv/encdec/cp866.h \
+	libtiniconv/encdec/cp936ext.h libtiniconv/encdec/cp936.h \
+	libtiniconv/encdec/euc_cn.h libtiniconv/encdec/flushwc.h \
+	libtiniconv/encdec/gb2312.h libtiniconv/encdec/gbkext1.h \
+	libtiniconv/encdec/gbkext2.h libtiniconv/encdec/gbkext_inv.h \
+	libtiniconv/encdec/gbk.h libtiniconv/encdec/iso2022_jp.h \
 	libtiniconv/encdec/iso8859_10.h \
 	libtiniconv/encdec/iso8859_11.h \
 	libtiniconv/encdec/iso8859_13.h \
@@ -1882,7 +1881,7 @@ fldigi_SOURCES = $(XMLRPC_SRC) $(am__append_5) $(am__append_15) \
 	cw/cw.cxx cw/ICOMkeying.cxx cw/KYkeying.cxx cw/morse.cxx \
 	cw/nanoIO.cxx cw/Nav.cxx cw/view_cw.cxx cw/winkeyer.cxx \
 	cw/YAESUkeying.cxx rtty/fsk.cxx rtty/rtty.cxx \
-	rtty/view_rtty.cxx scamp/scampsk.cxx scamp/scamp.cxx \
+	rtty/view_rtty.cxx scamp/scamp.cxx scamp/scamp_protocol.cxx \
 	scamp/view_scamp.cxx debug/debug.cxx debug/debug_dialog.cxx \
 	dialogs/confdialog.cxx dialogs/fl_digi.cxx \
 	dialogs/font_browser.cxx dialogs/htmlstrings.cxx \
@@ -2584,9 +2583,9 @@ scamp/$(am__dirstamp):
 scamp/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) scamp/$(DEPDIR)
 	@: > scamp/$(DEPDIR)/$(am__dirstamp)
-scamp/fldigi-scampsk.$(OBJEXT): scamp/$(am__dirstamp) \
-	scamp/$(DEPDIR)/$(am__dirstamp)
 scamp/fldigi-scamp.$(OBJEXT): scamp/$(am__dirstamp) \
+	scamp/$(DEPDIR)/$(am__dirstamp)
+scamp/fldigi-scamp_protocol.$(OBJEXT): scamp/$(am__dirstamp) \
 	scamp/$(DEPDIR)/$(am__dirstamp)
 scamp/fldigi-view_scamp.$(OBJEXT): scamp/$(am__dirstamp) \
 	scamp/$(DEPDIR)/$(am__dirstamp)
@@ -3560,7 +3559,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@rtty/$(DEPDIR)/fldigi-rtty.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@rtty/$(DEPDIR)/fldigi-view_rtty.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@scamp/$(DEPDIR)/fldigi-scamp.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@scamp/$(DEPDIR)/fldigi-scampsk.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@scamp/$(DEPDIR)/fldigi-scamp_protocol.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@scamp/$(DEPDIR)/fldigi-view_scamp.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@soundcard/$(DEPDIR)/fldigi-audio_alert.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@soundcard/$(DEPDIR)/fldigi-bark.Po@am__quote@ # am--include-marker
@@ -5963,20 +5962,6 @@ rtty/fldigi-view_rtty.obj: rtty/view_rtty.cxx
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -c -o rtty/fldigi-view_rtty.obj `if test -f 'rtty/view_rtty.cxx'; then $(CYGPATH_W) 'rtty/view_rtty.cxx'; else $(CYGPATH_W) '$(srcdir)/rtty/view_rtty.cxx'; fi`
 
-scamp/fldigi-scampsk.o: scamp/scampsk.cxx
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -MT scamp/fldigi-scampsk.o -MD -MP -MF scamp/$(DEPDIR)/fldigi-scampsk.Tpo -c -o scamp/fldigi-scampsk.o `test -f 'scamp/scampsk.cxx' || echo '$(srcdir)/'`scamp/scampsk.cxx
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) scamp/$(DEPDIR)/fldigi-scampsk.Tpo scamp/$(DEPDIR)/fldigi-scampsk.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='scamp/scampsk.cxx' object='scamp/fldigi-scampsk.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -c -o scamp/fldigi-scampsk.o `test -f 'scamp/scampsk.cxx' || echo '$(srcdir)/'`scamp/scampsk.cxx
-
-scamp/fldigi-scampsk.obj: scamp/scampsk.cxx
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -MT scamp/fldigi-scampsk.obj -MD -MP -MF scamp/$(DEPDIR)/fldigi-scampsk.Tpo -c -o scamp/fldigi-scampsk.obj `if test -f 'scamp/scampsk.cxx'; then $(CYGPATH_W) 'scamp/scampsk.cxx'; else $(CYGPATH_W) '$(srcdir)/scamp/scampsk.cxx'; fi`
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) scamp/$(DEPDIR)/fldigi-scampsk.Tpo scamp/$(DEPDIR)/fldigi-scampsk.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='scamp/scampsk.cxx' object='scamp/fldigi-scampsk.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -c -o scamp/fldigi-scampsk.obj `if test -f 'scamp/scampsk.cxx'; then $(CYGPATH_W) 'scamp/scampsk.cxx'; else $(CYGPATH_W) '$(srcdir)/scamp/scampsk.cxx'; fi`
-
 scamp/fldigi-scamp.o: scamp/scamp.cxx
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -MT scamp/fldigi-scamp.o -MD -MP -MF scamp/$(DEPDIR)/fldigi-scamp.Tpo -c -o scamp/fldigi-scamp.o `test -f 'scamp/scamp.cxx' || echo '$(srcdir)/'`scamp/scamp.cxx
 @am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) scamp/$(DEPDIR)/fldigi-scamp.Tpo scamp/$(DEPDIR)/fldigi-scamp.Po
@@ -5990,6 +5975,20 @@ scamp/fldigi-scamp.obj: scamp/scamp.cxx
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='scamp/scamp.cxx' object='scamp/fldigi-scamp.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -c -o scamp/fldigi-scamp.obj `if test -f 'scamp/scamp.cxx'; then $(CYGPATH_W) 'scamp/scamp.cxx'; else $(CYGPATH_W) '$(srcdir)/scamp/scamp.cxx'; fi`
+
+scamp/fldigi-scamp_protocol.o: scamp/scamp_protocol.cxx
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -MT scamp/fldigi-scamp_protocol.o -MD -MP -MF scamp/$(DEPDIR)/fldigi-scamp_protocol.Tpo -c -o scamp/fldigi-scamp_protocol.o `test -f 'scamp/scamp_protocol.cxx' || echo '$(srcdir)/'`scamp/scamp_protocol.cxx
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) scamp/$(DEPDIR)/fldigi-scamp_protocol.Tpo scamp/$(DEPDIR)/fldigi-scamp_protocol.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='scamp/scamp_protocol.cxx' object='scamp/fldigi-scamp_protocol.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -c -o scamp/fldigi-scamp_protocol.o `test -f 'scamp/scamp_protocol.cxx' || echo '$(srcdir)/'`scamp/scamp_protocol.cxx
+
+scamp/fldigi-scamp_protocol.obj: scamp/scamp_protocol.cxx
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -MT scamp/fldigi-scamp_protocol.obj -MD -MP -MF scamp/$(DEPDIR)/fldigi-scamp_protocol.Tpo -c -o scamp/fldigi-scamp_protocol.obj `if test -f 'scamp/scamp_protocol.cxx'; then $(CYGPATH_W) 'scamp/scamp_protocol.cxx'; else $(CYGPATH_W) '$(srcdir)/scamp/scamp_protocol.cxx'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) scamp/$(DEPDIR)/fldigi-scamp_protocol.Tpo scamp/$(DEPDIR)/fldigi-scamp_protocol.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='scamp/scamp_protocol.cxx' object='scamp/fldigi-scamp_protocol.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -c -o scamp/fldigi-scamp_protocol.obj `if test -f 'scamp/scamp_protocol.cxx'; then $(CYGPATH_W) 'scamp/scamp_protocol.cxx'; else $(CYGPATH_W) '$(srcdir)/scamp/scamp_protocol.cxx'; fi`
 
 scamp/fldigi-view_scamp.o: scamp/view_scamp.cxx
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -MT scamp/fldigi-view_scamp.o -MD -MP -MF scamp/$(DEPDIR)/fldigi-view_scamp.Tpo -c -o scamp/fldigi-view_scamp.o `test -f 'scamp/view_scamp.cxx' || echo '$(srcdir)/'`scamp/view_scamp.cxx
@@ -9620,7 +9619,7 @@ distclean: distclean-recursive
 	-rm -f rtty/$(DEPDIR)/fldigi-rtty.Po
 	-rm -f rtty/$(DEPDIR)/fldigi-view_rtty.Po
 	-rm -f scamp/$(DEPDIR)/fldigi-scamp.Po
-	-rm -f scamp/$(DEPDIR)/fldigi-scampsk.Po
+	-rm -f scamp/$(DEPDIR)/fldigi-scamp_protocol.Po
 	-rm -f scamp/$(DEPDIR)/fldigi-view_scamp.Po
 	-rm -f soundcard/$(DEPDIR)/fldigi-audio_alert.Po
 	-rm -f soundcard/$(DEPDIR)/fldigi-bark.Po
@@ -10033,7 +10032,7 @@ maintainer-clean: maintainer-clean-recursive
 	-rm -f rtty/$(DEPDIR)/fldigi-rtty.Po
 	-rm -f rtty/$(DEPDIR)/fldigi-view_rtty.Po
 	-rm -f scamp/$(DEPDIR)/fldigi-scamp.Po
-	-rm -f scamp/$(DEPDIR)/fldigi-scampsk.Po
+	-rm -f scamp/$(DEPDIR)/fldigi-scamp_protocol.Po
 	-rm -f scamp/$(DEPDIR)/fldigi-view_scamp.Po
 	-rm -f soundcard/$(DEPDIR)/fldigi-audio_alert.Po
 	-rm -f soundcard/$(DEPDIR)/fldigi-bark.Po

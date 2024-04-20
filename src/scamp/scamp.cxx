@@ -49,8 +49,6 @@
 
 #include "scamp.h"
 
-#include "scampsk.h"
-
 #define FILTER_DEBUG 0
 
 #define SHAPER_BAUD 150
@@ -100,25 +98,6 @@ void scamp::tx_init()
 
 }
 
-// Customizes output of Synop decoded data.
-struct scamp_callback : public synop_callback {
-	// Callback for writing decoded synop messages.
-	void print(const char * str, size_t nb, bool bold ) const {
-		// Could choose: FTextBase::CTRL,XMIT,RECV
-		int style = bold ? FTextBase::XMIT : FTextBase::RECV;
-		for( size_t i = 0; i < nb; ++i ) {
-			unsigned char c = str[i];
-			put_rx_char(progdefaults.rx_lowercase ? tolower(c) : c, style );
-		}
-	}
-	// Should we log new Synop messages to the current Adif log file ?
-	bool log_adif(void) const { return progdefaults.SynopAdifDecoding ;}
-	// Should we log new Synop messages to KML file ?
-	bool log_kml(void) const { return progdefaults.SynopKmlDecoding ;}
-
-	bool interleaved(void) const { return progdefaults.SynopInterleaved ;}
-};
-
 void scamp::rx_init()
 {
 	rxstate = SCAMP_RX_STATE_IDLE;
@@ -140,16 +119,6 @@ void scamp::rx_init()
 	inp_ptr = 0;
 
 	lastchar = 0;
-
-	// Synop file is reloaded each time we enter this modem. Ideally do that when the file is changed.
-	static bool wmo_loaded = false ;
-	if( wmo_loaded == false ) {
-		wmo_loaded = true ;
-		SynopDB::Init(PKGDATADIR);
-	}
-	/// Used by weather reports decoding.
-	synop::setup<scamp_callback>();
-	synop::instance()->init();
 }
 
 void scamp::init()
@@ -160,9 +129,7 @@ void scamp::init()
 	reverse = wfrev ^ !wfsb;
 	stopflag = false;
 
-	if (progdefaults.StartAtSweetSpot)
-		set_freq(progdefaults.RTTYsweetspot);
-	else if (progStatus.carrier != 0) {
+    if (progStatus.carrier != 0) {
 		set_freq(progStatus.carrier);
 #if !BENCHMARK_MODE
 		progStatus.carrier = 0;
@@ -177,10 +144,8 @@ void scamp::init()
 	else
 		snprintf(msg1, sizeof(msg1), "%-4.2f/%-4.0f", scamp_baud, scamp_shift);
 	put_Status1(msg1);
-	if (progdefaults.PreferXhairScope)
-		set_scope_mode(Digiscope::XHAIRS);
-	else
-		set_scope_mode(Digiscope::RTTY);
+    set_scope_mode(Digiscope::XHAIRS);
+
 	for (int i = 0; i < MAXPIPE; i++) mark_history[i] = space_history[i] = cmplx(0,0);
 
 	lastchar = 0;
@@ -199,11 +164,6 @@ scamp::~scamp()
 	delete m_Osc2;
 	delete m_SymShaper1;
 	delete m_SymShaper2;
-
-	if (scampsk_tty) {
-		delete scampsk_tty;
-		scampsk_tty = 0;
-	}
 }
 
 void scamp::reset_filters()
@@ -304,30 +264,6 @@ void scamp::restart()
 	for (int i = 0; i < MAXPIPE; i++) mark_history[i] = space_history[i] = cmplx(0,0);
 
 	if (scampviewer) scampviewer->restart();
-
-	progStatus.rtty_filter_changed = false;
-
-}
-
-void scamp::resetSCAMPSK() {
-	delete scampsk_tty;
-	scampsk_tty = 0;
-
-	if (progdefaults.useFSK) {
-		scampsk_tty = new SCAMPSK;
-		if (progdefaults.fsk_shares_port) {
-			scampsk_tty->scampsk_shares_port(&rigio);
-		} else if (!progdefaults.fsk_port.empty()) {
-			scampsk_tty->open_port(progdefaults.fsk_port);
-		}
-		scampsk_tty->shift_on_space(progdefaults.fsk_shift_on_space);
-		scampsk_tty->reverse(progdefaults.fsk_reverse);
-		if (progdefaults.fsk_on_dtr)
-			scampsk_tty->dtr(true);
-		else
-			scampsk_tty->rts(true);
-		sig_start = true;
-	}
 }
 
 scamp::scamp(trx_mode tty_mode)
@@ -353,10 +289,6 @@ scamp::scamp(trx_mode tty_mode)
 
 	m_SymShaper1 = new SCAMPSymbolShaper( 45, samplerate );
 	m_SymShaper2 = new SCAMPSymbolShaper( 45, samplerate );
-
-	scampsk_tty = 0;
-
-	resetSCAMPSK();
 
 	restart();
 
@@ -906,7 +838,6 @@ void scamp::send_symbol(int symbol, int len)
 
 	acc_symbols += len;
 
-	if (!progStatus.shaped_rtty) {
 		double freq;
 
 		if (symbol)
@@ -921,55 +852,12 @@ void scamp::send_symbol(int symbol, int len)
 			else
 				SCAMPSKbuf[i] = 0.0;
 		}
-	} else {
-		double const freq1 = get_txfreq_woffset() + shift / 2.0;
-		double const freq2 = get_txfreq_woffset() - shift / 2.0;
-		double mark = 0, space = 0;
-		double signal = 0;
 
-		if (maxamsc == 0) {
-			int sym = 0;
-			for (int j = 0; j < 100; j++) {
-				if (sym) sym = 0;
-				else sym = 1;
-				for( int i = 0; i < 3*len; ++i ) {
-					mark  = m_SymShaper1->Update( sym) * m_Osc1->Update( freq1 );
-					space = m_SymShaper2->Update(!sym) * m_Osc2->Update( freq2 );
-					signal = mark + space;
-
-					if (maxamsc < fabs(signal)) maxamsc = fabs(signal);
-				}
-			}
-		}
-
-		for( int i = 0; i < len; ++i ) {
-			mark  = m_SymShaper1->Update( symbol) * m_Osc1->Update( freq1 );
-			space = m_SymShaper2->Update(!symbol) * m_Osc2->Update( freq2 );
-			signal = mark + space;
-
-			if (maxamsc < fabs(signal)) {
-				maxamsc = fabs(signal);
-			}
-
-			outbuf[i] = maxamsc ? (signal / maxamsc) : 0.0;
-
-			if (symbol)
-				SCAMPSKbuf[i] = SCAMPSKnco();
-			else
-				SCAMPSKbuf[i] = 0.0 * SCAMPSKnco();
-		}
-	}
-
-	if (progdefaults.PseudoFSK)
-		ModulateStereo(outbuf, SCAMPSKbuf, symbollen);
-	else
-		ModulateXmtr(outbuf, symbollen);
-
+    ModulateXmtr(outbuf, symbollen);
 }
 
 void scamp::send_stop()
 {
-	if (!progStatus.shaped_rtty) {
 		double freq;
 		bool invert = reverse;
 
@@ -985,34 +873,7 @@ void scamp::send_stop()
 			else
 				SCAMPSKbuf[i] = SCAMPSKnco();
 		}
-	} else {
-		double const freq1 = get_txfreq_woffset() + shift / 2.0;
-		double const freq2 = get_txfreq_woffset() - shift / 2.0;
-		double mark = 0, space = 0, signal = 0;
-		bool symbol = true;
 
-		if (reverse)
-			symbol = !symbol;
-
-		for( int i = 0; i < stoplen; ++i ) {
-			mark  = m_SymShaper1->Update( symbol)*m_Osc1->Update( freq1 );
-			space = m_SymShaper2->Update(!symbol)*m_Osc2->Update( freq2 );
-			signal = mark + space;
-
-			if (maxamsc < fabs(signal))
-				maxamsc = fabs(signal);
-			outbuf[i] = maxamsc ? (signal / maxamsc) : 0.0;
-
-			if (reverse)
-				SCAMPSKbuf[i] = 0.0;
-			else
-				SCAMPSKbuf[i] = SCAMPSKnco();
-		}
-	}
-
-	if (progdefaults.PseudoFSK)
-		ModulateStereo(outbuf, SCAMPSKbuf, stoplen);
-	else
 		ModulateXmtr(outbuf, stoplen);
 
 }
@@ -1036,10 +897,8 @@ void scamp::flush_stream()
 	}
 
 	sig_stop = true;
-	if (progdefaults.PseudoFSK)
-		ModulateStereo(outbuf, SCAMPSKbuf, symbollen * 6);
-	else
-		ModulateXmtr(outbuf, symbollen * 6);
+	
+    ModulateXmtr(outbuf, symbollen * 6);
 
 }
 
@@ -1136,152 +995,11 @@ static int line_char_count = 0;
 #define wait_one_byte(baud, stopbits) \
 scamp_sleep( ((6 + (stopbits))*1.0 / (baud)));
 
-void scamp::flrig_scampsk_send(char c)
-{
-	static std::string s = " ";
-	s[0] = c;
-	flrig_fskio_send_text(s);
-//	if (c == '[' || c == ']')
-//		return;
-	wait_one_byte(45.45, 1.5);
-}
-
 int scamp::tx_process()
 {
 	modem::tx_process();
 
 	int c = get_tx_char();
-
-	if (progdefaults.use_FLRIG_FSK) {
-		if (preamble) {
-			start_deadman();
-			flrig_scampsk_send('[');
-			preamble = false;
-		}
-		if (c == GET_TX_CHAR_ETX || stopflag) {
-			stopflag = false;
-			flrig_scampsk_send(']');
-			put_echo_char('\n');
-			stop_deadman();
-			return -1;
-		}
-		if (c == GET_TX_CHAR_NODATA) {
-			scamp_sleep(0.022 * 7.5);
-		} else {
-			flrig_scampsk_send(c);
-			put_echo_char(c);
-		}
-		return 0;
-	}
-
-	if (progdefaults.useFSK) {
-
-		if (c == GET_TX_CHAR_ETX || stopflag) {
-			stopflag = false;
-			stop_deadman();
-			sig_start = true;
-			return -1;
-		}
-
-		if (c == GET_TX_CHAR_NODATA) {
-			send_SCAMPSK(0x03);
-			return 0;
-		}
-
-//		if (sig_start) {
-//			int cltrs = 0x1F;
-//			send_SCAMPSK(cltrs);
-//			send_SCAMPSK(cltrs);
-//			sig_start = false;
-//		}
-		send_SCAMPSK(c);
-		put_echo_char(toupper(c));
-
-		return 0;
-	}
-
-	if (progStatus.nanoFSK_online) {
-		if (preamble) {
-			start_deadman();
-			sig_start = true;
-			for (int i = 0; i < progdefaults.TTY_LTRS; i++)
-				nano_send_char(-1);
-			preamble = false;
-			nano_send_char(-1);
-			nano_send_char(-1);
-		}
-		if (c == GET_TX_CHAR_ETX || stopflag) {
-			stopflag = false;
-			stop_deadman();
-			return -1;
-		}
-
-		nano_send_char(c);
-		if (c == GET_TX_CHAR_NODATA) {
-			return 0;
-		}
-
-		put_echo_char(c);
-		return 0;
-	}
-
-	if (use_Nav) {
-		if (preamble) {
-			start_deadman();
-			for (int i = 0; i < progdefaults.TTY_LTRS; i++)
-				Nav_send_char(-1);
-			preamble = false;
-		}
-
-		if (c == GET_TX_CHAR_ETX || stopflag) {
-			stopflag = false;
-			stop_deadman();
-			return -1;
-		}
-		if (c == GET_TX_CHAR_NODATA) {
-			Nav_send_char(-1);
-			return 0;
-		}
-		Nav_send_char(c);
-		put_echo_char(c);
-		return 0;
-	}
-
-	if (progStatus.WK_online && progStatus.WKFSK_mode) {
-		if (preamble) {
-			start_deadman();
-			WKFSK_send_char('[');
-			preamble = false;
-		}
-
-		if (c == GET_TX_CHAR_ETX || stopflag) {
-			if (stopflag) WKFSK_send_char('\\');
-			WKFSK_send_char(']');
-			stop_deadman();
-			stopflag = false;
-			return -1;
-		}
-// send idle character if c == -1
-// must insert a suitable time delay to account for the idle
-		if (c == GET_TX_CHAR_NODATA) {
-			wait_one_byte(
-				(progStatus.WKFSK_baud == 0 ? 45.45 :
-				 progStatus.WKFSK_baud == 1 ? 50.0 :
-				 progStatus.WKFSK_baud == 2 ? 75.0 : 100.0),
-				 (progStatus.WKFSK_stopbits == 0 ? 2.0 : 1.5));
-			return 0;
-		}
-		else {
-		WKFSK_send_char(c);
-		put_echo_char(c);
-		wait_one_byte(
-			(progStatus.WKFSK_baud == 0 ? 45.45 :
-			 progStatus.WKFSK_baud == 1 ? 50.0 :
-			 progStatus.WKFSK_baud == 2 ? 75.0 : 100.0),
-			 (progStatus.WKFSK_stopbits == 0 ? 2.0 : 1.5));
-		}
-		return 0;
-	}
 
 	if (preamble) {
 		sig_start = true;
@@ -1433,20 +1151,6 @@ char scamp::baudot_dec(unsigned char data)
 	}
 
 	return out;
-}
-
-// ---------------------------------------------------------------------
-// TTY output on DTR/RTS signal lines
-//----------------------------------------------------------------------
-
-void scamp::send_SCAMPSK(int c)
-{
-	if (!scampsk_tty) return;
-	int timeout = 1000;
-	scampsk_tty->append( (char)c );
-	while (scampsk_tty->sending() && timeout--)
-		scamp_sleep(.010);
-//		MilliSleep(1);
 }
 
 //======================================================================

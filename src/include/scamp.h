@@ -40,7 +40,7 @@
 #include "view_scamp.h"
 #include "serial.h"
 
-#include "scampsk.h"
+#include "scamp_protocol.h"
 
 #define	SCAMP_SampleRate	8000
 //#define SCAMP_SampleRate 11025
@@ -238,14 +238,6 @@ private:
 	bool is_mark_space(int &);
 	bool is_mark();
 
-//----------------------------------------------------------------------
-// SCAMPSK via signal control line [serial DTR or RTS pin]
-//----------------------------------------------------------------------
-	SCAMPSK  *scampsk_tty;
-	void send_SCAMPSK(int);
-
-// SCAMPSK via flrig DTR/RTS
-	void flrig_scampsk_send(char c);
 	double scamp_now();
 	int scamp_sleep (double);
 
@@ -267,8 +259,6 @@ public:
 
 	void searchDown();
 	void searchUp();
-
-	void resetSCAMPSK();
 };
 
 int scampparity(unsigned int, int);
