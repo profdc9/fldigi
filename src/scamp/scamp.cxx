@@ -88,18 +88,20 @@ const int		scamp::numbauds = (int)(sizeof(BAUD) / sizeof(*BAUD));
 
 void scamp::tx_init()
 {
-	phaseacc = 0;
+/*	phaseacc = 0;
 	preamble = true;
 	videoText();
 
 	symbols = 0;
 	acc_symbols = 0;
 	ovhd_symbols = 0;
-
+*/
 }
 
 void scamp::rx_init()
 {
+	
+/*
 	rxstate = SCAMP_RX_STATE_IDLE;
 	rxmode = LETTERS;
 	phaseacc = 0;
@@ -119,6 +121,7 @@ void scamp::rx_init()
 	inp_ptr = 0;
 
 	lastchar = 0;
+	*/
 }
 
 void scamp::init()
@@ -127,7 +130,6 @@ void scamp::init()
 	bool wfsb = wf->USB();
 	// Probably not necessary because similar to modem::set_reverse
 	reverse = wfrev ^ !wfsb;
-	stopflag = false;
 
     if (progStatus.carrier != 0) {
 		set_freq(progStatus.carrier);
@@ -139,175 +141,113 @@ void scamp::init()
 
 	rx_init();
 	put_MODEstatus(mode);
-	if ((scamp_baud - (int)scamp_baud) == 0)
-		snprintf(msg1, sizeof(msg1), "%-3.0f/%-4.0f", scamp_baud, scamp_shift);
-	else
-		snprintf(msg1, sizeof(msg1), "%-4.2f/%-4.0f", scamp_baud, scamp_shift);
+    snprintf(msg1, sizeof(msg1), "SCAMP");
 	put_Status1(msg1);
-    set_scope_mode(Digiscope::XHAIRS);
-
-	for (int i = 0; i < MAXPIPE; i++) mark_history[i] = space_history[i] = cmplx(0,0);
-
-	lastchar = 0;
+    set_scope_mode(Digiscope::BLANK);
 }
 
 scamp::~scamp()
 {
 	if (scampviewer) delete scampviewer;
-
-	if (mark_filt) delete mark_filt;
-	if (space_filt) delete space_filt;
-	if (pipe) delete [] pipe;
-	if (dsppipe) delete [] dsppipe;
-	if (bits) delete bits;
-	delete m_Osc1;
-	delete m_Osc2;
-	delete m_SymShaper1;
-	delete m_SymShaper2;
 }
 
 void scamp::reset_filters()
 {
-	delete mark_filt;
-	mark_filt = new fftfilt(scamp_baud/samplerate, filter_length);
-	mark_filt->rtty_filter(scamp_baud/samplerate);
-	delete space_filt;
-	space_filt = new fftfilt(scamp_baud/samplerate, filter_length);
-	space_filt->rtty_filter(scamp_baud/samplerate);
+	circbuffer_head_tail = 0;
+	sample_count = 0;
+	sample_count_check = SCAMP_SampleRate / SCAMP_SAMPLE_COUNT_CHECK_RATE;
+	circbuffer1_ac_re = 0;
+	circbuffer1_ac_im = 0;
+	circbuffer2_ac_re = 0;
+	circbuffer2_ac_im = 0;
+	for (int i=0;i<SCAMP_CIRCBUFFER_MAX;i++)
+	{
+		circbuffer1_re[i] = 0;
+		circbuffer1_im[i] = 0;
+		circbuffer2_re[i] = 0;
+		circbuffer2_im[i] = 0;
+	}
+	circ_phase = 0.0;
+	carrier_phase = 0.0;
 }
 
 void scamp::restart()
 {
-	double stl;
+    switch (mode)
+    {
+	   case MODE_SCAMPFSK:
+	        scamp_fsk_mode = true;
+	        circbuffer_samples = 60*(samplerate/2000);
+	        shift_freq = (0.5*TWOPI)*66.6666666/((double)samplerate);
+	        mode_bandwidth = 66.66666666 + 4*33.33333333;
+	        shift = 66.66666666;
+	        channel_bandwidth = 33.33333333;
+			break;
+	   case MODE_SCAMPOOK:
+	        scamp_fsk_mode = false;
+	        circbuffer_samples = 64*(samplerate/2000);
+	        shift_freq = 0;
+	        mode_bandwidth = 4*31.25;
+	        channel_bandwidth = 31.25;
+	        shift = 0.0;
+			break;
+	   case MODE_SCFSKFST:
+	        scamp_fsk_mode = true;
+	        circbuffer_samples = 24*(samplerate/2000);
+	        shift_freq = (0.5*TWOPI)*166.6666666/((double)samplerate);
+	        mode_bandwidth = 166.66666666 + 4*83.33333333;
+	        shift = 83.3333333333;
+	        channel_bandwidth = 83.333333333;
+			break;
+	   case MODE_SCFSKSLW:
+	        scamp_fsk_mode = true;
+	        circbuffer_samples = 144*(samplerate/2000);
+	        shift_freq = (0.5*TWOPI)*41.66666666/((double)samplerate);
+	        mode_bandwidth = 41.66666666 + 4*13.88888888;
+	        shift = 41.6666666666;
+	        channel_bandwidth = 41.666666666;
+	        break;
+	   case MODE_SCOOKSLW:
+	        scamp_fsk_mode = false;
+	        circbuffer_samples = 144*(samplerate/2000);
+	        shift_freq = 0;
+	        mode_bandwidth = 4*13.88888888;
+	        channel_bandwidth = 41.666666666;
+	        shift = 0.0;
+	        break;
+	   case MODE_SCFSKVSL:
+	        scamp_fsk_mode = true;
+	        circbuffer_samples = 288*(samplerate/2000);
+	        shift_freq = (0.25*TWOPI)*41.66666666/((double)samplerate);
+	        mode_bandwidth = 0.5*(41.66666666 + 4*13.88888888);
+	        shift = 0.5*41.6666666666;
+	        channel_bandwidth = 0.5*41.666666666;
+	        break;
+	}
 
-	scamp_shift = shift = (progdefaults.rtty_shift < numshifts ?
-				  SHIFT[progdefaults.rtty_shift] : progdefaults.rtty_custom_shift);
-	if (progdefaults.rtty_baud > numbauds - 1) progdefaults.rtty_baud = numbauds - 1;
-	scamp_baud = BAUD[progdefaults.rtty_baud];
-	filter_length = FILTLEN[progdefaults.rtty_baud];
-
-	nbits = scamp_bits = BITS[progdefaults.rtty_bits];
-	if (scamp_bits == 5)
-		scamp_parity = SCAMP_PARITY_NONE;
-	else
-		switch (progdefaults.rtty_parity) {
-			case 0 : scamp_parity = SCAMP_PARITY_NONE; break;
-			case 1 : scamp_parity = SCAMP_PARITY_EVEN; break;
-			case 2 : scamp_parity = SCAMP_PARITY_ODD; break;
-			case 3 : scamp_parity = SCAMP_PARITY_ZERO; break;
-			case 4 : scamp_parity = SCAMP_PARITY_ONE; break;
-			default : scamp_parity = SCAMP_PARITY_NONE; break;
-		}
-
-	shift_state = LETTERS;
-	rxmode = LETTERS;
-	symbollen = (int) (samplerate / scamp_baud + 0.5);
-
-	set_bandwidth(shift);
-
-	scamp_BW = progdefaults.RTTY_BW = scamp_baud * 2;
-
+	set_bandwidth(mode_bandwidth);
+	
 	wf->redraw_marker();
 
 	reset_filters();
 
-	if (bits)
-		bits->setLength(symbollen / 8);//2);
-	else
-		bits = new Cmovavg(symbollen / 8);//2);
-	mark_noise = space_noise = 0;
-	bit = nubit = true;
-
-// stop length = 1, 1.5 or 2 bits
-	scamp_stop = progdefaults.rtty_stop;
-	if (scamp_stop == 0) stl = 1.0;
-	else if (scamp_stop == 1) stl = 1.5;
-	else stl = 2.0;
-	stoplen = (int) (stl * samplerate / scamp_baud + 0.5);
-	freqerr = 0.0;
-	pipeptr = 0;
-
-	for (int i = 0; i < MAXBITS; i++ ) bit_buf[i] = 0.0;
-
-	metric = 0.0;
-
-	if ((scamp_baud - (int)scamp_baud) == 0)
-		snprintf(msg1, sizeof(msg1), "%-3.0f/%-4.0f", scamp_baud, scamp_shift);
-	else
-		snprintf(msg1, sizeof(msg1), "%-4.2f/%-4.0f", scamp_baud, scamp_shift);
+    snprintf(msg1, sizeof(msg1), "SCAMP");
 	put_Status1(msg1);
 	put_MODEstatus(mode);
-	for (int i = 0; i < MAXPIPE; i++)
-		QI[i] = cmplx(0.0, 0.0);
-	sigpwr = 0.0;
-	noisepwr = 0.0;
-	sigsearch = 0;
-	dspcnsc = 2*(nbits + 2);
-
-	clear_zdata = true;
-
-	// restart symbol-scamp_shaper
-	m_SymShaper1->Preset(scamp_baud, samplerate);
-	m_SymShaper2->Preset(scamp_baud, samplerate);
-
-	mark_phase = 0;
-	space_phase = 0;
-	xy_phase = 0.0;
-
-	mark_mag = 0;
-	space_mag = 0;
-	mark_env = 0;
-	space_env = 0;
-
-	inp_ptr = 0;
-
-	for (int i = 0; i < MAXPIPE; i++) mark_history[i] = space_history[i] = cmplx(0,0);
 
 	if (scampviewer) scampviewer->restart();
 }
 
 scamp::scamp(trx_mode tty_mode)
 {
-	cap |= CAP_AFC | CAP_REV;
-
+	scampviewer = 0;
+	
 	mode = tty_mode;
 
 	samplerate = SCAMP_SampleRate;
 
-	mark_filt = (fftfilt *)0;
-	space_filt = (fftfilt *)0;
-
-	bits = (Cmovavg *)0;
-
-	pipe = new double[MAXPIPE];
-	dsppipe = new double [MAXPIPE];
-
-	scampviewer = new view_scamp(mode);
-
-	m_Osc1 = new SCAMPOscillator( samplerate );
-	m_Osc2 = new SCAMPOscillator( samplerate );
-
-	m_SymShaper1 = new SCAMPSymbolShaper( 45, samplerate );
-	m_SymShaper2 = new SCAMPSymbolShaper( 45, samplerate );
-
 	restart();
 
-}
-
-void scamp::Update_syncscope()
-{
-	int j;
-	for (int i = 0; i < symbollen; i++) {
-		j = pipeptr - i;
-		if (j < 0) j += symbollen;
-		dsppipe[i] = pipe[j];
-	}
-	set_scope(dsppipe, symbollen, false);
-}
-
-void scamp::Clear_syncscope()
-{
-	set_scope(0, 0, false);
 }
 
 cmplx scamp::mixer(double &phase, double f, cmplx in)
@@ -320,188 +260,14 @@ cmplx scamp::mixer(double &phase, double f, cmplx in)
 	return z;
 }
 
-unsigned char scamp::Bit_reverse(unsigned char in, int n)
-{
-	unsigned char out = 0;
-
-	for (int i = 0; i < n; i++)
-		out = (out << 1) | ((in >> i) & 1);
-
-	return out;
-}
-
-static int rparity(int c)
-{
-	int w = c;
-	int p = 0;
-	while (w) {
-		p += (w & 1);
-		w >>= 1;
-	}
-	return p & 1;
-}
-
-int scampparity(unsigned int c, int nbits)
-{
-	c &= (1 << nbits) - 1;
-
-	switch (progdefaults.rtty_parity) {
-	default:
-	case scamp::SCAMP_PARITY_NONE:
-		return 0;
-
-	case scamp::SCAMP_PARITY_ODD:
-		return rparity(c);
-
-	case scamp::SCAMP_PARITY_EVEN:
-		return !rparity(c);
-
-	case scamp::SCAMP_PARITY_ZERO:
-		return 0;
-
-	case scamp::SCAMP_PARITY_ONE:
-		return 1;
-	}
-}
-
-int scamp::decode_char()
-{
-	unsigned int parbit, par, data;
-
-	parbit = (rxdata >> nbits) & 1;
-	par = scampparity(rxdata, nbits);
-
-	if (scamp_parity != SCAMP_PARITY_NONE && parbit != par)
-		return 0;
-
-	data = rxdata & ((1 << nbits) - 1);
-
-	if (nbits == 5)
-		return baudot_dec(data);
-
-	return data;
-}
-
-bool scamp::is_mark_space( int &correction)
-{
-	correction = 0;
-// test for rough bit position
-	if (bit_buf[0] && !bit_buf[symbollen-1]) {
-// test for mark/space straddle point
-		for (int i = 0; i < symbollen; i++)
-			correction += bit_buf[i];
-		if (abs(symbollen/2 - correction) < 6) // too small & bad signals are not decoded
-			return true;
-	}
-	return false;
-}
-
-bool scamp::is_mark()
-{
-	return bit_buf[symbollen / 2];
-}
-
-bool scamp::rx(bool bit) // original modified for probability test
-{
-	bool flag = false;
-	unsigned char c = 0;
-	int correction;
-
-	for (int i = 1; i < symbollen; i++) bit_buf[i-1] = bit_buf[i];
-	bit_buf[symbollen - 1] = bit;
-
-	switch (rxstate) {
-	case SCAMP_RX_STATE_IDLE:
-		if ( is_mark_space(correction)) {
-			rxstate = SCAMP_RX_STATE_START;
-			counter = correction;
-		}
-		break;
-	case SCAMP_RX_STATE_START:
-		if (--counter == 0) {
-			if (!is_mark()) {
-				rxstate = SCAMP_RX_STATE_DATA;
-				counter = symbollen;
-				bitcntr = 0;
-				rxdata = 0;
-			} else {
-				rxstate = SCAMP_RX_STATE_IDLE;
-			}
-		}
-		break;
-	case SCAMP_RX_STATE_DATA:
-		if (--counter == 0) {
-			rxdata |= is_mark() << bitcntr++;
-			counter = symbollen;
-		}
-		if (bitcntr == nbits + (scamp_parity != SCAMP_PARITY_NONE ? 1 : 0))
-			rxstate = SCAMP_RX_STATE_STOP;
-		break;
-	case SCAMP_RX_STATE_STOP:
-		if (--counter == 0) {
-			if (is_mark()) {
-				if ((metric >= progStatus.sldrSquelchValue && progStatus.sqlonoff) || !progStatus.sqlonoff) {
-					c = decode_char();
-					if( progdefaults.SynopAdifDecoding || progdefaults.SynopKmlDecoding ) {
-						if (c != 0 && c != '\r')  {
-							synop::instance()->add(c);
-						} else {
-							if( synop::instance()->enabled() )
-								synop::instance()->flush(false);
-							put_rx_char(c);
-						}
-					} else if ( c != 0 ) {
-// supress <CR><CR> and <LF><LF> sequences
-// these were observed during the SCAMP contest 2/9/2013
-						if (c == '\r' && lastchar == '\r');
-						else if (c == '\n' && lastchar == '\n');
-						else
-							put_rx_char(progdefaults.rx_lowercase ? tolower(c) : c);
-						lastchar = c;
-					}
-					flag = true;
-				}
-			}
-			rxstate = SCAMP_RX_STATE_IDLE;
-		}
-		break;
-	default : break;
-	}
-
-	return flag;
-}
-
-char scnrmsg[80];
-void scamp::Metric()
-{
-	double delta = scamp_baud/8.0;
-	double np = wf->powerDensity(frequency, delta) * 3000 / delta + 1e-8;
-	double sp =
-		wf->powerDensity(frequency - shift/2, delta) +
-		wf->powerDensity(frequency + shift/2, delta) + 1e-8;
-	double snr = 0;
-
-	if (np < 1e-6) np = sp * 100;
-
-	sigpwr = decayavg( sigpwr, sp, sp > sigpwr ? 2 : 8);
-	noisepwr = decayavg( noisepwr, np, 16 );
-
-	snr = 10*log10(sigpwr / noisepwr);
-
-	snprintf(scnrmsg, sizeof(scnrmsg), "s/n %-3.0f dB", snr);
-	put_Status2(scnrmsg);
-	metric = CLAMP((3000 / delta) * (sigpwr/noisepwr), 0.0, 100.0);
-	display_metric(metric);
-}
-
 void scamp::searchDown()
 {
 	double srchfreq = frequency - shift -100;
 	double minfreq = shift * 2 + 100;
 	double spwrlo, spwrhi, npwr;
 	while (srchfreq > minfreq) {
-		spwrlo = wf->powerDensity(srchfreq - shift/2, 2*scamp_baud);
-		spwrhi = wf->powerDensity(srchfreq + shift/2, 2*scamp_baud);
+		spwrlo = wf->powerDensity(srchfreq - shift/2, 2*channel_bandwidth);
+		spwrhi = wf->powerDensity(srchfreq + shift/2, 2*channel_bandwidth);
 		npwr = wf->powerDensity(srchfreq + shift, 2*scamp_baud) + 1e-10;
 		if ((spwrlo / npwr > 10.0) && (spwrhi / npwr > 10.0)) {
 			frequency = srchfreq;
@@ -519,8 +285,8 @@ void scamp::searchUp()
 	double maxfreq = IMAGE_WIDTH - shift * 2 - 100;
 	double spwrhi, spwrlo, npwr;
 	while (srchfreq < maxfreq) {
-		spwrlo = wf->powerDensity(srchfreq - shift/2, 2*scamp_baud);
-		spwrhi = wf->powerDensity(srchfreq + shift/2, 2*scamp_baud);
+		spwrlo = wf->powerDensity(srchfreq - shift/2, 2*channel_bandwidth);
+		spwrhi = wf->powerDensity(srchfreq + shift/2, 2*channel_bandwidth);
 		npwr = wf->powerDensity(srchfreq - shift, 2*scamp_baud) + 1e-10;
 		if ((spwrlo / npwr > 10.0) && (spwrhi / npwr > 10.0)) {
 			frequency = srchfreq;
@@ -545,262 +311,98 @@ int mnum = 0;
 std::fstream ook_signal("ook_signal.csv", std::ios::out );
 #endif
 
+char lsnrmsg[80];
+void scamp::Metric()
+{
+	double delta = channel_bandwidth/8.0;
+	double np = wf->powerDensity(frequency, delta) * 3000 / delta + 1e-8;
+	double sp =
+		wf->powerDensity(frequency - shift/2, delta) +
+		wf->powerDensity(frequency + shift/2, delta) + 1e-8;
+	double snr = 0;
+
+	if (np < 1e-6) np = sp * 100;
+
+	sigpwr = decayavg( sigpwr, sp, sp > sigpwr ? 2 : 8);
+	noisepwr = decayavg( noisepwr, np, 16 );
+
+	snr = 10*log10(sigpwr / noisepwr);
+
+	snprintf(lsnrmsg, sizeof(lsnrmsg), "s/n %-3.0f dB", snr);
+	put_Status2(lsnrmsg);
+	metric = CLAMP((3000 / delta) * (sigpwr/noisepwr), 0.0, 100.0);
+	display_metric(metric);
+}
+
 int scamp::rx_process(const double *buf, int len)
 {
+	const double DECAY_FUDGE_FACTOR = 0.999999999999; 
+			/* Fudge factor to prevent roundoff error accumulation */
 	const double *buffer = buf;
 	int length = len;
-	static int showxy = symbollen;
+	double phaseinc = frequency*TWOPI/((double)samplerate);
 
-	cmplx z, zmark, zspace, *zp_mark, *zp_space;
-
-	int n_out = 0;
-	static int bitcount = 5 * nbits * symbollen;
+    for (int samp=0;samp<length;samp++)
+    {
+		double val = buffer[samp];
+		double mag1, mag2;
+		if (scamp_fsk_mode)
+		{
+		   double buf_re = val * cos(carrier_phase + circ_phase);
+		   double buf_im = val * sin(carrier_phase + circ_phase);
+		   circbuffer1_ac_re += buf_re - circbuffer1_re[circbuffer_head_tail];
+		   circbuffer1_ac_re *= DECAY_FUDGE_FACTOR;
+		   circbuffer1_ac_im += buf_im - circbuffer1_im[circbuffer_head_tail];
+		   circbuffer1_ac_im *= DECAY_FUDGE_FACTOR;
+		   circbuffer1_re[circbuffer_head_tail] = buf_re;
+		   circbuffer1_im[circbuffer_head_tail] = buf_im;
+		   mag1 = sqrt(circbuffer1_ac_re*circbuffer1_ac_re+circbuffer1_ac_im*circbuffer1_ac_im);
+		   
+		   buf_re = val * cos(carrier_phase - circ_phase);
+		   buf_im = val * sin(carrier_phase - circ_phase);
+		   circbuffer2_ac_re += buf_re - circbuffer2_re[circbuffer_head_tail];
+		   circbuffer2_ac_re *= DECAY_FUDGE_FACTOR;
+		   circbuffer2_ac_im += buf_im - circbuffer2_im[circbuffer_head_tail];
+		   circbuffer2_ac_im *= DECAY_FUDGE_FACTOR;
+		   circbuffer2_re[circbuffer_head_tail] = buf_re;
+		   circbuffer2_im[circbuffer_head_tail] = buf_im;
+		   mag2 = sqrt(circbuffer2_ac_re*circbuffer2_ac_re+circbuffer2_ac_im*circbuffer2_ac_im);
+		   
+		   circ_phase += shift_freq;
+		   if (circ_phase >= TWOPI)
+				circ_phase -= TWOPI;
+		} else
+		{
+		   double buf_re = val * cos(carrier_phase);
+		   double buf_im = val * sin(carrier_phase);
+		   circbuffer1_ac_re += buf_re - circbuffer1_re[circbuffer_head_tail];
+		   circbuffer1_ac_im += buf_im - circbuffer1_im[circbuffer_head_tail];
+		   circbuffer1_re[circbuffer_head_tail] = buf_re;
+		   circbuffer1_im[circbuffer_head_tail] = buf_im;
+		   mag1 = sqrt(circbuffer1_ac_re*circbuffer1_ac_re+circbuffer1_ac_im*circbuffer1_ac_im);
+		   mag2 = 0.0;
+		}
+		if ((++circbuffer_head_tail) >= circbuffer_samples)
+			circbuffer_head_tail = 0;
+	    if ((++sample_count) >= sample_count_check)
+		{
+			sample_count = 0;
+			/* call SCAMP code */
+		}
+		carrier_phase += phaseinc;
+		if (carrier_phase >= TWOPI)
+			carrier_phase -= TWOPI;
+	}
 
 	if ( !progdefaults.report_when_visible ||
 		 dlgViewer->visible() || progStatus.show_channels )
 		if (!bHistory && scampviewer) scampviewer->rx_process(buf, len);
 
-	if (progStatus.rtty_filter_changed) {
-		progStatus.rtty_filter_changed = false;
-		reset_filters();
+	{
+		reverse = wf->Reverse() ^ !wf->USB();
 	}
-{
-	reverse = wf->Reverse() ^ !wf->USB();
-}
 
 	Metric();
-#if FILTER_DEBUG == 1
-double value;
-#endif
-	while (length-- > 0) {
-
-// Create analytic signal from sound card input samples
-
-#if FILTER_DEBUG == 1
-if (snum < 2 * filter_length) {
-	frequency = 1000.0;
-	ook(snum);
-	z = cmplx(value, value);
-	ook_signal << snum << "," << z.real() << ",";
-//	snum++;
-} else {
-	z = cmplx(*buffer, *buffer);
-}
-#else
-	z = cmplx(*buffer, *buffer);
-#endif
-	buffer++;
-
-// Mix it with the audio carrier frequency to create two baseband signals
-// mark and space are separated and processed independently
-// lowpass Windowed Sinc - Overlap-Add convolution filters.
-// The two fftfilt's are the same size and processed in sync
-// therefore the mark and space filters will concurrently have the
-// same size outputs available for further processing
-
-		zmark = mixer(mark_phase, frequency + shift/2.0, z);
-		mark_filt->run(zmark, &zp_mark);
-
-		zspace = mixer(space_phase, frequency - shift/2.0, z);
-		n_out = space_filt->run(zspace, &zp_space);
-#if FILTER_DEBUG == 1
-if (snum < 2 * filter_length) {
-	ook_signal << abs(zmark) <<"\n";
-	snum++;
-}
-#endif
-		for (int i = 0; i < n_out; i++) {
-
-			mark_mag = abs(zp_mark[i]);
-			mark_env = decayavg (mark_env, mark_mag,
-						(mark_mag > mark_env) ? symbollen / 4 : symbollen * 16);
-			mark_noise = decayavg (mark_noise, mark_mag,
-						(mark_mag < mark_noise) ? symbollen / 4 : symbollen * 48);
-			space_mag = abs(zp_space[i]);
-			space_env = decayavg (space_env, space_mag,
-						(space_mag > space_env) ? symbollen / 4 : symbollen * 16);
-			space_noise = decayavg (space_noise, space_mag,
-						(space_mag < space_noise) ? symbollen / 4 : symbollen * 48);
-#if FILTER_DEBUG == 1
-if (mnum < 2 * filter_length)
-	ook_signal << ",,," << mnum++ + filter_length / 2 << "," << mark_mag << "," << space_mag << "\n";
-#endif
-			noise_floor = std::min(space_noise, mark_noise);
-
-// clipped if clipped decoder selected
-			double mclipped = 0, sclipped = 0;
-			mclipped = mark_mag > mark_env ? mark_env : mark_mag;
-			sclipped = space_mag > space_env ? space_env : space_mag;
-			if (mclipped < noise_floor) mclipped = noise_floor;
-			if (sclipped < noise_floor) sclipped = noise_floor;
-
-			switch (progdefaults.rtty_cwi) {
-				case 1 : // mark only decode
-					space_env = sclipped = noise_floor;
-					break;
-				case 2: // space only decode
-					mark_env = mclipped = noise_floor;
-				default : ;
-			}
-
-//			double v0, v1, v2, v3, v4, v5;
-			double v3;
-
-// no ATC
-//			v0 = mark_mag - space_mag;
-// Linear ATC
-//			v1 = mark_mag - space_mag - 0.5 * (mark_env - space_env);
-// Clipped ATC
-//			v2  = (mclipped - noise_floor) - (sclipped - noise_floor) - 0.5 * (
-//					(mark_env - noise_floor) - (space_env - noise_floor));
-// Optimal ATC
-			v3  = (mclipped - noise_floor) * (mark_env - noise_floor) -
-					(sclipped - noise_floor) * (space_env - noise_floor) - 0.25 * (
-					(mark_env - noise_floor) * (mark_env - noise_floor) -
-					(space_env - noise_floor) * (space_env - noise_floor));
-// Kahn Squarer with Linear ATC
-//			v4 =  (mark_mag - noise_floor) * (mark_mag - noise_floor) -
-//					(space_mag - noise_floor) * (space_mag - noise_floor) - 0.25 * (
-//					(mark_env - noise_floor) * (mark_env - noise_floor) -
-//					(space_env - noise_floor) * (space_env - noise_floor));
-// Kahn Squarer with Clipped ATC
-//			v5 =  (mclipped - noise_floor) * (mclipped - noise_floor) -
-//					(sclipped - noise_floor) * (sclipped - noise_floor) - 0.25 * (
-//					(mark_env - noise_floor) * (mark_env - noise_floor) -
-//					(space_env - noise_floor) * (space_env - noise_floor));
-//				switch (progdefaults.rtty_demodulator) {
-//			switch (2) { // Optimal ATC
-//			case 0: // linear ATC
-//				bit = v1 > 0;
-//				break;
-//			case 1: // clipped ATC
-//				bit = v2 > 0;
-//				break;
-//			case 2: // optimal ATC
-				bit = v3 > 0;
-//				break;
-//			case 3: // Kahn linear ATC
-//				bit = v4 > 0;
-//				break;
-//			case 4: // Kahn clipped
-//				bit = v5 > 0;
-//				break;
-//			case 5: // No ATC
-//			default :
-//				bit = v0 > 0;
-//			}
-
-// XY scope signal generation
-
-			if (progdefaults.true_scope) {
-//----------------------------------------------------------------------
-// "true" scope implementation------------------------------------------
-//----------------------------------------------------------------------
-
-// get the baseband-signal and...
-				xy = cmplx(
-						zp_mark[i].real() * cos(xy_phase) + zp_mark[i].imag() * sin(xy_phase),
-						zp_space[i].real() * cos(xy_phase) + zp_space[i].imag() * sin(xy_phase) );
-
-// if mark-tone has a higher magnitude than the space-tone,
-// further reduce the scope's space-amplitude and vice versa
-// this makes the scope looking a little bit nicer, too...
-// aka: less noisy...
-				if( abs(zp_mark[i]) > abs(zp_space[i]) ) {
-// note ox x complex lib does not support xy.real(double) or xy.imag(double)
-					xy = cmplx( xy.real(),
-								xy.imag() * abs(zp_space[i])/abs(zp_mark[i]) );
-//					xy.imag() *= abs(zp_space[i])/abs(zp_mark[i]);
-				} else {
-					xy = cmplx( xy.real() / ( abs(zp_space[i])/abs(zp_mark[i]) ),
-								xy.imag() );
-//					xy.real() /= abs(zp_space[i])/abs(zp_mark[i]);
-				}
-
-// now normalize the scope
-				double const norm = 1.3*(abs(zp_mark [i]) + abs(zp_space[i]));
-				xy /= norm;
-
-			} else {
-//----------------------------------------------------------------------
-// "ortho" scope implementation-----------------------------------------
-//----------------------------------------------------------------------
-// get magnitude of the baseband-signal
-				if (bit)
-					xy = cmplx( mark_mag * cos(xy_phase), space_noise * sin(xy_phase) / 2.0);
-				else
-					xy = cmplx( mark_noise * cos(xy_phase) / 2.0, space_mag * sin(xy_phase));
-// now normalize the scope
-				double const norm = (mark_env + space_env);
-				xy /= norm;
-			}
-
-// Rotate the scope x-y iaw frequency error.  Old scopes were not capable
-// of this, but it should be very handy, so... who cares of realism anyways?
-			double const rotate = 8 * TWOPI * freqerr / scamp_shift;
-			xy = xy * cmplx(cos(rotate), sin(rotate));
-
-			QI[inp_ptr] = xy;
-
-// shift it to 128Hz(!) and not to it's original position.
-// this makes it more pretty and does not remove it's other
-// qualities. Reason is that this is a fraction of the used
-// block-size.
-			xy_phase += (TWOPI * (128.0 / samplerate));
-// end XY signal generation
-
-			mark_history[inp_ptr] = zp_mark[i];
-			space_history[inp_ptr] = zp_space[i];
-
-			inp_ptr = (inp_ptr + 1) % MAXPIPE;
-
-			if (dspcnsc && (--dspcnsc % (nbits + 2) == 0)) {
-				pipe[pipeptr] = bit - 0.5; //testbit - 0.5;
-				pipeptr = (pipeptr + 1) % symbollen;
-			}
-
-// detect TTY signal transitions
-// rx(...) returns true if valid TTY bit stream detected
-// either character or idle signal
-			if ( rx( reverse ? !bit : bit ) ) {
-				dspcnsc = symbollen * (nbits + 2);
-				if (!bHighSpeed) Update_syncscope();
-				clear_zdata = true;
-				bitcount = 5 * nbits * symbollen;
-				if (sigsearch) sigsearch--;
-					int mp0 = inp_ptr - 2;
-				int mp1 = mp0 + 1;
-				if (mp0 < 0) mp0 += MAXPIPE;
-				if (mp1 < 0) mp1 += MAXPIPE;
-				double ferr = (TWOPI * samplerate / scamp_baud) *
-						(!reverse ?
-							arg(conj(mark_history[mp1]) * mark_history[mp0]) :
-							arg(conj(space_history[mp1]) * space_history[mp0]));
-				if (fabs(ferr) > scamp_baud / 2) ferr = 0;
-				freqerr = decayavg ( freqerr, ferr / 8,
-					progdefaults.rtty_afcspeed == 0 ? 8 :
-					progdefaults.rtty_afcspeed == 1 ? 4 : 1 );
-				if (progStatus.afconoff &&
-					(metric > progStatus.sldrSquelchValue || !progStatus.sqlonoff))
-					set_freq(frequency - freqerr);
-			} else
-				if (bitcount) --bitcount;
-		}
-		if (!bHighSpeed) {
-			if (!bitcount) {
-				if (clear_zdata) {
-					clear_zdata = false;
-					Clear_syncscope();
-					for (int i = 0; i < MAXPIPE; i++)
-						QI[i] = cmplx(0.0, 0.0);
-				}
-			}
-			if (!--showxy) {
-				set_zdata(QI, MAXPIPE);
-				showxy = symbollen;
-			}
-		}
-	}
 	return 0;
 }
 

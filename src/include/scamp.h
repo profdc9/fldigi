@@ -47,7 +47,6 @@
 //#define SCAMP_SampleRate 12000
 
 #define MAXPIPE			1024
-#define MAXBITS			(2 * SCAMP_SampleRate / 23 + 1)
 
 #define	LETTERS	0x100
 #define	FIGURES	0x200
@@ -103,6 +102,9 @@ private:
 
 //enum TTY_MODE { LETTERS, FIGURES };
 
+#define SCAMP_CIRCBUFFER_MAX 1536
+#define SCAMP_SAMPLE_COUNT_CHECK_RATE 500
+
 class scamp : public modem {
 public:
 enum SCAMP_RX_STATE {
@@ -130,12 +132,33 @@ enum SCAMP_PARITY {
 
 private:
 
+    double symbol_freq_offset;
+    double scamp_fsk_mode;
+    
+    double circbuffer1_ac_re;
+    double circbuffer1_ac_im;
+    double circbuffer1_re[SCAMP_CIRCBUFFER_MAX];
+    double circbuffer1_im[SCAMP_CIRCBUFFER_MAX];
+    double circbuffer2_ac_re;
+    double circbuffer2_ac_im;
+    double circbuffer2_re[SCAMP_CIRCBUFFER_MAX];
+    double circbuffer2_im[SCAMP_CIRCBUFFER_MAX];
+    int circbuffer_samples;
+    int sample_count;
+    int sample_count_check;
+    double shift;
+    double channel_bandwidth;
+    double mode_bandwidth;
+    double shift_freq;
+    double circ_phase;
+    double carrier_phase;
+    int circbuffer_head_tail;
+
 	SCAMPOscillator		*m_Osc1;
 	SCAMPOscillator		*m_Osc2;
 	SCAMPSymbolShaper	*m_SymShaper1;
 	SCAMPSymbolShaper	*m_SymShaper2;
 
-	double shift;
 	int symbollen;
 	int nbits;
 	int stoplen;
@@ -156,8 +179,6 @@ private:
 	Cmovavg		*bits;
 	bool		nubit;
 	bool		bit;
-
-	bool		bit_buf[MAXBITS];
 
 	double mark_phase;
 	double space_phase;
