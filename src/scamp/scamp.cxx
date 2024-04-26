@@ -173,58 +173,67 @@ void scamp::reset_filters()
 
 void scamp::restart()
 {
+	uint8_t protocol;
     switch (mode)
     {
 	   case MODE_SCAMPFSK:
+			protocol = PROTOCOL_SCAMP_FSK;
 	        scamp_fsk_mode = true;
 	        circbuffer_samples = 60*(samplerate/2000);
 	        shift_freq = (0.5*TWOPI)*66.6666666/((double)samplerate);
-	        mode_bandwidth = 66.66666666 + 4*33.33333333;
+	        mode_bandwidth = 66.66666666 + 2*33.33333333;
 	        shift = 66.66666666;
 	        channel_bandwidth = 33.33333333;
 			break;
 	   case MODE_SCAMPOOK:
+			protocol = PROTOCOL_SCAMP_OOK;
 	        scamp_fsk_mode = false;
 	        circbuffer_samples = 64*(samplerate/2000);
 	        shift_freq = 0;
-	        mode_bandwidth = 4*31.25;
+	        mode_bandwidth = 2*31.25;
 	        channel_bandwidth = 31.25;
 	        shift = 0.0;
 			break;
 	   case MODE_SCFSKFST:
+			protocol = PROTOCOL_SCAMP_FSK_FAST;
 	        scamp_fsk_mode = true;
 	        circbuffer_samples = 24*(samplerate/2000);
 	        shift_freq = (0.5*TWOPI)*166.6666666/((double)samplerate);
-	        mode_bandwidth = 166.66666666 + 4*83.33333333;
+	        mode_bandwidth = 166.66666666 + 2*83.33333333;
 	        shift = 83.3333333333;
 	        channel_bandwidth = 83.333333333;
 			break;
 	   case MODE_SCFSKSLW:
+			protocol = PROTOCOL_SCAMP_FSK_SLOW;
 	        scamp_fsk_mode = true;
 	        circbuffer_samples = 144*(samplerate/2000);
 	        shift_freq = (0.5*TWOPI)*41.66666666/((double)samplerate);
-	        mode_bandwidth = 41.66666666 + 4*13.88888888;
+	        mode_bandwidth = 41.66666666 + 2*13.88888888;
 	        shift = 41.6666666666;
 	        channel_bandwidth = 41.666666666;
 	        break;
 	   case MODE_SCOOKSLW:
+			protocol = PROTOCOL_SCAMP_OOK_SLOW;
 	        scamp_fsk_mode = false;
 	        circbuffer_samples = 144*(samplerate/2000);
 	        shift_freq = 0;
-	        mode_bandwidth = 4*13.88888888;
+	        mode_bandwidth = 2*13.88888888;
 	        channel_bandwidth = 41.666666666;
 	        shift = 0.0;
 	        break;
 	   case MODE_SCFSKVSL:
+			protocol = PROTOCOL_SCAMP_FSK_VSLW;
 	        scamp_fsk_mode = true;
 	        circbuffer_samples = 288*(samplerate/2000);
 	        shift_freq = (0.25*TWOPI)*41.66666666/((double)samplerate);
-	        mode_bandwidth = 0.5*(41.66666666 + 4*13.88888888);
+	        mode_bandwidth = 0.5*(41.66666666 + 2*13.88888888);
 	        shift = 0.5*41.6666666666;
 	        channel_bandwidth = 0.5*41.666666666;
 	        break;
 	}
 
+	scamp_protocol.init(protocol);
+	
 	set_bandwidth(mode_bandwidth);
 	
 	wf->redraw_marker();
@@ -386,8 +395,12 @@ int scamp::rx_process(const double *buf, int len)
 			circbuffer_head_tail = 0;
 	    if ((++sample_count) >= sample_count_check)
 		{
+			int recv_chars[2];
 			sample_count = 0;
 			/* call SCAMP code */
+			scamp_protocol.decode_process(mag1,mag2,recv_chars);
+			if (recv_chars[0] != -1) put_rx_char(recv_chars[0]);
+			if (recv_chars[1] != -1) put_rx_char(recv_chars[1]);
 		}
 		carrier_phase += phaseinc;
 		if (carrier_phase >= TWOPI)
@@ -521,8 +534,8 @@ void scamp::send_char(int c)
 		send_symbol((c >> i) & 1, symbollen);
 	}
 // parity bit
-	if (scamp_parity != SCAMP_PARITY_NONE)
-		send_symbol(scampparity(c, nbits), symbollen);
+//	if (scamp_parity != SCAMP_PARITY_NONE)
+//		send_symbol(scampparity(c, nbits), symbollen);
 // stop bit(s)
 	send_stop();
 

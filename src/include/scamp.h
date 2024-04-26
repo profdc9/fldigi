@@ -131,7 +131,8 @@ enum SCAMP_PARITY {
 	static const int		numbauds;
 
 private:
-
+    SCAMP_protocol scamp_protocol;
+ 
     double symbol_freq_offset;
     double scamp_fsk_mode;
     
@@ -221,7 +222,7 @@ private:
 	double space_mag;
 	double mark_env;
 	double space_env;
-	double	noise_floor;
+	double noise_floor;
 
 	double SCAMPSKbuf[OUTBUFSIZE];		// signal array for qrq drive
 	double SCAMPSKphaseacc;
@@ -276,7 +277,7 @@ public:
 
 	void clear_viewer() { scampviewer->clear(); }
 	void clear_ch(int n) { scampviewer->clearch(n); }
-	int  viewer_get_freq(int n) { return scampviewer->get_freq(n); }
+//	int  viewer_get_freq(int n) { return scampviewer->get_freq(n); }
 
 	void searchDown();
 	void searchUp();

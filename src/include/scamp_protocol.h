@@ -122,18 +122,19 @@ typedef struct _scamp_state
   uint16_t  threshold_counter;
 
   uint16_t  clock_bit;
+  
+  int16_t   recv_chars[2];
 } scamp_state;
 
 class SCAMP_protocol {
 private:
-	unsigned char val;
-	unsigned char table[256];
-	char ss[3];
+    scamp_state sc;
 public:
 	SCAMP_protocol() { 
 	}
 	~SCAMP_protocol() {};
-	void init();
+	void init(uint8_t protocol);
+	void decode_process(double mag1, double mag2, int recv_chars[2]);
 };
 
 #endif  /* _SCAMP_PROTOCOL_H */

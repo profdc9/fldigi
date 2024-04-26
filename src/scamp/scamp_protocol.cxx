@@ -20,6 +20,7 @@ freely, subject to the following restrictions:
 3. This notice may not be removed or altered from any source distribution.
  */
 
+#include <string.h>
 #include <config.h>
 #include <iostream>
 #include <fstream>
@@ -358,6 +359,37 @@ static void scamp_retrain(scamp_state *sc_st)
   sc_st->resync = 0;  
 }
 
+static void scamp_decode_process(scamp_state *sc_st, uint32_t fr)
+{
+  uint8_t biterrs, bytes[2], nb;
+  uint16_t gf;
+  fr = scamp_remove_reversal_bits(fr);
+  gf = golay_decode(fr,&biterrs);
+  if (gf == 0xFFFF)
+  {
+    // decode_insert_into_fifo('#');
+    return;
+  }
+  if (!SCAMP_IS_DATA_CODE(gf))
+  {
+    if (SCAMP_RES_CODE_BITS_SET(gf))
+    {
+      switch (gf)
+      {
+        case SCAMP_RES_CODE_END_TRANSMISSION:
+            sc_st->reset_protocol = 1;
+            break;
+      }
+      return;
+    }
+    if (gf == sc_st->last_code) return;
+  }
+  sc_st->last_code = gf;
+  nb = scamp_code_word_to_bytes(gf, bytes);
+  if (nb > 0) sc_st->recv_chars[0] = bytes[0];
+  if (nb > 1) sc_st->recv_chars[1] = bytes[1];
+}
+
 /* this is called by the interrupt handle to decode the SCAMP frames from
    the spectral channels.  it figures out the magnitude of
    the signal given the current modulation type (OOK/FSK).  it tries to detect
@@ -548,6 +580,7 @@ static void scamp_new_sample(scamp_state *sc_st, uint16_t channel_1, uint16_t ch
           {
             if (sc_st->threshold_counter > 0)
             {
+			   scamp_decode_process(sc_st, sc_st->current_word >> 1);
              // scamp_insert_into_frame_fifo(&sc_st->scamp_output_fifo, sc_st->current_word >> 1);
 		    }
             /* start with the next word with one flip */
@@ -560,6 +593,7 @@ static void scamp_new_sample(scamp_state *sc_st, uint16_t channel_1, uint16_t ch
                /* otherwise we just place in buffer and the code word is probably aligned */
                if (sc_st->threshold_counter > 0)
                {
+  			     scamp_decode_process(sc_st, sc_st->current_word);
                  //scamp_insert_into_frame_fifo(&sc_st->scamp_output_fifo, sc_st->current_word);
                }
              }
@@ -573,39 +607,54 @@ static void scamp_new_sample(scamp_state *sc_st, uint16_t channel_1, uint16_t ch
     }
 }
 
-static void scamp_decode_process(scamp_state *sc_st)
+void SCAMP_protocol::init(uint8_t protocol)
 {
-  uint8_t biterrs, bytes[2], nb;
-  uint16_t gf;
-  uint32_t fr = 0xFFFFFFFF; // scamp_remove_from_frame_fifo(&sc_st->scamp_output_fifo);
-  if (fr == 0xFFFFFFFF) return;
-  fr = scamp_remove_reversal_bits(fr);
-  gf = golay_decode(fr,&biterrs);
-  if (gf == 0xFFFF)
-  {
-    // decode_insert_into_fifo('#');
-    return;
-  }
-  if (!SCAMP_IS_DATA_CODE(gf))
-  {
-    if (SCAMP_RES_CODE_BITS_SET(gf))
+	uint16_t buffer_size;
+	
+	memset(&sc,'\000',sizeof(sc));
+	sc.protocol = protocol;
+    switch (sc.protocol)
     {
-      switch (gf)
-      {
-        case SCAMP_RES_CODE_END_TRANSMISSION:
-            sc_st->reset_protocol = 1;
-            break;
-      }
-      return;
+        case PROTOCOL_SCAMP_OOK:        sc.demod_samples_per_bit = 64 / 4;
+                                        sc.fsk = 0;
+                                        sc.demod_edge_window = 4;
+                                        break;
+        case PROTOCOL_SCAMP_FSK:        sc.demod_samples_per_bit = 60 / 4;
+                                        sc.fsk = 1;
+                                        sc.demod_edge_window = 4;
+                                        break;
+        case PROTOCOL_SCAMP_FSK_FAST:   sc.demod_samples_per_bit = 24 / 4;
+                                        sc.fsk = 1;
+                                        sc.demod_edge_window = 2;
+                                        break;
+#ifdef SCAMP_VERY_SLOW_MODES
+        case PROTOCOL_SCAMP_OOK_SLOW:   sc.demod_samples_per_bit =  144 / 4;
+                                        sc.demod_edge_window = 4;
+                                        sc.fsk = 0;
+                                        break;
+        case PROTOCOL_SCAMP_FSK_VSLW:   
+        case PROTOCOL_SCAMP_FSK_SLOW:   sc.demod_samples_per_bit =  144 / 4;
+                                        sc.demod_edge_window = 4;
+                                        sc.fsk = 1;
+                                        break;
+#endif // SCAMP_VERY_SLOW_MODES
     }
-    if (gf == sc_st->last_code) return;
-  }
-  sc_st->last_code = gf;
-  nb = scamp_code_word_to_bytes(gf, bytes);
-  //if (nb > 0) decode_insert_into_fifo(bytes[0]);
-  //if (nb > 1) decode_insert_into_fifo(bytes[1]);
+
+    sc.power_thr_min = ((uint16_t)sc.demod_samples_per_bit * 4) * (sc.fsk ? SCAMP_PWR_THR_DEF_FSK : SCAMP_PWR_THR_DEF_OOK);
+    if (sc.fsk)
+       sc.edge_thr = sc.power_thr;
+    else
+       sc.edge_thr = sc.power_thr << 1;
+    scamp_retrain(&sc);
 }
 
-void SCAMP_protocol::init()
+void SCAMP_protocol::decode_process(double mag1, double mag2, int recv_chars[2])
 {
+	sc.recv_chars[0] = sc.recv_chars[1] = -1;
+	uint16_t imag1 = (uint16_t)(mag1 * 100.0);
+	uint16_t imag2 = (uint16_t)(mag2 * 100.0);
+	scamp_new_sample(&sc, imag1, imag2); 
+    recv_chars[0] = sc.recv_chars[0];
+    recv_chars[1] = sc.recv_chars[1];
 }
+
