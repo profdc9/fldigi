@@ -95,7 +95,6 @@ void scamp::reset_filters()
 {
 	circbuffer_head_tail = 0;
 	sample_count = 0;
-	sample_count_check = SCAMP_SampleRate / SCAMP_SAMPLE_COUNT_CHECK_RATE;
 	circbuffer1_ac_re = 0;
 	circbuffer1_ac_im = 0;
 	circbuffer2_ac_re = 0;
@@ -114,6 +113,8 @@ void scamp::reset_filters()
 void scamp::restart()
 {
 	uint8_t protocol;
+	
+    sample_count_check = SCAMP_SampleRate / SCAMP_SAMPLE_COUNT_CHECK_RATE;
     switch (mode)
     {
 	   case MODE_SCAMPFSK:
@@ -169,6 +170,7 @@ void scamp::restart()
 	        mode_bandwidth = 0.5*(41.66666666 + 2*13.88888888);
 	        shift = 0.5*41.6666666666;
 	        channel_bandwidth = 0.5*41.666666666;
+            sample_count_check = sample_count_check * 2;
 	        break;
 	}
 
@@ -204,13 +206,14 @@ void scamp::searchDown()
 {
 	double srchfreq = frequency - shift -100;
 	double minfreq = shift * 2 + 100;
-	double spwrlo, spwrhi, npwr;
+	double spwrlo, spwrhi, spwrct;
 	while (srchfreq > minfreq) {
-		spwrlo = wf->powerDensity(srchfreq - shift/2, 2*channel_bandwidth);
-		spwrhi = wf->powerDensity(srchfreq + shift/2, 2*channel_bandwidth);
-		npwr = wf->powerDensity(srchfreq + shift, 2*channel_bandwidth) + 1e-10;
-		if ((spwrlo / npwr > 10.0) && (spwrhi / npwr > 10.0)) {
-			frequency = srchfreq;
+		spwrlo = wf->powerDensity(srchfreq - shift/2, 2*channel_bandwidth) + 1e-10;
+		spwrhi = wf->powerDensity(srchfreq + shift/2, 2*channel_bandwidth) + 1e-10;
+		spwrct = wf->powerDensity(srchfreq, 2*channel_bandwidth) + 1e-10;
+		if (((scamp_fsk_mode) && ((spwrlo / spwrct > 10.0) && (spwrhi / spwrct > 10.0)))
+		    || ((!scamp_fsk_mode) && ((spwrct / spwrlo > 10.0) && (spwrct / spwrhi > 10.0))))
+		{
 			set_freq(frequency);
 			sigsearch = SIGSEARCH;
 			break;
@@ -223,12 +226,14 @@ void scamp::searchUp()
 {
 	double srchfreq = frequency + shift +100;
 	double maxfreq = IMAGE_WIDTH - shift * 2 - 100;
-	double spwrhi, spwrlo, npwr;
+	double spwrlo, spwrhi, spwrct;
 	while (srchfreq < maxfreq) {
-		spwrlo = wf->powerDensity(srchfreq - shift/2, 2*channel_bandwidth);
-		spwrhi = wf->powerDensity(srchfreq + shift/2, 2*channel_bandwidth);
-		npwr = wf->powerDensity(srchfreq - shift, 2*channel_bandwidth) + 1e-10;
-		if ((spwrlo / npwr > 10.0) && (spwrhi / npwr > 10.0)) {
+		spwrlo = wf->powerDensity(srchfreq - shift/2, 2*channel_bandwidth) + 1e-10;
+		spwrhi = wf->powerDensity(srchfreq + shift/2, 2*channel_bandwidth) + 1e-10;
+		spwrct = wf->powerDensity(srchfreq, 2*channel_bandwidth) + 1e-10;
+		if (((scamp_fsk_mode) && ((spwrlo / spwrct > 10.0) && (spwrhi / spwrct > 10.0)))
+		    || ((!scamp_fsk_mode) && ((spwrct / spwrlo > 10.0) && (spwrct / spwrhi > 10.0))))
+		{
 			frequency = srchfreq;
 			set_freq(frequency);
 			sigsearch = SIGSEARCH;
@@ -316,7 +321,9 @@ int scamp::rx_process(const double *buf, int len)
 		   double buf_re = val * cos(carrier_phase);
 		   double buf_im = val * sin(carrier_phase);
 		   circbuffer1_ac_re += buf_re - circbuffer1_re[circbuffer_head_tail];
+		   circbuffer1_ac_re *= DECAY_FUDGE_FACTOR;
 		   circbuffer1_ac_im += buf_im - circbuffer1_im[circbuffer_head_tail];
+		   circbuffer1_ac_im *= DECAY_FUDGE_FACTOR;
 		   circbuffer1_re[circbuffer_head_tail] = buf_re;
 		   circbuffer1_im[circbuffer_head_tail] = buf_im;
 		   mag1 = sqrt(circbuffer1_ac_re*circbuffer1_ac_re+circbuffer1_ac_im*circbuffer1_ac_im);
