@@ -4,13 +4,9 @@
 // Copyright (C) 2012
 //		Dave Freese, W1HKJ
 //		Stefan Fendt, DL1SMF
+//      Daniel Marks, KW4TI
 //
 // This file is part of fldigi.
-//
-// This code bears some resemblance to code contained in gmscampsk from which
-// it originated.  Much has been changed, but credit should still be
-// given to Tomi Manninen (oh2bns@sral.fi), who so graciously distributed
-// his gmscampsk modem under the GPL.
 //
 // Fldigi is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -57,71 +53,15 @@
 // Baudot support
 //=====================================================================
 
-static char letters[32] = {
-	'\0',	'E',	'\n',	'A',	' ',	'S',	'I',	'U',
-	'\r',	'D',	'R',	'J',	'N',	'F',	'C',	'K',
-	'T',	'Z',	'L',	'W',	'H',	'Y',	'P',	'Q',
-	'O',	'B',	'G',	' ',	'M',	'X',	'V',	' '
-};
-
-/*
- * U.S. version of the figures case.
- */
-static char figures[32] = {
-	'\0',	'3',	'\n',	'-',	' ',	'\a',	'8',	'7',
-	'\r',	'$',	'4',	'\'',	',',	'!',	':',	'(',
-	'5',	'"',	')',	'2',	'#',	'6',	'0',	'1',
-	'9',	'?',	'&',	' ',	'.',	'/',	';',	' '
-};
-
-int dspcnsc = 0;
-
 static char msg1[20];
-
-const double	scamp::SHIFT[] = {23, 85, 160, 170, 182, 200, 240, 350, 425, 850};
-// FILTLEN must be same size as BAUD
-const double	scamp::BAUD[]  = {45, 45.45, 50, 56, 75, 100, 110, 150, 200, 300};
-const int		scamp::FILTLEN[] = { 512, 512, 512, 512, 512, 512, 512, 256, 128, 64};
-const int		scamp::BITS[]  = {5, 7, 8};
-const int		scamp::numshifts = (int)(sizeof(SHIFT) / sizeof(*SHIFT));
-const int		scamp::numbauds = (int)(sizeof(BAUD) / sizeof(*BAUD));
 
 void scamp::tx_init()
 {
-/*	phaseacc = 0;
-	preamble = true;
-	videoText();
-
-	symbols = 0;
-	acc_symbols = 0;
-	ovhd_symbols = 0;
-*/
+	transmit_phase = 0;
 }
 
 void scamp::rx_init()
 {
-	
-/*
-	rxstate = SCAMP_RX_STATE_IDLE;
-	rxmode = LETTERS;
-	phaseacc = 0;
-	SCAMPSKphaseacc = 0;
-
-	for (int i = 0; i < MAXBITS; i++ ) bit_buf[i] = 0.0;
-
-	mark_phase = 0;
-	space_phase = 0;
-	xy_phase = 0.0;
-
-	mark_mag = 0;
-	space_mag = 0;
-	mark_env = 0;
-	space_env = 0;
-
-	inp_ptr = 0;
-
-	lastchar = 0;
-	*/
 }
 
 void scamp::init()
@@ -232,6 +172,7 @@ void scamp::restart()
 	        break;
 	}
 
+    transmit_scale = 1.0/((double)circbuffer_samples);
 	scamp_protocol.init(protocol);
 	
 	set_bandwidth(mode_bandwidth);
@@ -259,16 +200,6 @@ scamp::scamp(trx_mode tty_mode)
 
 }
 
-cmplx scamp::mixer(double &phase, double f, cmplx in)
-{
-	cmplx z = cmplx( cos(phase), sin(phase)) * in;
-
-	phase -= TWOPI * f / samplerate;
-	if (phase < -TWOPI) phase += TWOPI;
-
-	return z;
-}
-
 void scamp::searchDown()
 {
 	double srchfreq = frequency - shift -100;
@@ -277,7 +208,7 @@ void scamp::searchDown()
 	while (srchfreq > minfreq) {
 		spwrlo = wf->powerDensity(srchfreq - shift/2, 2*channel_bandwidth);
 		spwrhi = wf->powerDensity(srchfreq + shift/2, 2*channel_bandwidth);
-		npwr = wf->powerDensity(srchfreq + shift, 2*scamp_baud) + 1e-10;
+		npwr = wf->powerDensity(srchfreq + shift, 2*channel_bandwidth) + 1e-10;
 		if ((spwrlo / npwr > 10.0) && (spwrhi / npwr > 10.0)) {
 			frequency = srchfreq;
 			set_freq(frequency);
@@ -296,7 +227,7 @@ void scamp::searchUp()
 	while (srchfreq < maxfreq) {
 		spwrlo = wf->powerDensity(srchfreq - shift/2, 2*channel_bandwidth);
 		spwrhi = wf->powerDensity(srchfreq + shift/2, 2*channel_bandwidth);
-		npwr = wf->powerDensity(srchfreq - shift, 2*scamp_baud) + 1e-10;
+		npwr = wf->powerDensity(srchfreq - shift, 2*channel_bandwidth) + 1e-10;
 		if ((spwrlo / npwr > 10.0) && (spwrhi / npwr > 10.0)) {
 			frequency = srchfreq;
 			set_freq(frequency);
@@ -398,9 +329,17 @@ int scamp::rx_process(const double *buf, int len)
 			int recv_chars[2];
 			sample_count = 0;
 			/* call SCAMP code */
-			scamp_protocol.decode_process(mag1,mag2,recv_chars);
-			if (recv_chars[0] != -1) put_rx_char(recv_chars[0]);
-			if (recv_chars[1] != -1) put_rx_char(recv_chars[1]);
+			scamp_protocol.decode_process(mag1*transmit_scale,mag2*transmit_scale,recv_chars);
+			if (recv_chars[0] != -1) 
+			{
+				put_rx_char(recv_chars[0]);
+				if (recv_chars[0] == '\r') put_rx_char('\n');
+			}
+			if (recv_chars[1] != -1) 
+			{
+				put_rx_char(recv_chars[1]);
+				if (recv_chars[1] == '\r') put_rx_char('\n');
+			}
 		}
 		carrier_phase += phaseinc;
 		if (carrier_phase >= TWOPI)
@@ -419,148 +358,36 @@ int scamp::rx_process(const double *buf, int len)
 	return 0;
 }
 
-//=====================================================================
-// SCAMP transmit
-//=====================================================================
-//double freq1;
-double maxamsc = 0;
-
-double scamp::nco(double freq)
+void scamp::send_frame(uint32_t frame)
 {
-	phaseacc += TWOPI * freq / samplerate;
-
-	if (phaseacc > TWOPI) phaseacc -= TWOPI;
-
-	return cos(phaseacc);
-}
-
-double scamp::SCAMPSKnco()
-{
-	SCAMPSKphaseacc += TWOPI * 1000 / samplerate;
-
-	if (SCAMPSKphaseacc > TWOPI) SCAMPSKphaseacc -= TWOPI;
-
-	return sin(SCAMPSKphaseacc);
-
-}
-
-extern Cserial CW_KEYLINE_serial;
-extern bool CW_KEYLINE_isopen;
-
-void scamp::send_symbol(int symbol, int len)
-{
-	if (reverse) symbol = !symbol;
-
-	acc_symbols += len;
-
-		double freq;
-
-		if (symbol)
-			freq = get_txfreq_woffset() + shift / 2.0;
-		else
-			freq = get_txfreq_woffset() - shift / 2.0;
-
-		for (int i = 0; i < len; i++) {
-			outbuf[i] = nco(freq);
-			if (symbol)
-				SCAMPSKbuf[i] = SCAMPSKnco();
-			else
-				SCAMPSKbuf[i] = 0.0;
+  double phaseinc = frequency*TWOPI/((double)samplerate);
+  for (int bitno=0;bitno<30;bitno++)
+  {
+    int bitv = (frame & 0x20000000) != 0;
+    frame <<= 1;
+    if (scamp_fsk_mode)
+    {
+		double freq = phaseinc + (bitv ? shift_freq : -shift_freq);
+		for (int i=0;i<circbuffer_samples;i++)
+		{
+			transbuffer[i] = sin(transmit_phase);
+			transmit_phase += freq;
+			if (transmit_phase > TWOPI)
+				transmit_phase -= TWOPI;
 		}
-
-    ModulateXmtr(outbuf, symbollen);
-}
-
-void scamp::send_stop()
-{
-		double freq;
-		bool invert = reverse;
-
-		if (invert)
-			freq = get_txfreq_woffset() - shift / 2.0;
-		else
-			freq = get_txfreq_woffset() + shift / 2.0;
-
-		for (int i = 0; i < stoplen; i++) {
-			outbuf[i] = nco(freq);
-			if (invert)
-				SCAMPSKbuf[i] = 0.0;
-			else
-				SCAMPSKbuf[i] = SCAMPSKnco();
-		}
-
-		ModulateXmtr(outbuf, stoplen);
-
-}
-
-void scamp::flush_stream()
-{
-	double const freq1 = get_txfreq_woffset() + shift / 2.0;
-	double const freq2 = get_txfreq_woffset() - shift / 2.0;
-	double mark = 0, space = 0, signal = 0;
-
-	for( int i = 0; i < symbollen * 6; ++i ) {
-		mark  = m_SymShaper1->Update(0)*m_Osc1->Update( freq1 );
-		space = m_SymShaper2->Update(0)*m_Osc2->Update( freq2 );
-		signal = mark + space;
-
-		if (maxamsc < fabs(signal)) maxamsc = fabs(signal);
-		
-		outbuf[i] = maxamsc ? (signal / maxamsc) : 0.0;
-
-		SCAMPSKbuf[i] = 0.0;
-	}
-
-	sig_stop = true;
-	
-    ModulateXmtr(outbuf, symbollen * 6);
-
-}
-
-void scamp::send_char(int c)
-{
-	int i;
-	if (nbits == 5) {
-		if (c == LETTERS)
-			c = 0x1F;
-		if (c == FIGURES)
-			c = 0x1B;
-	}
-
-// start bit
-	send_symbol(0, symbollen);
-// data bits
-	for (i = 0; i < nbits; i++) {
-		send_symbol((c >> i) & 1, symbollen);
-	}
-// parity bit
-//	if (scamp_parity != SCAMP_PARITY_NONE)
-//		send_symbol(scampparity(c, nbits), symbollen);
-// stop bit(s)
-	send_stop();
-
-	if (nbits == 5) {
-		if (c == 0x1F || c == 0x1B)
-			return;
-		if (shift_state == LETTERS)
-			c = letters[c];
-		else
-			c = figures[c];
-		if (c)
-			put_echo_char(progdefaults.rx_lowercase ? tolower(c) : c);
-	}
-	else
-		put_echo_char(c);
-
-}
-
-void scamp::send_idle()
-{
-	if (nbits == 5) {
-		send_char(LETTERS);
-		shift_state = LETTERS;
 	} else
-		send_char(0);
+	{
+		double amp = bitv ? 1.0 : 0.0;
+		for (int i=0;i<circbuffer_samples;i++)
+		{
+			transbuffer[i] = amp*sin(transmit_phase);
+			transmit_phase += phaseinc;
+			if (transmit_phase > TWOPI)
+				transmit_phase -= TWOPI;
+		}
+	}
+    ModulateXmtr(transbuffer, circbuffer_samples);
+  }
 }
 
 double scamp::scamp_now()
@@ -605,313 +432,27 @@ std::cout << "EINTR error in scamp_sleep" << std::endl;
 	return 0;
 }
 
-static int line_char_count = 0;
-// 1 start, 5 data, 1.5/2.0 stopbits
-#define wait_one_byte(baud, stopbits) \
-scamp_sleep( ((6 + (stopbits))*1.0 / (baud)));
-
 int scamp::tx_process()
 {
+	int ret = 0;
+	uint8_t frames = 0;
+	uint32_t *frame_array;
 	modem::tx_process();
 
+	scamp_protocol.set_resync_repeat_frames(progdefaults.ScampResync,progdefaults.ScampRepeat);
+
 	int c = get_tx_char();
-
-	if (preamble) {
-		sig_start = true;
-		for (int i = 0; i < progdefaults.TTY_LTRS; i++)
-			send_char(LETTERS);
-		preamble = false;
-	}
-
-// TX buffer empty
+	
 	if (c == GET_TX_CHAR_ETX || stopflag) {
 		stopflag = false;
-		line_char_count = 0;
-		if (nbits != 5) {
-			if (progdefaults.rtty_crcrlf) send_char('\r');
-			send_char('\r');
-			send_char('\n');
-		} else {
-			if (progdefaults.rtty_crcrlf) send_char(0x08);
-			send_char(0x08);
-			send_char(0x02);
-		}
-		flush_stream();
-		return -1;
+		frames = scamp_protocol.send_char(-1, &frame_array);
+		ret = -1;
+	} else if (c == GET_TX_CHAR_NODATA) {
+		frames = scamp_protocol.send_char(-2, &frame_array);
+	} else {
+		frames = scamp_protocol.send_char(c, &frame_array);
 	}
-// send idle character if c == -1
-	if (c == GET_TX_CHAR_NODATA) {
-		send_idle();
-		return 0;
-	}
-
-// if NOT Baudot
-	if (nbits != 5) {
-		acc_symbols = 0;
-		send_char(c);
-		xmt_samples = char_samples = acc_symbols;
-		return 0;
-	}
-
-	if (isalpha(c) || isdigit(c) || isblank(c) || ispunct(c)) {
-		++line_char_count;
-	}
-
-	if (progdefaults.rtty_autocrlf && (c != '\n' && c != '\r') &&
-		(line_char_count == progdefaults.rtty_autocount ||
-		 (line_char_count > progdefaults.rtty_autocount - 5 && c == ' '))) {
-		line_char_count = 0;
-		if (progdefaults.rtty_crcrlf)
-			send_char(0x08); // CR-CR-LF triplet
-		send_char(0x08);
-		send_char(0x02);
-		if (c == ' ')
-			return 0;
-	}
-	if (c == '\r') {
-		line_char_count = 0;
-		send_char(0x08);
-		return 0;
-	}
-	if (c == '\n') {
-		line_char_count = 0;
-		if (progdefaults.rtty_crcrlf)
-			send_char(0x08); // CR-CR-LF triplet
-		send_char(0x02);
-		return 0;
-	}
-
-
-/* unshift-on-space */
-	if (c == ' ') {
-		if (progdefaults.UOStx) {
-			send_char(LETTERS);
-			send_char(0x04); // coded value for a space
-			shift_state = LETTERS;
-		} else
-			send_char(0x04);
-		return 0;
-	}
-
-	if ((c = baudot_enc(c)) < 0)
-		return 0;
-
-// switch case if necessary
-
-	if ((c & 0x300) != shift_state) {
-		if (shift_state == FIGURES) {
-			send_char(LETTERS);
-			shift_state = LETTERS;
-		} else {
-			send_char(FIGURES);
-			shift_state = FIGURES;
-		}
-	}
-///
-	acc_symbols = 0;
-	send_char(c & 0x1F);
-	xmt_samples = char_samples = acc_symbols;
-
-	return 0;
+	for (int fr=0;fr<frames;fr++)
+		send_frame(frame_array[fr]);
+	return ret;
 }
-
-int scamp::baudot_enc(unsigned char data)
-{
-	int i, c, mode;
-
-	mode = 0;
-	c = -1;
-
-	if (islower(data))
-		data = toupper(data);
-
-	for (i = 0; i < 32; i++) {
-		if (data == letters[i]) {
-			mode |= LETTERS;
-			c = i;
-		}
-		if (data == figures[i]) {
-			mode |= FIGURES;
-			c = i;
-		}
-		if (c != -1)
-			return (mode | c);
-	}
-
-	return -1;
-}
-
-char scamp::baudot_dec(unsigned char data)
-{
-	int out = 0;
-
-	switch (data) {
-	case 0x1F:		/* letters */
-		rxmode = LETTERS;
-		break;
-	case 0x1B:		/* figures */
-		rxmode = FIGURES;
-		break;
-	case 0x04:		/* unshift-on-space */
-		if (progdefaults.UOSrx)
-			rxmode = LETTERS;
-		return ' ';
-		break;
-	default:
-		if (rxmode == LETTERS)
-			out = letters[data];
-		else
-			out = figures[data];
-		break;
-	}
-
-	return out;
-}
-
-//======================================================================
-// methods for class Oscillator and class SymbolShaper
-//======================================================================
-
-SCAMPOscillator::SCAMPOscillator( double samplerate )
-{
-	m_phase = 0;
-	m_samplerate = samplerate;
-//	std::cerr << "samplerate for Oscillator:"<<m_samplerate<<"\n";
-}
-
-double SCAMPOscillator::Update( double frequency )
-{
-	m_phase += frequency/m_samplerate * TWOPI;
-	if ( m_phase > TWOPI ) m_phase -= TWOPI;
-
-	return ( sin( m_phase ) );
-}
-
-SCAMPSymbolShaper::SCAMPSymbolShaper(double baud, double sr)
-{
-	m_sinc_table = 0;
-	Preset( baud, sr );
-}
-
-SCAMPSymbolShaper::~SCAMPSymbolShaper()
-{
-	delete [] m_sinc_table;
-}
-
-void SCAMPSymbolShaper::reset()
-{
-	m_State = false;
-	m_Accumulator = 0.0;
-	m_Counter0 = 1024;
-	m_Counter1 = 1024;
-	m_Counter2 = 1024;
-	m_Counter3 = 1024;
-	m_Counter4 = 1024;
-	m_Counter5 = 1024;
-	m_Factor0 = 0.0;
-	m_Factor1 = 0.0;
-	m_Factor2 = 0.0;
-	m_Factor3 = 0.0;
-	m_Factor4 = 0.0;
-	m_Factor5 = 0.0;
-}
-
-void SCAMPSymbolShaper::Preset(double baud, double sr)
-{
-    double baud_rate = baud;
-    double sample_rate = sr;
-
-    LOG_INFO("Shaper::reset( %f, %f )",  baud_rate, sample_rate);
-
-// calculate new table-size for six integrators ----------------------
-
-    m_table_size = sample_rate / baud_rate * 5.49;
-    LOG_INFO("Shaper::m_table_size = %d", m_table_size);
-
-// kill old sinc-table and get memory for the new one -----------------
-
-	if (m_sinc_table)
-		delete [] m_sinc_table;
-    m_sinc_table = new double[m_table_size];
-
-// set up the new sinc-table based on the new parameters --------------
-
-    long double sum = 0.0;
-
-    for( int x=0; x<m_table_size; ++x ) {
-        int const offset = m_table_size/2;
-        double wfactor = 1.0 / 1.568; // optimal
-// symbol-length in samples if wmultiple = 1.0
-        double const T = wfactor * sample_rate / (baud_rate*2.0);
-// symbol-time relative to zero
-        double const t = (x-offset);
-
-        m_sinc_table[x] = rcos( t, T, 1.0 );
-
-// calculate integral
-        sum += m_sinc_table[x];
-    }
-
-// scale the values in the table so that the integral over it is as
-// exactly 1.0000000 as we can do this...
-
-    for( int x=0; x<m_table_size; ++x ) {
-        m_sinc_table[x] *= 1.0 / sum;
-    }
-
-// reset internal states
-    reset();
-    maxamsc = 0;
-}
-
-double SCAMPSymbolShaper::Update( bool state )
-{
-	if( m_State != state ) {
-		m_State = state;
-		if( m_Counter0 >= m_table_size ) {
-			m_Counter0 = 0;
-			m_Factor0 = (state)? +1.0 : -1.0;
-		} else if( m_Counter1 >= m_table_size ) {
-			m_Counter1 = 0;
-			m_Factor1 = (state)? +1.0 : -1.0;
-		} else if( m_Counter2 >= m_table_size ) {
-			m_Counter2 = 0;
-			m_Factor2 = (state)? +1.0 : -1.0;
-		} else if( m_Counter3 >= m_table_size ) {
-			m_Counter3 = 0;
-			m_Factor3 = (state)? +1.0 : -1.0;
-		} else if( m_Counter4 >= m_table_size ) {
-			m_Counter4 = 0;
-			m_Factor4 = (state)? +1.0 : -1.0;
-		} else  if( m_Counter5 >= m_table_size ) {
-			m_Counter5 = 0;
-			m_Factor5 = (state)? +1.0 : -1.0;
-		}
-	}
-
-	if( m_Counter0 < m_table_size )
-		m_Accumulator += m_Factor0 * m_sinc_table[m_Counter0++];
-
-	if( m_Counter1 < m_table_size )
-		m_Accumulator += m_Factor1 * m_sinc_table[m_Counter1++];
-
-	if( m_Counter2 < m_table_size )
-		m_Accumulator += m_Factor2 * m_sinc_table[m_Counter2++];
-
-	if( m_Counter3 < m_table_size )
-		m_Accumulator += m_Factor3 * m_sinc_table[m_Counter3++];
-
-	if( m_Counter4 < m_table_size )
-		m_Accumulator += m_Factor4 * m_sinc_table[m_Counter4++];
-
-	if( m_Counter5 < m_table_size )
-		m_Accumulator += m_Factor5 * m_sinc_table[m_Counter5++];
-
-	return ( m_Accumulator / sqrt(2) );
-}
-
-void SCAMPSymbolShaper::print_sinc_table()
-{
-	for (int i = 0; i < 1024; i++) printf("%f\n", m_SincTable[i]);
-}
-

@@ -269,6 +269,7 @@ static uint8_t scamp_find_code_in_table(uint8_t c)
     return 0xFF;
 }
 
+#if 0
 /* encode 8 bit bytes to 12 bit code words.
    code words that correspond to a 6-bit symbols are encoded as 6 bits.
    otherwise they are encoded as an 8-bit binary raw data word.
@@ -310,6 +311,7 @@ static void scamp_bytes_to_code_words(uint8_t *bytes, uint8_t num_bytes, scamp_c
      last_code_word = code_word;
   }
 }
+#endif
 
 #if 0
 typedef struct _scamp_code_word_transmit_data
@@ -378,6 +380,8 @@ static void scamp_decode_process(scamp_state *sc_st, uint32_t fr)
       {
         case SCAMP_RES_CODE_END_TRANSMISSION:
             sc_st->reset_protocol = 1;
+            sc_st->recv_chars[0] = '\\';
+            sc_st->recv_chars[1] = '\r';
             break;
       }
       return;
@@ -607,10 +611,136 @@ static void scamp_new_sample(scamp_state *sc_st, uint16_t channel_1, uint16_t ch
     }
 }
 
+void scamp_add_frame_rep(scamp_state *sc_st, uint32_t frame, uint8_t rep)
+{
+	while (rep > 0)
+	{
+		if (sc_st->frames_num >= SCAMP_FRAMES_MAX)
+			return;
+		sc_st->frames[sc_st->frames_num++] = frame;
+		rep--;
+	}
+}
+
+void scamp_add_code_rep(scamp_state *sc_st, uint16_t code, uint8_t rep)
+{
+  uint32_t frame = golay_encode(code);
+  frame = scamp_add_reversal_bits(frame);
+  scamp_add_frame_rep(sc_st, frame, rep);
+}
+
+void scamp_send_start(scamp_state *sc_st)
+{
+  if (sc_st->fsk) 
+  {
+    scamp_add_frame_rep(sc_st, SCAMP_SOLID_CODEWORD, 1);
+  } else
+  {
+    for (uint8_t i=0;i<4;i++)
+      scamp_add_frame_rep(sc_st, SCAMP_DOTTED_CODEWORD, 1);
+  }
+  scamp_add_frame_rep(sc_st, SCAMP_INIT_CODEWORD, sc_st->repeat_frames);
+  scamp_add_frame_rep(sc_st, SCAMP_SYNC_CODEWORD, sc_st->repeat_frames);
+  sc_st->trans_state = SCAMP_TRANS_STATE_TRANS;
+}
+
+void scamp_send_code(scamp_state *sc_st, uint16_t code, uint8_t rep)
+{
+	scamp_add_code_rep(sc_st, code, rep ? sc_st->repeat_frames : 1);
+	if (sc_st->resync_frames > 0)
+	{
+		if ((++sc_st->resync_frames_count) >= sc_st->resync_frames)
+		{
+			sc_st->resync_frames_count = 0;
+			scamp_add_frame_rep(sc_st, SCAMP_INIT_CODEWORD, 1);
+			scamp_add_frame_rep(sc_st, SCAMP_SYNC_CODEWORD, 1);
+			sc_st->trans_state = SCAMP_TRANS_STATE_TRANS;
+		}
+	}
+}
+
+uint8_t scamp_txmit(scamp_state *sc_st, int16_t c)
+{ 
+  sc_st->frames_num = 0;
+  if (c == -1) /* end of transmission */
+  {
+	  if (sc_st->trans_state == SCAMP_TRANS_STATE_WAIT_CHAR)
+		 scamp_send_code(sc_st, sc_st->code_word, 1);
+	  if (sc_st->trans_state != SCAMP_TRANS_STATE_IDLE)
+		 scamp_add_frame_rep(sc_st, SCAMP_RES_CODE_END_TRANSMISSION_FRAME, sc_st->repeat_frames);	
+      sc_st->trans_state = SCAMP_TRANS_STATE_IDLE;
+      sc_st->resync_frames_count = 0;
+      sc_st->reset_protocol = 1;
+      return sc_st->frames_num;
+  }
+  if (c == -2) /* idle state */
+  {
+	  if (sc_st->trans_state == SCAMP_TRANS_STATE_WAIT_CHAR)
+		 scamp_send_code(sc_st, sc_st->code_word, 1);
+	  if (sc_st->trans_state != SCAMP_TRANS_STATE_IDLE)
+		 scamp_send_code(sc_st, sc_st->code_word, 0);
+      return sc_st->frames_num;
+  }
+  if ((c >= 'a') && (c <= 'z')) c -= 32;
+  if ((sc_st->trans_state == SCAMP_TRANS_STATE_WAIT_CHAR))
+  {
+	 if ((c > 0) && (c <= 0xFF))
+	 {
+		uint8_t code = scamp_find_code_in_table(c);
+		if (code == 0xFF)
+		{
+			scamp_send_code(sc_st, sc_st->code_word, 1);
+			sc_st->code_word = ((uint16_t)(0xF00)) | c;     
+			scamp_send_code(sc_st, sc_st->code_word, 1);
+		} else
+		{
+			sc_st->code_word |= (((uint16_t)code) << 6);
+			scamp_send_code(sc_st, sc_st->code_word, 1);
+        }
+     }
+#if 0 
+	 if ((c >= 0x100) && (c <= 0xFFF))
+	 {
+		scamp_send_code(sc_st, sc_st->code_word, 1);
+		sc_st->code_word = c;
+		scamp_send_code(sc_st, sc_st->code_word, 1);
+	 }
+#endif
+	 sc_st->trans_state = SCAMP_TRANS_STATE_TRANS;
+     return sc_st->frames_num;   
+  }	      			
+  if ((sc_st->trans_state == SCAMP_TRANS_STATE_IDLE) || (sc_st->trans_state == SCAMP_TRANS_STATE_TRANS))
+  {
+	 if (sc_st->trans_state == SCAMP_TRANS_STATE_IDLE)
+		scamp_send_start(sc_st);
+	 if ((c > 0) && (c <= 0xFF))
+	 {
+		uint8_t code = scamp_find_code_in_table(c);
+		if (code == 0xFF)
+		{
+			sc_st->code_word = ((uint16_t)(0xF00)) | c;     
+			scamp_send_code(sc_st, sc_st->code_word, 1);
+		}
+		else
+		{
+			sc_st->code_word = code;  
+			sc_st->trans_state = SCAMP_TRANS_STATE_WAIT_CHAR;
+		}
+	 }
+#if 0 
+	 if ((c >= 0x100) && (c <= 0xFFF))
+	 {
+		sc_st->code_word = c;
+		scamp_send_code(sc_st, sc_st->code_word, 1);
+	 }
+#endif
+     return sc_st->frames_num;   
+   }
+   return sc_st->frames_num;
+}
+     
 void SCAMP_protocol::init(uint8_t protocol)
 {
-	uint16_t buffer_size;
-	
 	memset(&sc,'\000',sizeof(sc));
 	sc.protocol = protocol;
     switch (sc.protocol)
@@ -651,10 +781,25 @@ void SCAMP_protocol::init(uint8_t protocol)
 void SCAMP_protocol::decode_process(double mag1, double mag2, int recv_chars[2])
 {
 	sc.recv_chars[0] = sc.recv_chars[1] = -1;
-	uint16_t imag1 = (uint16_t)(mag1 * 100.0);
-	uint16_t imag2 = (uint16_t)(mag2 * 100.0);
+	uint16_t imag1 = (uint16_t)(mag1 * 16384.0);
+	uint16_t imag2 = (uint16_t)(mag2 * 16384.0);
 	scamp_new_sample(&sc, imag1, imag2); 
     recv_chars[0] = sc.recv_chars[0];
     recv_chars[1] = sc.recv_chars[1];
 }
 
+void SCAMP_protocol::set_resync_repeat_frames(int resync_frames, int repeat_frames)
+{ 
+	if ((resync_frames < 0) || (resync_frames > 9))
+		resync_frames = 0;
+	if ((repeat_frames < 1) || (repeat_frames > 9))
+		repeat_frames = 1;
+	sc.resync_frames = resync_frames;
+	sc.repeat_frames = repeat_frames;
+}
+
+int SCAMP_protocol::send_char(int c, uint32_t *fr[])
+{
+	*fr = sc.frames;
+	return scamp_txmit(&sc, c);
+}

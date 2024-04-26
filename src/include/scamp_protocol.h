@@ -45,6 +45,7 @@ freely, subject to the following restrictions:
 #endif
 
 #define SCAMP_RES_CODE_END_TRANSMISSION 0b000000111100
+#define SCAMP_RES_CODE_END_TRANSMISSION_FRAME 0x1B75426C
 
 #define SCAMP_VERY_SLOW_MODES
 
@@ -74,6 +75,12 @@ freely, subject to the following restrictions:
 
 typedef uint8_t (*scamp_code_word_put)(uint16_t, void *, uint8_t, uint8_t);
 typedef uint16_t (*scamp_code_word_get)(void *);
+
+#define SCAMP_FRAMES_MAX 100
+
+#define SCAMP_TRANS_STATE_IDLE 0
+#define SCAMP_TRANS_STATE_WAIT_CHAR 1
+#define SCAMP_TRANS_STATE_TRANS 2
 
 typedef struct _scamp_state
 {
@@ -124,6 +131,15 @@ typedef struct _scamp_state
   uint16_t  clock_bit;
   
   int16_t   recv_chars[2];
+  
+  uint8_t   trans_state;
+  uint8_t   frames_num;
+  uint8_t   resync_frames_count;
+  uint32_t  frames[SCAMP_FRAMES_MAX];
+  uint16_t  code_word;
+  
+  uint8_t   resync_frames;
+  uint8_t   repeat_frames;
 } scamp_state;
 
 class SCAMP_protocol {
@@ -135,6 +151,9 @@ public:
 	~SCAMP_protocol() {};
 	void init(uint8_t protocol);
 	void decode_process(double mag1, double mag2, int recv_chars[2]);
+	void set_resync_repeat_frames(int resync_frames, int repeat_frames);
+	int send_char(int c, uint32_t *fr[]);
+
 };
 
 #endif  /* _SCAMP_PROTOCOL_H */
