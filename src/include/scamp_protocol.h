@@ -124,6 +124,7 @@ typedef struct _scamp_state
 //  volatile scamp_frame_fifo scamp_output_fifo;
 
   uint16_t  last_code;
+  uint16_t  duplicate_code;
   uint16_t  threshold_counter;
 
   uint16_t  clock_bit;

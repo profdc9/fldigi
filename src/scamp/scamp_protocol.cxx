@@ -220,8 +220,8 @@ static uint32_t scamp_remove_reversal_bits(uint32_t outword)
   return codeword;
 }
 
-#define SCAMP_IS_DATA_CODE(x) (((uint8_t)((x) >> 8)) == 0x0F)
-#define SCAMP_RES_CODE_BITS_SET(x) ((((uint8_t)(x)) & 0x3C) == 0x3C)
+#define SCAMP_IS_DATA_CODE(x) ((((uint16_t)x) & 0x0F00) == 0x0F00)
+#define SCAMP_RES_CODE_BITS_SET(x) ((((uint16_t)x) & 0x03C) == 0x03C)
 #define SCAMP_IS_RES_CODE(x) (SCAMP_RES_CODE_BITS_SET(x) && (!SCAMP_IS_DATA_CODE(x)))
 
 /* decode a 12 bit code word to 8 bit bytes */
@@ -269,80 +269,6 @@ static uint8_t scamp_find_code_in_table(uint8_t c)
     return 0xFF;
 }
 
-#if 0
-/* encode 8 bit bytes to 12 bit code words.
-   code words that correspond to a 6-bit symbols are encoded as 6 bits.
-   otherwise they are encoded as an 8-bit binary raw data word.
-   If a byte that can be encoded as a 6 bit symbol precedes one that can
-   not be encoded as a 6 bit symbol, and there is an extra symbol slot
-   in the current word, fill it with a zero. */
-static void scamp_bytes_to_code_words(uint8_t *bytes, uint8_t num_bytes, scamp_code_word_put ecwp, void *st)
-{
-  uint8_t cur_byte = 0;
-  uint8_t frame = 0;
-  uint16_t last_code_word = 0;
-  uint16_t code_word;
-  while (cur_byte < num_bytes)
-  {
-     uint8_t b = bytes[cur_byte++];
-     uint8_t code1 = scamp_find_code_in_table(b);
-     if (code1 == 0xFF)
-     {
-         code_word = ((uint16_t)(0xF00)) | b;
-     } else
-     {
-         code_word = (uint16_t)code1;
-         if (cur_byte < num_bytes)
-         {
-            b = bytes[cur_byte];
-            uint8_t code2 = scamp_find_code_in_table(b);
-            if (code2 != 0xFF)
-            {
-               code_word |= (((uint16_t)code2) << 6);
-               cur_byte++;
-            }
-         }
-         if (code_word == last_code_word)
-         {
-           if (ecwp(0, st, cur_byte, frame++)) break;
-         }
-     }
-     if (ecwp(code_word, st, cur_byte, frame++)) break;
-     last_code_word = code_word;
-  }
-}
-#endif
-
-#if 0
-typedef struct _scamp_code_word_transmit_data
-{
-  dsp_dispatch_callback ddc;
-  dsp_txmit_message_state *dtms;
-} scamp_code_word_transmit_data;
-
-static uint8_t scamp_code_word_transmit(uint16_t code, void *st, uint8_t pos, uint8_t frame)
-{
-  uint8_t data_code = SCAMP_IS_DATA_CODE(code);
-  uint32_t code_30;
-  scamp_code_word_transmit_data *scwtd = (scamp_code_word_transmit_data *) st;
-  
-  code_30 = golay_encode(code);
-  code_30 = scamp_add_reversal_bits(code_30);
-  scamp_send_frame_rep(code_30, data_code ? 1 : rc.scamp_resend_frames);
-  if ((rc.scamp_resync_frames != 0) && (((frame+1) % rc.scamp_resync_frames) == 0))
-  {
-    scamp_send_frame(SCAMP_INIT_CODEWORD);
-    scamp_send_frame(SCAMP_SYNC_CODEWORD);
-  }
-  while (scwtd->dtms->current_symbol <= pos)
-  {
-    scwtd->ddc(scwtd->dtms);
-    scwtd->dtms->current_symbol++;
-  }
-  return scwtd->dtms->aborted;
-}
-#endif
-
 static void scamp_reset_codeword(scamp_state *sc_st)
 {
    sc_st->current_bit_no = 0;
@@ -369,7 +295,7 @@ static void scamp_decode_process(scamp_state *sc_st, uint32_t fr)
   gf = golay_decode(fr,&biterrs);
   if (gf == 0xFFFF)
   {
-    // decode_insert_into_fifo('#');
+	sc_st->recv_chars[0] = '#';
     return;
   }
   if (!SCAMP_IS_DATA_CODE(gf))
@@ -647,7 +573,10 @@ void scamp_send_start(scamp_state *sc_st)
 
 void scamp_send_code(scamp_state *sc_st, uint16_t code, uint8_t rep)
 {
-	scamp_add_code_rep(sc_st, code, rep ? sc_st->repeat_frames : 1);
+	if ((!SCAMP_IS_DATA_CODE(code)) && (!SCAMP_RES_CODE_BITS_SET(code)) && (code != 0) && (code == sc_st->duplicate_code))
+    	scamp_add_code_rep(sc_st, 0, rep ? sc_st->repeat_frames : 1);
+	scamp_add_code_rep(sc_st, code, rep && (!SCAMP_IS_DATA_CODE(code)) ? sc_st->repeat_frames : 1);
+    sc_st->duplicate_code = code;
 	if (sc_st->resync_frames > 0)
 	{
 		if ((++sc_st->resync_frames_count) >= sc_st->resync_frames)
@@ -656,6 +585,7 @@ void scamp_send_code(scamp_state *sc_st, uint16_t code, uint8_t rep)
 			scamp_add_frame_rep(sc_st, SCAMP_INIT_CODEWORD, 1);
 			scamp_add_frame_rep(sc_st, SCAMP_SYNC_CODEWORD, 1);
 			sc_st->trans_state = SCAMP_TRANS_STATE_TRANS;
+			sc_st->duplicate_code = 0xFFFF;
 		}
 	}
 }
@@ -671,6 +601,7 @@ uint8_t scamp_txmit(scamp_state *sc_st, int16_t c)
 		 scamp_add_frame_rep(sc_st, SCAMP_RES_CODE_END_TRANSMISSION_FRAME, sc_st->repeat_frames);	
       sc_st->trans_state = SCAMP_TRANS_STATE_IDLE;
       sc_st->resync_frames_count = 0;
+	  sc_st->duplicate_code = 0xFFFF;
       sc_st->reset_protocol = 1;
       return sc_st->frames_num;
   }
@@ -779,6 +710,7 @@ void SCAMP_protocol::init(uint8_t protocol)
        sc.edge_thr = sc.power_thr;
     else
        sc.edge_thr = sc.power_thr << 1;
+    sc.duplicate_code = 0xFFFF;
     scamp_retrain(&sc);
 }
 
@@ -804,7 +736,11 @@ void SCAMP_protocol::set_resync_repeat_frames(int resync_frames, int repeat_fram
 
 int SCAMP_protocol::send_char(int c, uint8_t max_frames, uint32_t *fr)
 {
+	uint8_t num_frames;
+	
 	sc.frames = fr;
 	sc.frames_num_max = max_frames;
-	return scamp_txmit(&sc, c);
+	num_frames = scamp_txmit(&sc, c);
+	sc.frames = NULL;
+	return num_frames;
 }
