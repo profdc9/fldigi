@@ -439,11 +439,13 @@ std::cout << "EINTR error in scamp_sleep" << std::endl;
 	return 0;
 }
 
+#define TX_PROCESS_FRAMES 100
+
 int scamp::tx_process()
 {
 	int ret = 0;
+	uint32_t frame_array[TX_PROCESS_FRAMES];
 	uint8_t frames = 0;
-	uint32_t *frame_array;
 	modem::tx_process();
 
 	scamp_protocol.set_resync_repeat_frames(progdefaults.ScampResync,progdefaults.ScampRepeat);
@@ -452,12 +454,13 @@ int scamp::tx_process()
 	
 	if (c == GET_TX_CHAR_ETX || stopflag) {
 		stopflag = false;
-		frames = scamp_protocol.send_char(-1, &frame_array);
+		frames = scamp_protocol.send_char(-1, TX_PROCESS_FRAMES, frame_array);
 		ret = -1;
 	} else if (c == GET_TX_CHAR_NODATA) {
-		frames = scamp_protocol.send_char(-2, &frame_array);
+		frames = scamp_protocol.send_char(-2, TX_PROCESS_FRAMES, frame_array);
 	} else {
-		frames = scamp_protocol.send_char(c, &frame_array);
+		frames = scamp_protocol.send_char(c, TX_PROCESS_FRAMES, frame_array);
+		put_echo_char(c);
 	}
 	for (int fr=0;fr<frames;fr++)
 		send_frame(frame_array[fr]);

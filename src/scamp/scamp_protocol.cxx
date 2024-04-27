@@ -615,9 +615,10 @@ void scamp_add_frame_rep(scamp_state *sc_st, uint32_t frame, uint8_t rep)
 {
 	while (rep > 0)
 	{
-		if (sc_st->frames_num >= SCAMP_FRAMES_MAX)
+		if (sc_st->frames_num >= sc_st->frames_num_max)
 			return;
-		sc_st->frames[sc_st->frames_num++] = frame;
+		if (sc_st->frames != NULL)
+			sc_st->frames[sc_st->frames_num++] = frame;
 		rep--;
 	}
 }
@@ -676,9 +677,12 @@ uint8_t scamp_txmit(scamp_state *sc_st, int16_t c)
   if (c == -2) /* idle state */
   {
 	  if (sc_st->trans_state == SCAMP_TRANS_STATE_WAIT_CHAR)
+	  {
 		 scamp_send_code(sc_st, sc_st->code_word, 1);
+		 sc_st->trans_state = SCAMP_TRANS_STATE_TRANS;
+	  }
 	  if (sc_st->trans_state != SCAMP_TRANS_STATE_IDLE)
-		 scamp_send_code(sc_st, sc_st->code_word, 0);
+		 scamp_send_code(sc_st, 0, 0);
       return sc_st->frames_num;
   }
   if ((c >= 'a') && (c <= 'z')) c -= 32;
@@ -798,8 +802,9 @@ void SCAMP_protocol::set_resync_repeat_frames(int resync_frames, int repeat_fram
 	sc.repeat_frames = repeat_frames;
 }
 
-int SCAMP_protocol::send_char(int c, uint32_t *fr[])
+int SCAMP_protocol::send_char(int c, uint8_t max_frames, uint32_t *fr)
 {
-	*fr = sc.frames;
+	sc.frames = fr;
+	sc.frames_num_max = max_frames;
 	return scamp_txmit(&sc, c);
 }
